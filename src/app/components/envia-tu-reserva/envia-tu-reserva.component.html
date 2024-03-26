@@ -1,0 +1,354 @@
+<div *ngIf="isLoaded" class="container d-flex w-100 h-100 justify-content-center align-self-center mt-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Cargando datos...</span>
+    </div>
+</div>
+
+<div *ngIf="!isLoaded" [style.display]="statusReserva == false ? 'block' : 'none'" id="div-compra" class="div-compra">
+
+    <div *ngIf="!isLoaded" class="row m-2" style="display:flex;justify-content: center;align-items:center;text-align: center;">
+        <img [src]="modelo?modelo.ImagePath:null" [alt]="modelo?modelo.Name:null" class="img-fluid mb-1 car-model" style="width: 20%;" />
+        <div>
+
+            <b style="color:#455763;font-size: 2em;">{{modelo?modelo.Name:null}}</b>
+            <div class="row d-blok mb-2 p-2">
+
+                    <div class="col-6 m-0 p-1">
+                        <img src="assets/images/icons/icons-catalogo/ico_pasajeros.svg" class="m-0" height="20px" alt="pasajeros" />&nbsp;&nbsp;
+                        <span>{{modelo?modelo.Passengers:null}} pasajeros</span>
+                    </div>
+                    <div class="col-6 m-0 p-1">
+                        <img src="assets/images/icons/icons-catalogo/ico_clima.svg" class="m-0" height="20px" alt="clima" />&nbsp;&nbsp;
+                        <span>{{modelo?modelo.AirConditioner:null}}</span>
+                    </div>
+                    <div class="col-6 m-0 p-1">
+                        <img src="assets/images/icons/icons-catalogo/ico_maletas.svg" class="m-0" height="20px" alt="maletas" />&nbsp;&nbsp;
+                        <span>{{modelo?modelo.BigLuggage + modelo.SmallLuggage:0}} maletas</span>
+                    </div>
+                    <div class="col-6 m-0 p-1">
+                        <img src="assets/images/icons/icons-catalogo/ico_bolsas_aire.svg" class="m-0" height="20px" alt="bolsas" />&nbsp;&nbsp;
+                        <span>Bolsas de aire</span>
+                    </div>
+                    <div class="col-6 m-0 p-1" hidden>
+                        <img src="assets/images/icons/icons-catalogo/ico_transmision.svg" class="m-0" height="20px" alt="transmision" />&nbsp;&nbsp;
+                        <span>{{modelo?modelo.Gearbox:null}}</span>
+                    </div>
+                    <div class="col-6 m-0 p-1" hidden>
+                        <img src="assets/images/icons/icons-catalogo/ico_rendimiento.svg" class="m-0" height="20px" alt="combustible" />&nbsp;&nbsp;
+                        <span class="mt-3">100LT</span>
+                    </div> 
+            </div>
+        </div>
+
+</div>
+
+<div class="row m-2 contenedor-secciones" style="background-color:#e0e0e0;padding-left: 15%;padding-right: 15%;">
+    
+    <div class="col-md-6">
+        <div class="row mb-3 p-4">
+            <div class="col-xl-12 col-md-12 col-xs-12 col-12">
+                <p style="margin-bottom: 0;" class="ml-4 mt-3"><b>Seguros</b></p>
+                <div class="p-2 col-12">
+                    <div *ngFor="let seguro of seguros; let i=index" class="row mx-3 mb-1 align-items-center" (click)="onAddingSeguros(i)">
+                        <div [class]="seguro.checked == true ? 'btn-seguroadsActive': 'btn-seguroads'" class="col-12 px-1 pt-2 pb-2">
+                            <div class="col-1" style="width: 100px;display: flex;align-items: center;">
+                              
+                                <img *ngIf="seguro.checked == true;" width="20px" src="assets/images/icons/ok.svg" alt="ok" class="m-auto" />
+                        
+                                <img *ngIf="seguro.checked == false;" width="20px" src="assets/images/icons/option-circle.png"/>
+                                
+                            </div>
+                            <div class="col-11">{{seguro.detail.name}}&nbsp;<b>${{seguro.detail.dailyPrice}} p/dia</b></div>
+                            
+
+                        </div>                        
+                    </div>
+                </div>
+                <p style="margin-bottom: 0;" class="ml-4 mt-3"><b>Adicionales</b></p>
+                <div class="p-2 col-12">
+                    
+                    <div *ngFor="let adicional of adicionales; let i=index" class="row mx-3 mb-1 align-items-center" (click)="onAddingAdicionales(i)">
+                        <div [class]="adicional.checked == true ? 'btn-seguroadsActive': 'btn-seguroads'" class="col-12 px-1 pt-2 pb-2">
+                            <div class="col-1" style="width: 100px;display: flex;align-items: center;">
+                              
+                                <img *ngIf="adicional.checked == true;" width="20px" src="assets/images/icons/ok.svg" alt="ok"/>
+                        
+                                <img *ngIf="adicional.checked == false;" width="20px" src="assets/images/icons/option-circle.png" alt="ok"/>
+                                
+                            </div>
+                            <div class="col-11">{{adicional.detail.name}}&nbsp;<b>${{adicional.detail.dailyPrice}} p/reserva</b></div>
+                        </div>   
+                      
+                    </div>
+                </div>
+
+                <p style="margin-bottom: 0;" class="ml-4 mt-3"><b>Elige Sucursal</b></p>
+                <div class="p-2 col-12">
+                    
+                    <div class="row mx-3 mb-1 align-items-center" (click)="onSelectSucursal('LindaVista')">
+                        <div [class]="sucLV == true ? 'btn-seguroadsActive': 'btn-seguroads'" class="col-12 px-1 pt-2 pb-2">
+                            <div class="col-1" style="width: 100px;display: flex;align-items: center;">
+                              
+                                <img *ngIf="sucLV == true;" width="20px" src="assets/images/icons/ok.svg" alt="ok"/>
+                        
+                                <img *ngIf="sucLV == false;" width="20px" src="assets/images/icons/option-circle.png" alt="ok"/>
+                                
+                            </div>
+                            <div class="col-11">Linda Vista</div>
+                        </div>   
+                    </div>
+
+                    <div class="row mx-3 mb-1 align-items-center" (click)="onSelectSucursal('Venustiano')">
+                        <div [class]="sucVenustiano == true ? 'btn-seguroadsActive': 'btn-seguroads'" class="col-12 px-1 pt-2 pb-2">
+                            <div class="col-1" style="width: 100px;display: flex;align-items: center;">
+                              
+                                <img *ngIf="sucVenustiano == true;" width="20px" src="assets/images/icons/ok.svg" alt="ok"/>
+                        
+                                <img *ngIf="sucVenustiano == false;" width="20px" src="assets/images/icons/option-circle.png" alt="ok"/>
+                                
+                            </div>
+                            <div class="col-11">Venustiano</div>
+                        </div>   
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+
+        <div class="row pl-4 pr-2">
+            <p style="margin-bottom: 5px;" class="ml-5 mt-3"><b>Requisitos</b></p>
+        </div>
+        <div class="row mb-3 mt-2 p-5" style="padding-top: 0!important;">
+            <div class="col-4 text-center">
+                <img width="40px" src="assets/images/icons/icono_credencial.png" alt="ok"/><br/>
+                <p style="color:#455763;font-size: .8em;font-family: Arial, Helvetica, sans-serif;">Credencial de <br/>elector vigente</p>
+            </div>
+            <div class="col-4 text-center">
+                <img width="45px" src="assets/images/icons/icono_licencia.png" alt="ok"/><br/>
+                <p style="color:#455763;font-size: .8em;font-family: Arial, Helvetica, sans-serif;">Licencia de <br/> manejo A-C vigente</p>
+            </div>
+            <div class="col-4 text-center">
+                <img width="35px" src="assets/images/icons/icono_persona.png" alt="ok"/><br/>
+                <p style="color:#455763;font-size: .8em;font-family: Arial, Helvetica, sans-serif;">Ser mayor <br/> de 23 años</p>
+            </div>
+            <div class="col-4 text-center">
+                <img width="45px" src="assets/images/icons/icono_tarjeta.png" alt="ok"/><br/>
+                <p style="color:#455763;font-size: .8em;font-family: Arial, Helvetica, sans-serif;">Pago con tarjeta de crédito, VISA o Mastercard</p>
+            </div>
+            <div class="col-4 text-center">
+                <img width="35px" src="assets/images/icons/icono_comprobante_domicilio.png" alt="ok"/><br/>
+                <p style="color:#455763;font-size: .8em;font-family: Arial, Helvetica, sans-serif;">Comprobante de domicilio <mat-icon (click)="modalInfo=true" style="font-size: 1.5em;cursor: pointer;">contact_support</mat-icon></p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="modal" tabindex="-1" [style.display]="modalInfo ? 'block': 'none'" aria-labelledby="exampleModalLabel" aria-hidden="true" style="background: rgba(0, 0, 0, 0.5);">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+                <div class="modal-header modal-h-nu" style="background-color: #1b3357;color:white;padding: 1rem .5rem;">
+                    <div class="row justify-content-center" style="width: 100%;align-items: center;">
+                        <h4 class="modal-title text-align-center">Detalle Comprobante de Domicilio</h4>
+                    </div>
+    
+                    <button type="button" style="width: 70px;" class="close" data-dismiss="modal" aria-label="Close" (click)="modalInfo=false">
+                        <span class="xModal" aria-hidden="true">X</span>
+                    </button>
+                </div>
+                <div class="modal-body row m-2">
+                    <h4>Para residentes en Monterrey, se requiere tener un comprobante de domicilio vigente, este debe coincidir con tu INE y licencia.</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modalInfo=false">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 p-4">
+        <div style="border-radius: 25px;background-color: #fff;box-shadow: 4px 2px 5px rgb(219, 219, 219);justify-content: center;" class="m-auto p-5">
+            <div style="display: flex; align-items: center;"><b style="font-size: 2em;margin-right: 10px;">Tu Reserva </b><img width="30px" src="assets/images/icons/icono_reserva.png" alt="ok"/><!-- <mat-icon style="color:#2486fc;margin-top:-12px;font-size: 3em;"> local_mall</mat-icon> --></div>
+            <br/>
+            <div style="display: flex;">
+                <img src="assets/images/icons/icono_calendar.png" height="20px">&nbsp;<b>Entrega:</b>&nbsp;<p>{{salida.name?salida.name:null}}&nbsp;{{fechaOffHour(from)}}</p>
+            </div>
+            <div style="display: flex;">
+                <img src="assets/images/icons/icono_calendar.png" height="20px">&nbsp;<b>Devolución:</b>&nbsp;<p>{{regreso.name?salida.name:null}}&nbsp;{{fechaOffHour(to)}}</p>
+            </div>
+
+            <div class="row mt-4 row-reserva">
+                <div class="col-6 col-xl-8 col-lg-8 col-md-8 col-sm-6">
+                    <p class="p-mov"style="font-size: 15px;">Precio de renta  <small class="ml-3">(Diario ${{detalle?numberWithCommas(detalle.AverageDayPrice):0 | number}} ) x {{detalle.TotalDaysString}} </small> </p>
+                </div>
+                <div class="col-6 col-xl-4 col-lg-4 col-md-4 col-sm-6" style="display:flex;justify-content: end;">
+                    <b> ${{detalle?numberWithCommas(detalle.Price):0 | number}} MXN</b>
+                </div>
+            </div>
+
+            <div class="row row-reserva">
+                <div class="col-6 col-xl-8 col-lg-8 col-md-8 col-sm-6">
+                    <p class="p-mov" style="font-size: 15px;">Entrega en {{nameSuc}}</p>
+                </div>
+                <div class="col-6 col-xl-4 col-lg-4 col-md-4 col-sm-6" style="display:flex;justify-content: end;">
+                    <b> 0 MXN</b>
+                </div>
+            </div>
+
+            <div class="row row-reserva">
+                <div class="col-6 col-xl-8 col-lg-8 col-md-8 col-sm-6">
+                    <p class="p-mov" style="font-size: 15px;">Devolución en {{nameSuc}}</p>
+                </div>
+                <div class="col-6 col-xl-4 col-lg-4 col-md-4 col-sm-6" style="display:flex;justify-content: end;">
+                    <b> 0 MXN</b>
+                </div>
+            </div>
+
+            <div class="row row-reserva" *ngFor="let seguro of seguros; let i=index">
+                <div *ngIf="seguro.checked" class="col-6 col-xl-8 col-lg-8 col-md-8 col-sm-6 align-items-left" style="margin-bottom: 10px!important;">
+                    <p *ngIf="seguro.checked" class="p-mov" style="font-size: 15px;margin-bottom: 0;">{{seguroName(seguro.detail.name)}} <br/> <smal style="font-size: 10px;">{{seguroDescription(seguro.detail.name)}}</smal> </p>
+                </div>
+                <div *ngIf="seguro.checked" class="col-6 col-xl-4 col-lg-4 col-md-4 col-sm-6" style="display:flex;justify-content: end;">
+                    <b> ${{seguro?numberWithCommas(seguro.detail.dailyPrice * detalle.TotalDays):0 | number}} MXN</b>
+                </div>
+            </div>
+
+            <div class="row row-reserva" *ngFor="let adicional of adicionales; let i=index">
+                <div *ngIf="adicional.checked" class="col-6 col-xl-8 col-lg-8 col-md-8 col-sm-6 align-items-left" style="margin-bottom: 10px!important;">
+                    <p *ngIf="adicional.checked" class="p-mov" style="font-size: 15px;margin-bottom: 0;">{{seguroName(adicional.detail.name)}} <br/> <small style="font-size: 10px;">{{seguroDescription(adicional.detail.name)}}</small> </p>
+                </div>
+                <div *ngIf="adicional.checked" class="col-6 col-xl-4 col-lg-4 col-md-4 col-sm-6" style="display:flex;justify-content: end;">
+                    <b> ${{adicional?numberWithCommas(adicional.detail.dailyPrice):0 | number}} MXN</b>
+                </div>
+            </div>
+
+            <div class="row row-reserva">
+                <div class="col-5 col-xl-7 col-lg-7 col-md-7 col-sm-5">
+                    <b class="text-primary" style="font-size: 1.5em;">Total a pagar</b><br/> <small class="text-primary" style="font-size: 10px;">(Impuesto incluido)</small>
+                </div>
+                <div class="col-7 col-xl-5 col-lg-5 col-md-5 col-sm-7" style="display:flex;justify-content: end;">
+                    <p class="p-mov" class="mb-1"><b class="text-primary" style="font-size: 1.5em">${{detalle?numberWithCommas(detalle.Price + segurosTotal + adicionalesTotal):0|number}} MXN</b></p>
+                </div>
+            </div>
+            
+            <div class="row mt-3 row-reserva">
+                <div class="col-6 col-xl-8 col-lg-8 col-md-8 col-sm-6">
+                    <p class="p-mov" style="font-size: 10px;">Valor garantia</p>
+                </div>
+                <div class="col-6 col-xl-4 col-lg-4 col-md-4 col-sm-6" style="display:flex;justify-content: end;">
+                    <b style="font-size: 12px;">${{detalle?numberWithCommas(detalle.Franchise):0| number}} MXN</b>
+                </div>
+            </div>
+
+            <div class="row row-reserva">
+                <div class="col-6 col-xl-8 col-lg-8 col-md-8 col-sm-6">
+                    <p class="p-mov" style="font-size: 10px;">Total (Renta + garantia). Incluye seguro todo riesgo e impuestos</p><br/>
+                </div>
+                <div class="col-6 col-xl-4 col-lg-4 col-md-4 col-sm-6" style="display:flex;justify-content: end;">
+                    <b  style="font-size: 12px;">${{detalle?numberWithCommas(detalle.Price + segurosTotal + adicionalesTotal + detalle.Franchise):0| number}} MXN</b>
+                </div>
+            </div>
+
+            <div class="row mt-4 justify-content-center">
+                <div (click)="reservarDatos()" class="boton boton-azul btn-lg p-3" style="width:80%;"><span style="font-weight:600;font-size:1em;">Reservar ahora</span></div>
+            </div>
+
+    </div>
+
+ </div>
+</div>
+
+
+    <div class="p-3" style="margin-left:20vw;margin-right:20vw;display:flex;color:#b6b6b6;background-color: #fff;">
+        <div>
+            <b>Depósito</b><br/>
+            <p>Debes disponer del monto de depósito en su linea de crédito para realizar la renta.</p>
+        </div>
+    </div>
+    <div class="p-3" style="margin-left:20vw;margin-right:20vw;display:flex;color:#b6b6b6;background-color: #fff;">
+        <div>
+            <b>Politicas de cambio y cancelación</b><br/>
+            <p>Evite cargos adicionales. Si no requiere el servicio, cancele con una anticipacion de 48 hrs, de lo contrario la penalidad es del 50% del monto del contrato. La confirmacion de la reserva no implica el congelamiento del precio, para congelar el mismo la reserva debe estar cancelada en su totalidad. De lo contrario el precio quedará sujeto a modificaciones sin previo aviso. Al momento del pago de la reserva los montos se actualizaran a los valores vigentes exhibidos al público en la WEB.</p>
+        </div>
+    </div>
+    <div class="p-3" style="margin-left:20vw;margin-right:20vw;display:flex;color:#b6b6b6;background-color: #fff;">
+        <div>
+            <b>Vigencia</b><br/>
+            <p>La cotización tiene una vigencia de 7 días.</p>
+        </div>
+    </div>
+
+</div>
+
+<div [style.display]="statusReserva == true ? 'flex' : 'none'" id="div-datosReserva p-3" style="justify-content: center;">
+
+    <div class="col-lg-4 col-md-12 col-xs-12 col-12 p-4" style="margin-top: 5%!important;">
+        <h1 style="text-align: center;color: #2486fc;font-weight: 600;">Realiza tu reserva aquí</h1><br/>
+        <div class="row px-3">
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12 text-center">
+                <img [src]="modelo?modelo.ImagePath:null" [alt]="modelo?modelo.Name:null" class="img-fluid mb-1 car-model" style="width: 120px;" />
+            </div>
+
+        </div>
+
+        <div class="row px-3">
+            
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 text-center" style="background-color: #2486fc;border-radius: 10px 0px 0px 0px;">
+                <b class="text-white ">Entrega</b>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 text-center" style="background-color:#1b3357;border-radius: 0px 10px 0px 0px;">
+                <b class="text-white ">Devolución</b>
+            </div>
+
+        </div>
+
+        <div class="row px-3 mb-2">
+            
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 text-center text-white" style="background-color: #2486fc;">
+                <b>{{salida.name?salida.name:null}}&nbsp;{{fechaOffHour(from)}}</b>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 text-center text-white" style="background-color:#1b3357;">
+                <b>{{regreso.name?salida.name:null}}&nbsp;{{fechaOffHour(to)}}</b>
+            </div>
+
+        </div>
+
+        <form>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-xs-12 col-12 form-group">
+                    <input #nombreI type="text" class="form-control input-datos" placeholder="Nombre completo" (change)=" nombre = nombreI.value" onkeydown="return /[a-z, ]/i.test(event.key)">
+                </div>
+                <div class="col-lg-12 col-md-12 col-xs-12 col-12 form-group">
+                    <input #correoI type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control input-datos" placeholder="Correo" (change)="correo = correoI.value">
+                </div>
+                <div class="col-lg-12 col-md-12 col-xs-12 col-12 form-group">
+                    <input #telefonoI type="text" class="form-control input-datos" placeholder="Teléfono" (change)="telefono = telefonoI.value" maxlength="10" onkeypress="return /[0-9]/i.test(event.key)">
+                </div>
+                <div class="col-lg-12 col-md-12 col-xs-12 col-12 form-group">
+                    <mat-form-field class="example-full-width" appearance="fill"  style="width: 100%;color:#fff;height: 43px;border: 1px solid #d8d8d8;border-radius: 12px;" >
+                        <mat-label style="margin-left: 10px;font-size: 1em;margin-top: -5px!important;"> <mat-icon>access_time</mat-icon> Hora</mat-label>
+                        <mat-select #hora  (selectionChange)="dateRangeChange(hora)" >
+                          <mat-option *ngFor="let horario of horarios" [value]="horario.value" style="margin-left: 15px;">
+                            {{horario.viewValue}}
+                          </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+        </form>
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-xs-12 col-12 form-group text-center" style="display: flex;justify-content: center;align-items: center;">
+                <!--div *ngIf="!this.loadedSpiner" class="btn btn-primary" (click)="reservar(detalle.Price + this.segurosTotal + this.adicionalesTotal)">Enviar</div-->
+                <div *ngIf="!this.loadedSpiner" class="btn btn-primary" style="width: 50%;border-radius: 10px;"  (click)="reservar(detalle.Price + this.segurosTotal + this.adicionalesTotal)">Reserva Ahora</div>
+                <div *ngIf="this.statusPago"class="btn btn-dark" style="width: 50%;" (click)="irPago(pagoUrl, sessionID)">Ir a pagar</div>
+                <div *ngIf="this.loadedSpiner" class="spinner-border text-primary" role="status">
+                </div>
+                <span *ngIf="this.loadedSpiner">&nbsp; Registrando reserva...</span>
+            </div>
+        </div>
+    </div>     
+
+</div>

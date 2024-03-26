@@ -1,0 +1,60 @@
+<div class="row mx-3" style="position: absolute;">
+    <a href="/" class="text-dark">Inicio/</a><strong>Renta para aplicaciones</strong><br>
+</div>
+
+<div class="container p-4 mt-3">
+
+    <div class="my-2" style="background-color: #083261;padding: .5em;">
+        <div class="d-flex row m-0" style="background-color: #0185e8;border-radius: 5px;">
+            <div class="col-lg-8 col-md-8 col-sm-12 p-2">
+                <h1 class="text-center text-white titulo-nuestrasUnidades" style="font-weight: 600;">Renta de unidades para aplicación</h1>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 text-center align-self-center" p-2>
+                <img class="logoPlataformas" src="assets/images/icons/logo_plataformas.png">
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="isLoaded" class="container d-flex w-100 h-100 justify-content-center align-self-center mt-5">
+        <div class="spinner-border text-primary" role="status">
+          <span class="sr-only">Cargando datos...</span>
+        </div>
+    </div>
+
+    <div *ngIf="!isLoaded" class="row mt-4">
+        <div *ngFor="let auto of autos" class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 col-12 mb-3 div-lista-autos">
+            <div class="card p-0 h-100">
+                <div class="card-body p-2">
+                    <div class="row">
+                        <div class="col-12">
+                            <b>{{Capitalize(auto.Brand.Name)}} {{auto ? auto.Name : null}}</b>
+                        </div>
+                        <div class="row m-0" style="width: 100%;">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                                <a style="cursor: pointer;color: #0185e8;text-decoration: underline;" (click)="goRentaApps()">Ver detalle</a>
+                            </div>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                            <div class="align-self-center">
+                                <img class="m-auto img-fluid" width="100%" [src]="auto ? auto.ImagePath : null" [alt]="auto ? auto.Description : null" [alt]="auto.Category.Name"/>
+                            </div>
+                        </div>
+                        <div class="row m-0" style="width: 100%;">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                                <p class="m-0">Año: </p>
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                                <p class="m-0">Pago fijo mensual: <span class="m-0" style="font-weight: 600;">$</span></p>
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                                <p class="m-0">Pago inicial: <span class="m-0" style="font-weight: 600;">$</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

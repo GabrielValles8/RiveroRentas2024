@@ -1,0 +1,357 @@
+<div class="row m-3">
+    <a href="/" class="text-dark">Inicio/</a><strong>Nuestras Unidades</strong><br><br>
+    
+</div>
+<h1 class="text-center titulo-nuestrasUnidades" style="font-weight: 600;">Renta de unidades a mediano y largo plazo</h1>
+<h1 class="text-center titulo-nuestrasUnidades">La manera más fácil de rentar desde un carro hasta una flotilla</h1>
+<div *ngIf="isLoaded" class="container d-flex w-100 h-100 justify-content-center align-self-center mt-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Cargando datos...</span>
+    </div>
+</div>
+<div *ngIf="!isLoaded" class="row m-3">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12 " style="text-align: center;color: #1b3357;"><h1 style="font-weight: 600;background-color: #e5e5e5;">Carros</h1></div><br/>
+    <div *ngFor="let auto of autos" class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12 col-12 mb-3 div-lista-autos">
+        <div class="card p-0 h-100">
+            <div class="card-body p-2">
+                <div class="row">
+                    <div class="col-12">
+                        <b>{{auto ? auto.Name : null}}</b>
+                    </div>
+                    <div class="col-xl-6 col-lg-12 col-md-12 col-6">
+                        <p class="m-1 px-2">
+                            <small><b>{{auto ? auto.Category.Name : null}}</b></small>
+                        </p>
+                        <div class="align-self-center">
+                            <img class="m-auto img-fluid" width="100%" [src]="auto ? auto.ImagePath : null" [alt]="auto ? auto.Description : null" [alt]="auto.Category.Name"/>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-12 col-md-12 col-6 align-self-center">
+                        <div class="row">              
+                            <div class="col-7 m-0 p-1">
+                                <img height="20px" src="assets/images/icons/icons-catalogo/ico_pasajeros.svg" alt="pasajeros"/>
+                                <span> {{auto ? auto.Passengers : null}} {{" "}}pasajeros</span>
+                            </div>
+                            <div class="col-5 m-0 p-1">
+                                <img height="20px" src="assets/images/icons/icons-catalogo/ico_clima.svg" alt="clima"/>
+                                <span> {{auto ? auto.AirConditioner : null}}</span>
+                            </div>
+                            <div class="col-7 m-0 p-1">
+                                <img height="20px" src="assets/images/icons/icons-catalogo/ico_maletas.svg" alt="maletas"/>
+                                <span> {{auto ? auto.BigLuggage : null}} {{" "}}maletas</span>
+                            </div>
+                            <div class="col-5 m-0 p-1">
+                                <img height="20px" src="assets/images/icons/icons-catalogo/ico_bolsas_aire.svg" alt="bolsas-aire"/>
+                                <span> Si</span>
+                            </div>
+                            <div class="col-7 m-0 p-1">
+                                <img height="20px" src="assets/images/icons/icons-catalogo/ico_transmision.svg" alt="transmision"/>
+                                <span>{{auto ? auto.Gearbox : null}} {{" "}}</span>
+                            </div>
+                            <div class="col-5 m-0 p-1" hidden>
+                                <img height="20px" src="assets/images/icons/icons-catalogo/ico_rendimiento.svg" alt="rendimiento"/>
+                                <span class="mt-3"> 100LT</span>
+                            </div>                                                 
+                        </div>
+                        <p class="m-0 mb-2" style="font-size: 0.8rem">Desde <b><span class="text-primary">${{auto ? auto.DailyPrice : null}}.00</span></b> MXN</p>
+                        <div style="display: flex; justify-content: center;min-width: 140px;max-width: 150px;height:35px;color: white;box-shadow:none;font-weight: 600;" (click)="showModal(auto.Name, auto.ImagePath, auto.Id, auto.Category.Name)" class="boton-border boton-home m-0">Reserva ya</div>
+                        <!--<a class="btn btn-primary btn-block" [routerLink]="['/resultado-filtro', fechaInicio + ' 11:00' , fechaEntrega + ' 11:00', 'true', 'false', 'false', 'false', 'local']">¡Reserva Ahora!</a>-->
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12 " style="text-align: center;color: #1b3357;"><h1 style="font-weight: 600;background-color: #e5e5e5;">Suvs</h1></div><br/>
+    <div *ngFor="let auto of suvs" class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12 col-12 mb-3 div-lista-autos">
+        <div class="card p-0 h-100">
+            <div class="card-body p-2">
+                <div class="row">
+                    <div class="col-12">
+                        <b>{{auto ? auto.Name : null}}</b>
+                    </div>
+                    <div class="col-xl-6 col-lg-12 col-md-12 col-6">
+                        <p class="m-1 px-2">
+                            <small><b>{{auto ? auto.Category.Name : null}}</b></small>
+                        </p>
+                        <div class="align-self-center">
+                            <img class="m-auto img-fluid" width="100%" [src]="auto ? auto.ImagePath : null" [alt]="auto ? auto.Description : null" [alt]="auto.Category.Name"/>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-12 col-md-12 col-6 align-self-center">
+                        <div class="row">
+                            <div class="col-7 m-0 p-1">
+                                <img height="20px" src="assets/images/icons/icons-catalogo/ico_pasajeros.svg" alt="pasajeros"/>
+                                <span> {{auto ? auto.Passengers : null}} {{" "}}pasajeros</span>
+                            </div>
+                            <div class="col-5 m-0 p-1">
+                                <img height="20px" src="assets/images/icons/icons-catalogo/ico_clima.svg" alt="clima"/>
+                                <span> {{auto ? auto.AirConditioner : null}}</span>
+                            </div>
+                            <div class="col-7 m-0 p-1">
+                                <img height="20px" src="assets/images/icons/icons-catalogo/ico_maletas.svg" alt="maletas"/>
+                                <span> {{auto ? auto.BigLuggage : null}} {{" "}}maletas</span>
+                            </div>
+                            <div class="col-5 m-0 p-1">
+                                <img height="20px" src="assets/images/icons/icons-catalogo/ico_bolsas_aire.svg" alt="bolsas-aire"/>
+                                <span> Si</span>
+                            </div>
+                            <div class="col-7 m-0 p-1">
+                                <img height="20px" src="assets/images/icons/icons-catalogo/ico_transmision.svg" alt="transmision"/>
+                                <span>{{auto ? auto.Gearbox : null}} {{" "}}</span>
+                            </div>
+                            <div class="col-5 m-0 p-1" hidden>
+                                <img height="20px" src="assets/images/icons/icons-catalogo/ico_rendimiento.svg" alt="rendimiento"/>
+                                <span class="mt-3"> 100LT</span>
+                            </div>
+                        </div>
+                        <p class="m-0 mb-2" style="font-size: 0.8rem">Desde <b><span class="text-primary">${{auto ? auto.DailyPrice : null}}.00</span></b> MXN</p>
+                        <div style="display: flex; justify-content: center;min-width: 140px;max-width: 150px;height:35px;color: white;box-shadow:none;font-weight: 600;" (click)="showModal(auto.Name, auto.ImagePath, auto.Id, auto.Category.Name)" class="boton-border boton-home m-0">Reserva ya</div>
+                        <!--<a class="btn btn-primary btn-block" [routerLink]="['/resultado-filtro', fechaInicio + ' 11:00' , fechaEntrega + ' 11:00', 'true', 'false', 'false', 'false', 'local']">¡Reserva Ahora!</a>-->
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12 " style="text-align: center;color: #1b3357;"><h1 style="font-weight: 600;background-color: #e5e5e5;">Pick Ups</h1></div><br/>
+    <div *ngFor="let auto of pickups" class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12 col-12 mb-3 div-lista-autos">
+        <div class="card p-0 h-100">
+            <div class="card-body p-2">
+                <div class="row">
+                    <div class="col-12">
+                        <b>{{auto ? auto.Name : null}}</b>
+                    </div>
+                    <div class="col-xl-6 col-lg-12 col-md-12 col-6">
+                        <p class="m-1 px-2">
+                            <small><b>{{auto ? auto.Category.Name : null}}</b></small>
+                        </p>
+                        <div class="align-self-center">
+                            <img class="m-auto img-fluid" width="100%" [src]="auto ? auto.ImagePath : null" [alt]="auto ? auto.Description : null" [alt]="auto.Category.Name"/>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-12 col-md-12 col-6 align-self-center">
+                        <div class="row">
+                            <div class="col-7 m-0 p-1">
+                                <img height="20px" src="assets/images/icons/icons-catalogo/ico_pasajeros.svg" alt="pasajeros"/>
+                                <span> {{auto ? auto.Passengers : null}} {{" "}}pasajeros</span>
+                            </div>
+                            <div class="col-5 m-0 p-1">
+                                <img height="20px" src="assets/images/icons/icons-catalogo/ico_clima.svg" alt="clima"/>
+                                <span> {{auto ? auto.AirConditioner : null}}</span>
+                            </div>
+                            <div class="col-7 m-0 p-1">
+                                <img height="20px" src="assets/images/icons/icons-catalogo/ico_maletas.svg" alt="maletas"/>
+                                <span> {{auto ? auto.BigLuggage : null}} {{" "}}maletas</span>
+                            </div>
+                            <div class="col-5 m-0 p-1">
+                                <img height="20px" src="assets/images/icons/icons-catalogo/ico_bolsas_aire.svg" alt="bolsas-aire"/>
+                                <span> Si</span>
+                            </div>
+                            <div class="col-7 m-0 p-1">
+                                <img height="20px" src="assets/images/icons/icons-catalogo/ico_transmision.svg" alt="transmision"/>
+                                <span>{{auto ? auto.Gearbox : null}} {{" "}}</span>
+                            </div>
+                            <div class="col-5 m-0 p-1" hidden>
+                                <img height="20px" src="assets/images/icons/icons-catalogo/ico_rendimiento.svg" alt="rendimiento"/>
+                                <span class="mt-3"> 100LT</span>
+                            </div>
+                        </div>
+                        <p class="m-0 mb-2" style="font-size: 0.8rem">Desde <b><span class="text-primary">${{auto ? auto.DailyPrice : null}}.00</span></b> MXN</p>
+                        <div style="display: flex; justify-content: center;min-width: 140px;max-width: 150px;height:35px;color: white;box-shadow:none;font-weight: 600;" (click)="showModal(auto.Name, auto.ImagePath, auto.Id, auto.Category.Name)" class="boton-border boton-home m-0">Reserva ya</div>
+                        <!--<a class="btn btn-primary btn-block" [routerLink]="['/resultado-filtro', fechaInicio + ' 11:00' , fechaEntrega + ' 11:00', 'true', 'false', 'false', 'false', 'local']">¡Reserva Ahora!</a>-->
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12 " style="text-align: center;color: #1b3357;"><h1 style="font-weight: 600;background-color: #e5e5e5;">Pasajeros</h1></div><br/>
+    <div *ngFor="let auto of pasajeros" class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12 col-12 mb-3 div-lista-autos">
+        <div class="card p-0 h-100">
+            <div class="card-body p-2">
+                <div class="row">
+                    <div class="col-12">
+                        <b>{{auto ? auto.Name : null}}</b>
+                    </div>
+                    <div class="col-xl-6 col-lg-12 col-md-12 col-6">
+                        <p class="m-1 px-2">
+                            <small><b>{{auto ? auto.Category.Name : null}}</b></small>
+                        </p>
+                        <div class="align-self-center">
+                            <img class="m-auto img-fluid" width="100%" [src]="auto ? auto.ImagePath : null" [alt]="auto ? auto.Description : null" [alt]="auto.Category.Name"/>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-12 col-md-12 col-6 align-self-center">
+                        <div class="row">
+                            <div class="col-7 m-0 p-1">
+                                <img height="20px" src="assets/images/icons/icons-catalogo/ico_pasajeros.svg" alt="pasajeros"/>
+                                <span> {{auto ? auto.Passengers : null}} {{" "}}pasajeros</span>
+                            </div>
+                            <div class="col-5 m-0 p-1">
+                                <img height="20px" src="assets/images/icons/icons-catalogo/ico_clima.svg" alt="clima"/>
+                                <span> {{auto ? auto.AirConditioner : null}}</span>
+                            </div>
+                            <div class="col-7 m-0 p-1">
+                                <img height="20px" src="assets/images/icons/icons-catalogo/ico_maletas.svg" alt="maletas"/>
+                                <span> {{auto ? auto.BigLuggage : null}} {{" "}}maletas</span>
+                            </div>
+                            <div class="col-5 m-0 p-1">
+                                <img height="20px" src="assets/images/icons/icons-catalogo/ico_bolsas_aire.svg" alt="bolsas-aire"/>
+                                <span> Si</span>
+                            </div>
+                            <div class="col-7 m-0 p-1">
+                                <img height="20px" src="assets/images/icons/icons-catalogo/ico_transmision.svg" alt="transmision"/>
+                                <span>{{auto ? auto.Gearbox : null}} {{" "}}</span>
+                            </div>
+                            <div class="col-5 m-0 p-1" hidden>
+                                <img height="20px" src="assets/images/icons/icons-catalogo/ico_rendimiento.svg" alt="rendimiento"/>
+                                <span class="mt-3"> 100LT</span>
+                            </div>
+                        </div>
+                        <p class="m-0 mb-2" style="font-size: 0.8rem">Desde <b><span class="text-primary">${{auto ? auto.DailyPrice : null}}.00</span></b> MXN</p>
+                        <div style="display: flex; justify-content: center;min-width: 140px;max-width: 150px;height:35px;color: white;box-shadow:none;font-weight: 600;" (click)="showModal(auto.Name, auto.ImagePath, auto.Id, auto.Category.Name)" class="boton-border boton-home m-0">Reserva ya</div>
+                        <!--<a class="btn btn-primary btn-block" [routerLink]="['/resultado-filtro', fechaInicio + ' 11:00' , fechaEntrega + ' 11:00', 'true', 'false', 'false', 'false', 'local']">¡Reserva Ahora!</a>-->
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12 " style="text-align: center;color: #1b3357;"><h1 style="font-weight: 600;background-color: #e5e5e5;">Carga</h1></div><br/>
+    <div *ngFor="let auto of carga" class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12 col-12 mb-3 div-lista-autos">
+        <div class="card p-0 h-100">
+            <div class="card-body p-2">
+                <div class="row">
+                    <div class="col-12">
+                        <b>{{auto ? auto.Name : null}}</b>
+                    </div>
+                    <div class="col-xl-6 col-lg-12 col-md-12 col-6">
+                        <p class="m-1 px-2">
+                            <small><b>{{auto ? auto.Category.Name : null}}</b></small>
+                        </p>
+                        <div class="align-self-center">
+                            <img class="m-auto img-fluid" width="100%" [src]="auto ? auto.ImagePath : null" [alt]="auto ? auto.Description : null" [alt]="auto.Category.Name"/>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-12 col-md-12 col-6 align-self-center">
+                        <div class="row">              
+                            <div class="col-7 m-0 p-1">
+                                <img height="20px" src="assets/images/icons/icons-catalogo/ico_pasajeros.svg" alt="pasajeros"/>
+                                <span> {{auto ? auto.Passengers : null}} {{" "}}pasajeros</span>
+                            </div>
+                            <div class="col-5 m-0 p-1">
+                                <img height="20px" src="assets/images/icons/icons-catalogo/ico_clima.svg" alt="clima"/>
+                                <span> {{auto ? auto.AirConditioner : null}}</span>
+                            </div>
+                            <div class="col-7 m-0 p-1">
+                                <img height="20px" src="assets/images/icons/icons-catalogo/ico_maletas.svg" alt="maletas"/>
+                                <span> {{auto ? auto.BigLuggage : null}} {{" "}}maletas</span>
+                            </div>
+                            <div class="col-5 m-0 p-1">
+                                <img height="20px" src="assets/images/icons/icons-catalogo/ico_bolsas_aire.svg" alt="bolsas-aire"/>
+                                <span> Si</span>
+                            </div>
+                            <div class="col-7 m-0 p-1">
+                                <img height="20px" src="assets/images/icons/icons-catalogo/ico_transmision.svg" alt="transmision"/>
+                                <span>{{auto ? auto.Gearbox : null}} {{" "}}</span>
+                            </div>
+                            <div class="col-5 m-0 p-1" hidden>
+                                <img height="20px" src="assets/images/icons/icons-catalogo/ico_rendimiento.svg" alt="rendimiento"/>
+                                <span class="mt-3"> 100LT</span>
+                            </div>
+                        </div>
+                        <p class="m-0 mb-2" style="font-size: 0.8rem">Desde <b><span class="text-primary">${{auto ? auto.DailyPrice : null}}.00</span></b> MXN</p>
+                        <div style="display: flex; justify-content: center;min-width: 140px;max-width: 150px;height:35px;color: white;box-shadow:none;font-weight: 600;" (click)="showModal(auto.Name, auto.ImagePath, auto.Id, auto.Category.Name)" class="boton-border boton-home m-0">Reserva ya</div>
+                        <!--<a class="btn btn-primary btn-block" [routerLink]="['/resultado-filtro', fechaInicio + ' 11:00' , fechaEntrega + ' 11:00', 'true', 'false', 'false', 'false', 'local']">¡Reserva Ahora!</a>-->
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<div class="modal" tabindex="-1" [style.display]="showForm ? 'block': 'none'" aria-labelledby="exampleModalLabel" aria-hidden="true" style="background: rgba(0, 0, 0, 0.5);">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+            <div class="modal-header modal-h-nu" style="background-color: rgb(95, 95, 95);color:white;padding: 2rem 1rem;">
+                <div class="row" style="width: 100%;align-items: center;">
+                    <div class="col-12 col-xl-8 col-lg-8 col-md-8 text-center"><h3 class="modal-title title-modal-autoName">{{autoSelect}}</h3></div>
+                
+                    <div class="col-12 col-xl-4 col-lg-4 col-md-4 pl-0 div-eligeFechaModal"><h4 class="h4-modal">Elige la fecha</h4><!-- <p class="mb-0">{{fechaFormat(fechaS)}} - {{fechaFormat(fechaS2)}} </p> --></div>
+                </div>
+
+                <button type="button" style="width: 90px;" class="close" data-dismiss="modal" aria-label="Close" (click)="hideModal()">
+                    <span class="xModal" aria-hidden="true">X</span>
+                </button>
+            </div>
+            <div class="modal-body row m-0 p-0" style="display: flex;">
+                <div class="align-self-center col col-12 col-xl-7 col-lg-6 col-md-12" style="display: grid;">
+                    <img class="m-auto img-fluid justify-content-center autoImgModal" width="80%" [src]="autoImg ? autoImg : null" />
+                    <div [style.visibility]="disponibilidad == false ? 'visible' : 'hidden'" id="text-disp" class="hideDisp"> Unidad <strong>no disponible</strong> en las fechas seleccionadas.</div>
+                    <div [style.visibility]="similares == true ? 'visible' : 'hidden'" id="btnSimilares" class="d-flex justify-content-center"><div class="btn btnVerDisp-NU justify-content-center" type="button" (click)="goSimilares(fromV,toV,categoriaSelect)">Ver Disponibles</div></div>
+                </div>
+                <div *ngIf="calendar1 == true" style="display: grid;" class="align-self-center justify-content-center col col-12 col-xl-5 col-lg-6 col-md-12 m-0">
+                    <mat-card class="demo-inline-calendar-card calendario-fijo align-self-center">
+                        <mat-calendar [(selected)]="fechaS"  [minDate]="minDate" (selectedChange)="changeDate(fechaS)"></mat-calendar>
+                    </mat-card>
+                    <div class="p-2"><p id="advertUnidad" class="m-0 text-center text-primary">Selecciona la fecha de entrega </p></div>
+                    <div [style.visibility]="reservaLista == true ? 'visible' : 'hidden'" id="btn-NU-continuar" class="hideBTN-NU justify-content-center"><div class="btn btnContinuar-NU justify-content-center" type="button">Continuar</div></div>
+                </div>
+                <div *ngIf="calendar2 == true" style="display: grid;" id="calendario-devolucion" class="align-self-center justify-content-center col col-12 col-xl-5 col-lg-6 col-md-12">
+                    <mat-card class="demo-inline-calendar-card calendario-fijo">
+                        <mat-calendar [(selected)]="fechaS2" [minDate]="fechaBlock" (selectedChange)="changeDateS(fechaS2)"></mat-calendar>
+                    </mat-card>
+                    <div *ngIf="reservaLista == false" class="p-2"><p id="advertUnidad" class="m-0 text-center text-primary">Selecciona la fecha de devolución </p></div>
+                    <div [style.visibility]="reservaLista == true ? 'visible' : 'hidden'" id="btn-NU-continuar" class="hideBTN-NU justify-content-center"><div class="btn btnContinuar-NU justify-content-center" type="button" (click)="goLicencia()">Continuar</div></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="hideModal()">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" tabindex="-1" [style.display]="modalLicencia ? 'block': 'none'" aria-labelledby="exampleModalLabel" aria-hidden="true" style="background: rgba(0, 0, 0, 0.5);">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+            <div class="modal-header modal-h-nu" style="background-color: #949494;color:rgb(0, 0, 0);padding: 2rem 1rem;">
+                <div class="row justify-content-center" style="width: 100%;align-items: center;">
+                    <h3 class="modal-title text-align-center">Licencia de Conducir</h3>
+                </div>
+
+                <button type="button" style="width: 90px;" class="close" data-dismiss="modal" aria-label="Close" (click)="hideModal()">
+                    <span class="xModal" aria-hidden="true" style="color: #000;">X</span>
+                </button>
+            </div>
+            <div class="modal-body row m-2">
+                <div style="border-right: 1px solid #515151;cursor: pointer;" class="col-6 selectLic text-center" (click)="goReserva('local')">
+                    <div class="div-lic-title align-items-center justify-content-center mb-2"><h3 class="lic-title" style="color: yellow;">Local</h3><h4 class="lic-sub-title text-white mb-0">Monterrey y Área Metropolitana</h4></div>
+                    <img src="assets/images/icons/icono_licencia_nl.png" width="60%" alt="licencia" /><br/>
+                    <b class="negritasModalLic">Precio del depósito de garantia menor.</b><br/><b class="negritasModalLic">Pago en efectivo o tarjeta.</b>
+                </div>
+
+                <div style="border-left: 1px solid #515151;cursor: pointer;" class="col-6 selectLic text-center" (click)="goReserva('foraneo')">
+                    <div class="div-lic-title-f d-flex align-items-center justify-content-center mb-2"><h3 class="lic-title text-white">Foráneo</h3></div>
+                    <img src="assets/images/icons/icono_licencia_foraneo.png" width="60%" alt="licencia" /><br/>
+                    <b class="negritasModalLic">Precio del depósito de garantia mayor.</b><br/><b class="negritasModalLic">Solo pago con tarjeta de crédito.</b>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="hideModal()">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="error" class="row m-3">
+    <h1>{{error}}</h1>
+</div>

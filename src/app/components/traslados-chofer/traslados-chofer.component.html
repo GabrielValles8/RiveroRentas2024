@@ -1,0 +1,103 @@
+<div class="row mx-3">
+    <a href="/" class="text-dark">Inicio/</a><strong>Renta unidades con chofer</strong><br>
+</div>
+
+<h1 class="titulo-traslado" style="text-align: center;font-weight: 600; color:#003263;">Renta de unidades con chofer</h1>
+<div style="display: flex; justify-content: center;">
+    <img class="bannerTraslados" src="assets/images/banners/banner-renta-con-chofer.jpg">
+</div>
+<div class="container p-4 mt-3">
+
+    <div *ngIf="loadedSpiner == true" class="container d-flex w-100 h-100 justify-content-center align-self-center mt-5">
+        <div class="spinner-border text-primary" role="status">
+          <span class="sr-only">Cargando datos...</span>
+        </div>
+    </div>
+
+    <div *ngIf="!isLoaded" class="row mt-4">
+        <div *ngFor="let unidad of unidades" class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 col-12 mb-3 div-lista-autos">
+            <div class="card p-1 h-100"  style="border-radius: 20px;border: 1px solid gray;">
+                <div class="card-body p-2">
+                    <div class="row">
+                        <div class="col-12">
+                            <b>{{Capitalize(unidad.modelo)}} </b>
+                        </div>
+                        <div class="row m-0" style="width: 100%;" hidden>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                                <a style="cursor: pointer;color: #0185e8;text-decoration: underline;" (click)="goRentaApps()">Ver detalle</a>
+                            </div>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                            <div class="align-self-center">
+                                <img class="m-auto img-fluid" width="100%" [src]="unidad ? unidad.img : null" [alt]="auto ? auto.modelo : null"/>
+                            </div>
+                        </div>
+                        <div class="row m-0" style="width: 100%;">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                                <p class="m-0">{{unidad.transmision}} </p>
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                                <h4 style="color:#003263; font-weight: 600;">{{unidad.promocion}}</h4>
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                                <div style="display: flex; justify-content: center;min-width: 140px;max-width: 150px;color: white;box-shadow:none;font-weight: 600; font-size: 1.5em;" class="boton-border boton-reserva-ya-traslados m-0"  data-toggle="modal" data-target="#exampleModal" (click)="selectModelo(unidad.modelo, unidad.promocion, unidad.imgUrl, unidad.horas, unidad.precio)">Reserva ya</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <!-- MODAL -->
+
+    <div class="modal fade" style="margin-top: 125px;" id="exampleModal" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    ¡RENTA AHORA!
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group col-12">
+                                <input #nombreI class="form-control" type="text" placeholder="Nombre y apellidos" (change)="nombre = nombreI.value" onkeydown="return /[a-z, ]/i.test(event.key)"/>
+                            </div>
+                            <div class="form-group col-12">
+                                <input #correoI class="form-control" type="email" placeholder="Correo" (change)="correo = correoI.value" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
+                            </div>
+                            <div class="form-group col-12">
+                                <input #telefonoI class="form-control" type="text" placeholder="Teléfono" (change)="telefono = telefonoI.value" maxlength="10" onkeypress="return /[0-9]/i.test(event.key)"/>
+                            </div>
+                            <div class="form-group col-6">
+                                <label>Dia del traslado:</label>
+                                <input #diaI class="form-control" type="date" placeholder="Día del traslado" (change)="dia = diaI.value" [min]="minDate" minlength="10"/>
+                            </div>
+                            <div class="form-group col-6">
+                                <label>Hora del traslado:</label>
+                                <input #horaI class="form-control" type="time" placeholder="Hora del traslado" (change)="hora = horaI.value"/>
+                            </div>
+                            <div class="form-group col-12">
+                                <input #municipioI class="form-control" type="text" placeholder="Municipio" (change)="municipio = municipioI.value" onkeydown="return /[a-z, ]/i.test(event.key)"/>
+                            </div>
+                            <div class="form-group col-12">
+                                <textarea #mensajeI class="form-control" placeholder="Deja tu mensaje (opcional)" rows="5" (change)="mensaje = mensajeI.value"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                    <hr/>
+                    <div class="row justify-content-center">
+                        <div class="col-5"> 
+                            <div class="boton boton-primario text-center" (click)="correoCliente()" data-dismiss="modal">Enviar</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+

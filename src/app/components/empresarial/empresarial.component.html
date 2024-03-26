@@ -1,0 +1,301 @@
+<div id="All" class="AllBack"></div>
+<div class="div-banner-flotillas">
+<!--     <img src="assets/images/icons/escudo-rivero-empresarial.png" alt="rivero-escudo" class="rivero-escudo-empresarial"> -->
+
+
+</div>
+
+<div class="div-row-contacto">
+    <div class="row mr-0 ml-0 row-banner-flotillas">
+        <div class="col col-lg-3 col-xl-3 col-md-4 col-xs-6 col-9 p-4 m-2 card-banner" style="display: flex;max-width: 380px;min-width: 280px;">
+            <div class="col-lg-3 col-xl-3 col-md-3 col-xs-3 col-3 p-0" style="display: flex;align-items: center;"><img src="assets/images/icons/icono_sin_contratiempo.png" width="50px" alt="tiempo" ></div>
+            <div class="col-lg-9 col-xl-9 col-md-9 col-xs-9 col-9 p-0 texto-cards-flotillas"><b style="font-size: 1.5em;color: #595959;">Sin contratiempos</b><br/>Cambiamos tu vehiculo, ante cualquier inconveniente, incluido un choque.</div>
+        </div>
+        <div class="col col-lg-3 col-xl-3 col-md-4 col-xs-6 col-9 p-4 m-2 card-banner" style="display: flex;max-width: 380px;min-width: 280px;" >
+            <div class="col-lg-3 col-xl-3 col-md-3 col-xs-3 col-3 p-0" style="display: flex;align-items: center;"><img src="assets/images/icons/icono_personalizado.png" width="50px" alt="tiempo" ></div>
+            <div class="col-lg-9 col-xl-9 col-md-9 col-xs-9 col-9 p-0 texto-cards-flotillas"><b style="font-size: 1.5em;color: #595959;">Personalizado</b><br/>- Beneficios a la medida de tus necesidades.<br/>- Personaliza el vehiculo con tu marca.</div>
+        </div>
+        <div class="col col-lg-3 col-xl-3 col-md-4 col-xs-6 col-9 p-4 m-2 card-banner" style="display: flex;max-width: 380px;min-width: 280px;" >
+            <div class="col-lg-3 col-xl-3 col-md-3 col-xs-3 col-3 p-0" style="display: flex;align-items: center;"><img src="assets/images/icons/icono_menos_costos.png" width="50px" alt="tiempo" ></div>
+            <div class="col-lg-9 col-xl-9 col-md-9 col-xs-9 col-9 p-0 texto-cards-flotillas"><b style="font-size: 1.5em;color: #595959;">Menos costos</b><br/>- Gastos deducibles de impuestos.<br/>- No pagas tenencia ni verificaciones.</div>
+        </div>
+        <div class="col col-lg-3 col-xl-3 col-md-4 col-xs-6 col-9 p-4 m-2 card-banner" style="display: flex;max-width: 380px;min-width: 280px;" >
+            <div class="col-lg-3 col-xl-3 col-md-3 col-xs-3 col-3 p-0" style="display: flex;align-items: center;"><img src="assets/images/icons/icono_tecnologia.png" width="50px" alt="tiempo" ></div>
+            <div class="col-lg-9 col-xl-9 col-md-9 col-xs-9 col-9 p-0 texto-cards-flotillas"><b style="font-size: 1.5em;color: #595959;">Tecnologia</b><br/>- Unidades monitoreadas por GPS.<br/>- Dispositivos de TravelTab.</div>
+        </div>
+    </div>
+    <div class="row row-contacto">
+        <div class="col col-lg-3 col-xl-3 col-md-6 col-xs-6 col-9 p-4 m-2" style="display: flex;justify-content: center;">
+            <div class="btn btn-primary pl-3 pr-3" style="display:flex;justify-content: center;align-items: center;font-size: 25px;font-weight: 600;width:auto;min-width:190px;border-radius: 10px!important;" (click)="llamada()"><mat-icon class="mr-2"> call</mat-icon>Llamar</div>
+        </div>
+        <div class="col col-lg-3 col-xl-3 col-md-6 col-xs-6 col-9 p-4 m-2"  style="display: flex;justify-content: center;">
+            <a target="_blank" href="https://wa.me/+528110441044" data-rb-event-key="https://wa.me/+528110441044" class="btn btn-primary pl-3 pr-3" [style.opacity]="onLlamada == true ? '0.2' : '1'" style="display:flex;justify-content: center;align-items: center;font-size: 25px;font-weight: 600;width:auto;min-width:190px;border-radius: 10px!important;"><img width="30px" class="mr-2" src="assets/images/icons/icono_whatsapp.png" alt="whatsapp">WhatsApp</a>
+        </div>
+        <div class="col col-lg-3 col-xl-3 col-md-6 col-xs-6 col-9 p-4 m-2" style="display: flex;justify-content: center;" >
+            <a href="mailto:rentaflotillas@gruporivero.com" class="btn btn-primary pl-3 pr-3" [style.opacity]="onLlamada == true ? '0.2' : '1'" style="display:flex;justify-content: center;align-items: center;font-size: 25px;font-weight: 600;width:auto;min-width:190px;border-radius: 10px!important;"><mat-icon class="mr-2"> mail_outline</mat-icon>Correo</a>
+        </div>
+    </div>
+</div>
+
+<div class="div-row-sucursales" id="row-sucursales" [style.visibility]="labelSucursales == true ? 'visible' : 'hidden'" style="margin-bottom: 3em;">
+
+    <div class="p-4 m-2 label-sucursales" style="display: flex;background-color: #FFF;">
+        <a href="tel:8111608666"><b>Sucursal Linda Vista</b></a>
+        <b> &nbsp; | &nbsp; </b>
+        <a href="tel:8120900101"><b>Sucursal Venustiano</b></a>&nbsp;
+        <div style="cursor: pointer;" (click)="close()">&nbsp;&nbsp;&nbsp;X</div>
+    </div>
+
+</div>
+
+<div class="row div-row-beneficios" style="margin: 0!important;">
+    <div class="col col-lg-6 col-xl-6 col-md-6 col-xs-12 col-12 p-4" style="display:grid;background-color: #4a5662;color: #FFF;justify-content: center;align-items: center!important;">
+
+        <h1 style="text-align:center;font-weight: 600;font-size: 3em;">Beneficios de <br/> nuestras flotillas</h1>
+
+        <div class="row m-0" style="justify-content: center;align-items: center;">
+            <div class="col col-lg-5 col-xl-5 col-md-5 col-xs-12 col-12 p-4 m-2" style="font-size: 1.5em;">
+                - Monitoreo GPS 24/7
+            </div>
+            <div class="col col-lg-5 col-xl-5 col-md-5 col-xs-12 col-12 p-4 m-2" style="font-size: 1.5em;">
+                - Comodidad y seguridad
+            </div>
+            <div class="col col-lg-5 col-xl-5 col-md-5 col-xs-12 col-12 p-4 m-2" style="font-size: 1.5em;">
+                - Unidades modernas
+            </div>
+            <div class="col col-lg-5 col-xl-5 col-md-5 col-xs-12 col-12 p-4 m-2" style="font-size: 1.5em;">
+                - Opción de comprar el vehiculo
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col col-lg-6 col-xl-6 col-md-6 col-xs-12 col-12 p-0 col-img-beneficios">
+
+    </div>
+</div>
+
+
+
+
+<div class="container" hidden>
+    
+    <div class="row bg-dark row-negro">
+
+        <div class="col-12 p-0 d-none d-sm-none d-md-block back-empresarial-1">
+            <div class="row row3 text-white m-0">
+                <div class="col-sm-4 col-12 p-0">
+    
+                    <div class="row m-0 mt-3" style="display: flex;flex-wrap: wrap;">
+                        <div class="col-sm-2 col-12 align-content-center">
+                            <img style="width: 50px;" src="assets/images/icons/icono_grua.png" class="rivero-grua-empresarial">
+                        </div>
+                        <div id="sincontra" class="col-sm-10 col-12 mt-2">
+                            <h2 class="font-weight-bold" style="font-size: 2rem;">Sin contratiempos</h2>
+                            <p id="sini" style="display: none;">- Ante cualquier inconveniente, incluido un choque, cambiamos tu vehiculo.</p>
+                        </div>
+                    </div>
+    
+                    <div class="row m-0 mt-5" style="display: flex;flex-wrap: wrap;">
+                        <div class="col-sm-2 col-12 align-content-center">
+                            <img style="width: 50px;" src="assets/images/icons/icono_auto.png" class="rivero-auto-empresarial">
+                        </div>
+                        <div id="personal" class="col-sm-10 col-12 mt-2">
+                            <h2 class="font-weight-bold" style="font-size: 2rem;">Personalizado</h2>
+                            <p id="perso" style="display: none;">- Beneficios a la medida de tus necesidades.</p>
+                            <p id="perso" style="display: none;">- Personaliza el vehiculo con tu marca.</p>
+                        </div>
+                    </div>
+    
+                </div>
+    
+<!--                 <div class="col-sm-4 col-12 text-center">
+                    <img src="assets/images/icons/escudo-rivero-empresarial.png" alt="rivero-escudo" class="rivero-escudo-empresarial mx-auto">
+                </div> -->
+                <div class="col-sm-4 col-12 p-0">
+                    <div class="row m-0 mt-3" style="display: flex;flex-wrap: wrap;">
+                        <div id="gastos" class="col-sm-10 col-12 p-0 text-right" style="text-align: right;">
+                            <h2 class="font-weight-bold" style="font-size: 2rem;">Gastos deducibles y menos costos</h2>
+                            <p id="gasto" style="display: none;">- Gasto deducible de impuestos.</p>
+                            <p id="gasto" style="display: none;">- No pagas tenencia ni verificaciones.</p>
+                        </div>
+                        <div class="col-sm-2 col-12 align-content-center">
+                            <img style="width: 45px;" src="assets/images/icons/icono_gastos.png" class="icono-titulo-movil">
+                        </div>
+                    </div>
+    
+                    <div class="row m-0 mt-4" style="display: flex;flex-wrap: wrap;">
+                        <div id="tecnolog" class="col-sm-10 col-12 p-0 text-right" style="text-align: right;">
+                            <h2 class="font-weight-bold" style="font-size: 2rem;">Tecnologia</h2>
+                            <p class="text-right" id="tecno" style="display: none;">- Unidades monitoreadas por GPS.</p>
+                            <p id="tecno" style="display: none;">- Dispositivos de TravelTab.</p>
+                        </div>
+                        <div class="col-sm-2 col-12 align-content-center">
+                            <img style="width: 45px;" src="assets/images/icons/icono_tecnologia.png" class="icono-titulo-movil">
+                        </div>
+                    </div>
+                </div>
+ 
+            </div>
+
+            <div class="col-12" style="position: absolute; bottom: 30px;">
+                <div class="row">
+                    
+                    <div class="btn btn-warning mx-auto text-white p-1 font-weight-bold" data-toggle="modal" data-target="#exampleModal" style="font-size: 21px;"> ¡Renta ahora!</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        <div class="col-12 p-0 d-none d-sm-none d-md-block back-empresarial-2">
+
+            <div class="col-12" style="position: absolute; bottom: 0;">
+                <div class="row">
+
+                    <div class="col-md-3 col-sm-6 col-12">
+                        <h2 class="pl-3 pt-2 font-weight-bold text-white">Beneficios</h2>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 col-12">
+                        <p style="margin-top: 0;margin-bottom: 1rem;color: white;"> <span class="rounded-circle bg-primary punto-list"></span> Comodidad y seguridad.</p>
+                        <p style="margin-top: 0;margin-bottom: 1rem;color: white;"> <span class="rounded-circle bg-primary punto-list"></span> Unidades Modernas.</p>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 col-12">
+                        <p style="margin-top: 0;margin-bottom: 1rem;color: white;"> <span class="rounded-circle bg-primary punto-list"></span> Opción de quedarte con el vehículo.</p>
+                        <p style="margin-top: 0;margin-bottom: 1rem;color: white;"> <span class="rounded-circle bg-primary punto-list"></span> Monitoreo GPS 24/7.</p>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 col-12">
+                        <p style="margin-top: 0;margin-bottom: 1rem;color: white;"> <span class="rounded-circle bg-primary punto-list"></span> Ahorro de de dinero.</p>
+                    </div>
+
+                </div>
+            </div>
+        
+        </div>
+    <!-- COMIENZA MOVIL -->
+
+    <div class="container-movil-1">
+
+        <div class="movil-back-1">
+            
+<!--             <div class="col-12 text-center">
+                <img src="assets/images/icons/escudo-rivero-empresarial.png" alt="rivero-escudo" class="rivero-escudo-empresarial mx-auto">
+            </div> -->
+
+            <div class="row m-0 mt-4" style="display: flex;margin-bottom: -10px!important">
+                
+                <div class="col-2 align-content-center">
+                    <img src="assets/images/icons/icono_grua.png" class="icono-titulo-movil">
+                </div>
+
+                <div class="col-sm-10 col-10 p-0 text-left">
+                    <h2 class="titulo-movil font-weight-bold" style="color: white;text-shadow: 1px 1px 2px black;">Sin contratiempos</h2>
+                    <p style="font-size: 13px;color: white;text-shadow: 1px 1px 2px black;">- Ante cualquier inconveniente, incluido un choque, cambiamos tu vehiculo.</p>
+                </div>
+            </div>
+
+            <div class="row m-0 mt-4" style="display: flex;margin-bottom: -10px!important">
+                
+                <div class="col-2 align-content-center">
+                    <img src="assets/images/icons/icono_auto.png" class="icono-titulo-movil">
+                </div>
+
+                <div class="col-sm-10 col-10 p-0 text-left">
+                    <h2 class="titulo-movil font-weight-bold" style="color: white;text-shadow: 1px 1px 2px black;">Personalizado</h2>
+                    <p style="font-size: 13px; color: white;text-shadow: 1px 1px 2px black;">- Beneficios a la medida de tus necesidades.</p>
+                    <p style="font-size: 13px; color: white;text-shadow: 1px 1px 2px black; margin-top: -15px;">- Personaliza el vehiculo con tu marca.</p>
+                </div>
+            </div>
+
+            <div class="row m-0 mt-4" style="display: flex;margin-bottom: -10px!important">
+
+                <div class="col-sm-10 col-10 p-0 text-right">
+                    <h2 class="titulo-movil font-weight-bold" style="color: white;text-shadow: 1px 1px 2px black;">Gastos deducibles y menos costos</h2>
+                    <p style="font-size: 13px; color: white;text-shadow: 1px 1px 2px black;">- Gasto deducible de impuestos.</p>
+                    <p style="font-size: 13px; color: white;text-shadow: 1px 1px 2px black; margin-top: -15px;">- No pagas tenencia ni verificaciones.</p>
+                </div>
+                
+                <div class="col-2 align-content-center">
+                    <img src="assets/images/icons/icono_gastos.png" class="icono-titulo-movil">
+                </div>
+
+            </div>
+
+            <div class="row m-0 mt-4" style="display: flex;margin-bottom: -10px!important">
+
+                <div class="col-sm-10 col-10 p-0 text-right">
+                    <h2 class="titulo-movil font-weight-bold" style="color: white;text-shadow: 1px 1px 2px black;">Tecnología</h2>
+                    <p style="font-size: 13px; color: white;text-shadow: 1px 1px 2px black;">- Unidades monitoreadas por GPS.</p>
+                    <p style="font-size: 13px; color: white;text-shadow: 1px 1px 2px black; margin-top: -15px;">- Dispositivos de TravelTab.</p>
+                </div>
+                
+                <div class="col-2 align-content-center">
+                    <img src="assets/images/icons/icono_tecnologia.png" class="icono-titulo-movil">
+                </div>
+
+            </div>
+
+            <div class="col-12 text-center mt-3">
+                
+                <div class="row">
+                    <div class="btn btn-warning mx-auto text-white p-1 font-weight-bold" data-toggle="modal" data-target="#exampleModal" style="font-size: 21px;"> ¡Renta ahora!</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+        <!--AQUI COMIENZA BACK2 MOVIL-->
+    <div class="container-movil-2">
+
+        <div class="movil-back-2">
+            <div class="col-12" style="margin-top: 240px;">
+                <div class="row">
+
+                    <div class="col-md-3 col-sm-6 col-12">
+                        <h2 class="pl-3 pt-2 font-weight-bold text-white">Beneficios</h2>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 col-12">
+                        <p style="margin-top: 0;margin-bottom: 1rem;color: white;"> <span class="rounded-circle bg-primary punto-list"></span> Comodidad y seguridad.</p>
+                        <p style="margin-top: 0;margin-bottom: 1rem;color: white;"> <span class="rounded-circle bg-primary punto-list"></span> Unidades Modernas.</p>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 col-12">
+                        <p style="margin-top: 0;margin-bottom: 1rem;color: white;"> <span class="rounded-circle bg-primary punto-list"></span> Opción de quedarte con el vehículo.</p>
+                        <p style="margin-top: 0;margin-bottom: 1rem;color: white;"> <span class="rounded-circle bg-primary punto-list"></span> Monitoreo GPS 24/7.</p>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 col-12">
+                        <p style="margin-top: 0;margin-bottom: 1rem;color: white;"> <span class="rounded-circle bg-primary punto-list"></span> Ahorro de de dinero.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+        <!-- MODAL -->
+ 
+        <div class="modal fade" id="exampleModal" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                    ¡RENTA AHORA!
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                </div>
+                <div class="modal-body">
+                    <app-renta-cliente></app-renta-cliente>
+                </div>
+              </div>
+            </div>
+        </div>
+</div>
+
+

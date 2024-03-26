@@ -1,0 +1,1613 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+
+}
+.header-shadow{
+    box-shadow: -2px 3px 17px -7px rgb(0 0 0 / 74%);
+}
+
+.content{
+    min-height:800px;
+    margin-bottom:50px
+}
+
+.mat-calendar-body-disabled>.mat-calendar-body-today:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical) {
+    border-color: rgb(255, 255, 255);
+}
+
+::ng-deep .mat-calendar-body-cell[disabled]{
+    pointer-events: none;
+}
+
+.mat-datepicker-content.mat-accent .mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical), .mat-datepicker-content.mat-accent .cdk-keyboard-focused .mat-calendar-body-active>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical), .mat-datepicker-content.mat-accent .cdk-program-focused .mat-calendar-body-active>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical){
+        background-color: rgba(0, 113, 219, 0.74);
+        color: #ffffff;
+}
+
+.demoClass{
+    background-color: rgb(255, 255, 255);
+    border: 2px rgb(33, 125, 230) solid;
+}
+
+.selectClass{
+    background-color: rgb(33, 125, 230);
+    border: 2px rgb(33, 125, 230) solid;
+    color: #FFF;
+}
+
+#advertUnidad{
+    color: #FFF;
+    animation: slidein-p 2s infinite ease-out;
+}
+
+@keyframes slidein-p {
+    0% {
+      transform: translateY(0px) translateX(0px);
+    }
+    50% {
+      transform: translateY(0px);
+    }
+    75% {
+      transform: translateY(10px);
+    }
+    100% {
+      transform: translateY(0px) translateX(0px);
+    }
+  }
+
+  .div-row-sucursales-active{
+    position: relative;
+    z-index: 999!important;
+    overflow: hidden!important;
+    animation: slidein-c 4s infinite ease-out;
+  }
+
+  @keyframes slidein-c {
+    0% {
+      transform: translateY(0px) translateX(0px);
+    }
+    50% {
+      transform: translateY(0px);
+    }
+    75% {
+      transform: translateY(5px);
+    }
+    100% {
+      transform: translateY(0px) translateX(0px);
+    }
+  }
+
+.AllBackActive{
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    min-height: 300%;
+    overflow-x: hidden!important;
+    background-color: rgba(0,0,0,0.6);;
+}
+
+
+
+/* @keyframes slidein-p {
+    from {
+        font-weight: 600;
+    }
+
+    to {
+        font-weight: 500;
+    }
+} */
+
+::ng-deep .mat-calendar-body-cell[disabled] .mat-calendar-body-cell-content {
+    background-color: rgba(235, 18, 18, 0.637);
+}
+
+
+
+button.example-custom-date-class {
+    background: orange;
+    border-radius: 100%;
+}
+
+.plus-logo{
+    padding-left: 10px; padding-right: 10px; max-width: 150px;background-color: #d6d6d6;color: #083261;font-weight: 600;user-select: none;text-decoration:none;
+}
+
+.img-brand{
+    width:8em;
+}
+
+.img-brand-primo{
+    width:4em;
+}
+
+.bg-gris{
+    background-color: #656d78;
+}
+
+.bg-home{
+    background-color: #ffffff;
+    margin-left: 0!important;
+}
+
+.lic-filtroActive{
+    background-color: #ffffff;
+
+}
+
+.labelWhatsapp{
+    color: #083261;
+    cursor: pointer;
+    font-size: 7.5pt;
+    font-weight: 600;
+    margin-left: -0.9rem;
+    margin-right: -0.9rem;
+    position: relative;
+    top: -0.4rem;
+}
+
+/* BOTONES */
+.boton{
+    border-radius: 15px;
+    cursor: pointer;
+    padding: 5px;
+    text-align: center;
+}
+
+.boton-border{
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 5px;
+    text-align: center;
+}
+
+.boton-primario, .boton-secundario {
+    color: #fff;
+    font-size: 20px;
+    transition-duration: .2s;
+}
+
+.boton-primario {
+    background-color: #2486fc;
+    border: 1px solid #2486fc;
+    border-radius: 12px;
+    padding: 5px 20px;
+}
+
+.boton-home{
+    bottom: 100px;
+    font-size: 14px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;
+    background-color: #083261;
+    box-shadow: 4px 2px 10px black;
+    transition: width .5s;
+}
+
+.boton-reserva-ya-traslados{
+    bottom: 100px;
+    font-size: 14px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;
+    background-color: #2486fc;
+    box-shadow: 4px 2px 10px black;
+    transition: width .5s;
+}
+
+.boton-amarillo {
+    background-color: #fcf686;
+    color: #2486fc;
+    text-decoration: none !important;
+}
+.boton-amarillo, .boton-blanco {
+    border: 1px solid transparent; 
+    border-radius: 12px;
+    font-size: 18px;
+    padding: 5px 10 px 0;
+    transition-duration: .2s;
+}
+
+.boton-azul{
+    background-color: #2486fc;
+    color: #fff;
+    text-decoration: none !important;
+}
+
+.btn-renta:hover{
+    width: 95%;
+}
+
+.boton-flotillas{
+    bottom: 100px;
+    font-size: 14px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;
+    background-color: #4a5763;
+    box-shadow: 4px 2px 10px black;
+    transition: width .5s;
+}
+.bg-beige-1{
+    background-color: #e6e6e5;
+    border: 1px solid #000;
+}
+
+.btn-seguroads{
+    display: flex;
+    border: 1px solid #083261;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.8s;
+}
+
+.btn-seguroads:hover{
+    background-color: rgba(201, 201, 201, 0.719)
+}
+
+.btn-seguroadsActive{
+    display: flex;
+    border: 1px solid #083261;
+    border-radius: 10px;
+    background-color: #083261;
+    color: #fff;
+    cursor: pointer;
+}
+
+.btn-reserva-rf{
+    border-radius: 10px;
+    width: 150px;
+}
+
+.filtroActivo{
+    display: grid;
+}
+
+.activado{
+    color: #ffffff;
+    border: 1px solid #383838;
+    border-radius: 15px;
+    background-color: #083261;
+    cursor: pointer;
+    height: 130px;
+    width: 120px;
+}
+
+.desactivado{
+    color: #000;
+    border: 1px solid #383838;
+    border-radius: 15px;
+    background-color: #ffffff;
+    cursor: pointer;
+    height: 130px;
+    width: 120px;
+}
+
+.activadoR{
+    color: #ffffff;
+    border: 1px solid #383838;
+    border-radius: 15px;
+    background-color: #083261;
+    cursor: pointer;
+    height: 130px;
+    width: 120px;
+    padding: 0.5rem;
+}
+
+.desactivadoR{
+    color: #000;
+    border: 1px solid #383838;
+    border-radius: 15px;
+    background-color: #ffffff;
+    cursor: pointer;
+    height: 130px;
+    width: 120px;
+    padding: 0.5rem;
+}
+
+.carCheck{
+    width: 100px;
+}
+
+.pCarMovil{
+    margin-left: 10px;
+}
+
+.lic-activado{
+    color: #ffffff;
+    border: 1px solid #383838;
+    border-radius: 15px;
+    background-color: #383838;
+    cursor: pointer;
+
+}
+
+.lic-desactivado{
+    color: #000;
+    border: 1px solid #383838;
+    border-radius: 15px;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+.lic-desactivado:hover{
+    color: #000;
+    background-color: #bbbbbb;
+    cursor: pointer;
+}
+
+.check-square {
+    align-items: center;
+    background-color: #fff;
+    border-radius: 20px;
+    display: flex;
+    height: 16px;
+    justify-content: center;
+    margin-left: 0;
+    margin-top: 0;
+    position: absolute;
+    width: 16px;
+}
+
+check-square.active {
+    background-color: #2486fc;
+    border: 1px solid #ffffff;
+}
+
+.btn-secondary{
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: #fff;
+}
+
+.bg-btn-auto{
+    border: 1px solid #383838;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: background-color 0.5s;
+}
+
+.desactivado:hover{
+    background-color: #afafaf;
+}
+
+.NavlabelWhatsapp-movil{
+    display: none!important;
+}
+
+.title-gris{
+    color:#5c5c5c;font-weight: 600;font-family:sans-serif;
+}
+
+.title-gris-span{
+    color:#5c5c5c;font-size:1em;font-weight: 800;font-family: 'Arial Narrow Bold', sans-serif;
+}
+
+.title-azul{
+    margin-top:-25px;color:#2486fc;font-weight: 600;font-family: 'Arial Narrow Bold', sans-serif;
+}
+
+#manualFecha2R::placeholder {
+    color: rgb(255, 255, 255);
+  }
+
+#manualFecha1R::placeholder {
+color: rgb(255, 255, 255);
+}
+
+.div-filter{
+    display: block;
+}
+
+.div-filter-Active{
+    display: contents;
+}
+
+.bg-footer{
+    background-color: #656d78;
+    position: inherit;
+    width: 100%;
+}
+
+.bg-btn-auto.active {
+    background: #fff;
+    color: #000;
+}
+
+.activeLc{
+    color: #FFF!important;
+    background-color: #343a40;
+    cursor: pointer;
+}
+
+.check-square {
+    align-items: center;
+    background-color: #fff;
+    border-radius: 20px;
+    display: flex;
+    height: 16px;
+    justify-content: center;
+    margin-left: 0;
+    margin-top: 0;
+    position: absolute;
+    width: 16px;
+}
+
+.checkAuto{
+    border: 1px solid #383838;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: background-color 0.5s;
+}
+
+.checkAuto:hover{
+    background-color: #afafaf;
+}
+
+.checkAutoSel{
+    border: 1px solid #383838;
+    border-radius: 7px;
+    background-color: #383838;
+    cursor: pointer;
+}
+
+.banner-auto-interior, .banner-silverado {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    min-height: 400px;
+    width: 100%;
+}
+
+.banner-silverado{
+    /* background-image: url("assets/images/banners/banner-princip.jpg"); */
+/*     background: linear-gradient(to bottom, transparent, rgb(255, 255, 255)),
+    url("assets/images/banners/banner-princip.jpg"); */
+    background-color: #083261;
+    padding: 1em;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.banner-silverado-active{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div-banner-home{
+    padding: 1em;
+    border-radius: 10px;
+    background-image: url("assets/images/fondo_home_1.png");
+    background-position:50% 70%;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.row-negro{
+    background-color: #343a40!important;
+    height: 100%;
+    min-height: 400px;
+    width: 100%;
+    position: relative;
+    margin-right: 0!important;
+    margin-left: 0!important;
+}
+
+/* .rivero-escudo-empresarial{
+    width: 200px;
+    margin-left: 20%;
+    margin-top: 3%;
+} */
+
+.back-empresarial-1{
+    background-image:url("assets/images/icons/back1.jpg");
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    min-height: 400px;
+    width: 100%;
+    margin-top: 65px;
+}
+
+.back-empresarial-2{
+    background-image:url("assets/images/icons/back2.jpg");
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    min-height: 400px;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.punto-list {
+    width: 8px;
+    height: 8px;
+    float: left;
+    margin-top: 7px;
+    margin-right: 5px;
+}
+
+.rounded-circle {
+    border-radius: 50%!important;
+}
+
+#sincontra:hover > #sini{
+    display:flex!important;
+}
+
+#personal:hover > #perso{
+    display:flex!important;
+}
+
+#gastos:hover > #gasto{
+    display:flex!important;
+    justify-content: right;
+}
+
+#tecnolog:hover > #tecno{
+    display:flex!important;
+    justify-content: right;
+}
+
+.container-movil{
+    display: none;
+}
+
+.container-movil-1{
+    display:none;
+}
+
+.container-movil-2{
+    display:none;
+}
+
+.promo-img{
+    transform: scale(var(--escala, 1));
+    transition: transform 0.25s;
+}
+
+.promo-img:hover{
+    --escala: 1.1;
+    cursor:pointer;
+    z-index: 3;
+}
+
+.demo-inline-calendar-card {
+    width: 300px;
+}
+
+.hideDisp{
+    transition: opacity 0.7s;
+    opacity: 0;
+}
+
+.showDisp{
+    color:red;
+    text-align:center;
+    opacity: 1;
+}
+
+.hideBTN-NU{
+    margin-top: -40px;
+    transition: opacity 1s;
+    opacity: 0;
+}
+
+.showBTN-NU{
+    display: flex;
+    margin-top: 10px;
+    opacity: 1;
+}
+
+.xModal{
+    width: 80px;
+    color: #FFF;
+    border: #FFF solid 1px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.btnContinuar-NU{
+    margin-top: 10px;
+    border-radius: 10px;
+    background-color: #0080ff;
+    color: #FFF;
+    font-weight: 600;
+    width: 120px;
+}
+
+.btnVerDisp-NU{
+    margin-top: 10px;
+    border-radius: 10px;
+    background-color: #0080ff;
+    color: #FFF;
+    font-weight: 600;
+    width: 180px;
+}
+
+.cont-btns-filtro{
+    padding-left: 10px!important;
+    padding-right: 10px!important;
+    max-width: 550px;
+    min-width: 510px;
+}
+
+.filtro-home{
+    background-color: #fff;
+    box-shadow: 1px 1px 15px #aaaaaa;  
+    height: auto;
+    margin-left: 210px;
+    margin-right: 210px;
+    animation: EntrarDesdeAbajo .5s;
+}
+
+.slogan-home1{
+    margin-top: 190px;
+    margin-left: 210px;
+    color: white; 
+    text-align: left;
+    animation: EntrarDesdeIzq .5s;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px black;
+}
+
+.slogan-home2{
+    margin-left: 210px;
+    color: white; 
+    text-align: left;
+    animation: EntrarDesdeIzq .6s;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px black;
+}
+
+@keyframes EntrarDesdeIzq {
+    from{
+        transform: translateX(-80%)
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes EntrarDesdeDer {
+    from{
+        transform: translateX(80%)
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+.bannerTraslados{
+    text-align: center;
+    width: 80%;
+}
+
+.card-carro-result{
+    animation: EntrarDesdeAbajo .6s;
+}
+
+.btnBusqFecha{
+    transition: opacity 1.8s;
+    opacity: 0;
+}
+
+.btnBusqFechaActive{
+    opacity: 1;  
+}
+
+.btn-equis{
+    border: 1px solid #383838;
+    border-radius:5px;color:#383838;padding: 5px;
+    cursor: pointer;z-index: 100;margin-left: 95%;
+    margin-bottom: -20px;margin-right: 5px;
+    position:sticky;
+    min-width: 20px;
+    max-width: 30px;
+}
+
+.div-datosReserva{
+    margin-top: 50%;
+    box-shadow: 1px 1px 15px #aaaaaa;
+}
+
+.input-datos{
+    height: 45px;
+    border-radius: 1em;
+}
+
+.mat-select-trigger{
+    margin-left: 20px;
+}
+
+.div-banner-flotillas{
+    min-height: 500px;
+    max-height: 500px;
+    background: url("assets/images/banners/banner-renta-empresarial.jpg");
+    background-position: center;
+    background-size  : cover;
+}
+
+.row-banner-flotillas{
+    justify-content: center;
+    padding-top: 0;
+    margin-top: -90px;
+}
+
+.row-contacto{
+    justify-content: center;
+    margin-right: 15%;
+    margin-left: 15%;
+}
+
+.col-img-beneficios{
+    background: url('assets/images/banners/pick-ups-rivero-renta.jpg');
+    background-position: center;
+    background-size  : cover;
+    min-height: 350px;
+}
+
+.card-banner{
+    border-radius: 20px;
+    box-shadow: 1px 1px 15px #aaaaaa;
+    background-color: #FFF;
+    transform: scale(var(--escala, 1));
+    transition: transform 0.25s;
+}
+
+.reqIzq{
+    animation: EntrarDesdeIzq .6s;
+}
+
+.reqDer{
+    animation: EntrarDesdeDer .6s;
+}
+
+.div-lista-autos{
+    animation: EntrarDesdeAbajo 1s;
+}
+
+@keyframes EntrarDesdeAbajo {
+    from{
+        transform: translateY(32%)
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.selectLic{
+    filter: brightness(120%);
+}
+
+.selectLic:hover{
+    filter: brightness(100%);
+}
+
+.mat-form-field-flex{
+    height: 55px!important;
+    display: flex;
+    justify-content: center!important;
+    align-items: center!important;
+}
+
+.mat-form-field{
+    width: 90%;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex{
+    background-color: transparent!important;
+    padding: 0!important;
+}
+
+.mat-form-field-underline{
+    display: none!important;
+}
+
+.mat-calendar-body-selected{
+    background-color:#2486fc!important;
+    color:white!important;
+}
+
+.mat-form-field-infix{
+width: 100%;
+}
+
+.div-row-sucursales{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    transition: opacity 0.7s;
+    opacity: 0;
+}
+
+.div-row-sucursales-active{
+    width: auto;
+    height: auto;
+    opacity: 1;
+}
+
+.label-sucursales{
+    border-radius: 20px;
+    box-shadow: 1px 1px 15px #aaaaaa;
+    width: auto;
+}
+
+.titulo-nuestrasUnidades{
+    font-size: 3em!important;
+    animation: EntrarDesdeArriba 1s;
+}
+
+.titulo-traslado{
+    font-size: 3em!important;
+    animation: EntrarDesdeArriba 1s;
+    margin-top: 15px;
+}
+
+.logoPlataformas{
+    width: 150px;
+    padding: 5px;
+}
+
+.logoPlataformasR{
+    width: 100px;
+    padding: 5px;
+}
+
+.iconoRequisitos{
+    width: 100px;
+    padding: 5px;
+}
+
+.modal-dialog-centered{
+    animation: EntrarDesdeArribaModal .5s;
+}
+
+.modal-promo{
+    animation: EntrarDesdeArribaModal .5s;
+}
+
+@keyframes EntrarDesdeArriba {
+    from{
+        transform: translateY(-80%)
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes EntrarDesdeArribaModal {
+    from{
+        transform: translateY(-80%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.div-lic-title{
+    height: 85px; background-color: #1b3357;border-radius: 10px;
+}
+
+.div-lic-title-f{
+    height: 85px; background-color: #2486fc;border-radius: 10px;
+}
+
+.negritasModalLic{
+    font-size: 15px;
+    margin: 0;
+    color: #656d78;
+}
+
+@media screen and (max-width: 2800px){
+
+    .filtro-home{
+        background-color: #fff;
+        box-shadow: 1px 1px 15px #aaaaaa;  
+        height: auto;
+        margin-left: 300px;
+        margin-right: 300px;
+        animation: EntrarDesdeAbajo .5s;
+    }
+
+    .slogan-home1{
+        margin-top: 190px;
+        margin-left: 300px;
+        color: white; 
+        text-align: left;
+        animation: EntrarDesdeIzq .5s;
+        font-weight: 600;
+        text-shadow: 1px 1px 2px black;
+    }
+
+    .slogan-home2{
+        margin-left: 300px;
+        color: white; 
+        text-align: left;
+        animation: EntrarDesdeIzq .6s;
+        font-weight: 600;
+        text-shadow: 1px 1px 2px black;
+    }
+
+    .btn-cotiza-ya{
+        min-width: 190px;
+        text-align: center;
+        width: 100%; height: 130px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2em;
+        font-weight: 600;
+        background-color: #083261;
+        border-radius: 10px;
+        margin-top: 10px;
+    }
+}
+
+@media screen and (max-width: 1900px){
+
+    .filtro-home{
+        background-color: #fff;
+        box-shadow: 1px 1px 15px #aaaaaa;  
+        height: auto;
+        margin-left: 170px;
+        margin-right: 170px;
+        animation: EntrarDesdeAbajo .5s;
+    }
+
+    .slogan-home1{
+        margin-top: 190px;
+        margin-left: 170px;
+        color: white; 
+        text-align: left;
+        animation: EntrarDesdeIzq .5s;
+        font-weight: 600;
+        text-shadow: 1px 1px 2px black;
+    }
+
+    .slogan-home2{
+        margin-left: 170px;
+        color: white; 
+        text-align: left;
+        animation: EntrarDesdeIzq .6s;
+        font-weight: 600;
+        text-shadow: 1px 1px 2px black;
+    }
+
+    .btn-cotiza-ya{
+        min-width: 190px;
+        text-align: center;
+        width: 100%; height: 130px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2em;
+        font-weight: 600;
+        background-color: #083261;
+        border-radius: 10px;
+        margin-top: 10px;
+    }
+}
+
+@media screen and (max-width: 1500px){
+
+    .filtro-home{
+        background-color: #fff;
+        box-shadow: 1px 1px 15px #aaaaaa;  
+        height: auto;
+        margin-left: 150px;
+        margin-right: 150px;
+        animation: EntrarDesdeAbajo .5s;
+    }
+
+    .slogan-home1{
+        margin-top: 190px;
+        margin-left: 150px;
+        color: white; 
+        text-align: left;
+        animation: EntrarDesdeIzq .5s;
+        font-weight: 600;
+        text-shadow: 1px 1px 2px black;
+    }
+
+    .slogan-home2{
+        margin-left: 150px;
+        color: white; 
+        text-align: left;
+        animation: EntrarDesdeIzq .6s;
+        font-weight: 600;
+        text-shadow: 1px 1px 2px black;
+    }
+
+    .btn-cotiza-ya{
+        min-width: 190px;
+        text-align: center;
+        width: 100%; height: 130px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2em;
+        font-weight: 600;
+        background-color: #1b3357;
+        border-radius: 10px;
+        margin-top: 10px;
+    }
+}
+@media screen and (max-width: 1199px){
+.icon-text-view1 {
+    margin: 20px;
+    font-size: 14px;
+    text-align: center;
+    border-right: 2px solid  rgb(176 180 184 / 63%);
+}
+
+.icon-text-view2 {
+    margin: 20px;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.icon-text-view3 {
+    margin: 20px;
+    font-size: 14px;
+    text-align: center;
+    border-left: 2px solid  rgb(176 180 184 / 63%);
+}
+
+.div-filter-Active{
+    display: contents;
+}
+
+.NavlabelWhatsapp-movil{
+    display: none!important;
+}
+
+}
+
+.icon-text-view1 {
+    display: grid;
+    color: rgb(176 180 184 / 63%);
+    width: 100%;
+    height: 230px;
+    border-right: 2px solid  rgb(176 180 184 / 63%);
+}
+
+.icon-text-view2 {
+    display: grid;
+    color: rgb(176 180 184 / 63%);
+    width: 100%;
+    height: 230px;
+    cursor: pointer;
+}
+
+.icon-text-view3 {
+    display: grid;
+    color: rgb(176 180 184 / 63%);
+    width: 100%;
+    height: 230px;
+    border-left: 2px solid  rgb(176 180 184 / 63%);
+}
+
+.btn-flotillas{
+    width: auto;
+    height: auto;
+    background-color: #2880e6;
+    font-size: 1.5em;
+    font-weight: 600;
+    border-radius: 10px;
+}
+
+.item {
+    background-color: #fff;
+    border: 1px solid #656d78;
+    height: 100%;
+}
+
+.NavlabelWhatsapp-movil{
+    display: none!important;
+}
+
+.sitio-seguro{
+    width: 140px;
+}
+
+.btn-cotiza-ya{
+    text-align: center;
+    max-width: 90%;
+    min-width: 145px;
+    height: 90px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    font-weight: 600;
+    background-color: #1b3357;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 991px){
+
+/*     .rivero-escudo-empresarial{
+        width: 110px;
+    }
+ */
+    .div-filter-Active{
+        width: 650px;
+    }
+
+    .row-banner-flotillas{
+        padding-top: 20px;
+    }
+
+    .row-contacto{
+        margin-top: 10px;
+    }
+
+    .btn-reserva-rf{
+        width: auto;
+    }
+
+    .NavlabelWhatsapp-movil{
+        display: none!important;
+    }
+
+    .calendario-fijo{
+        width: 110%;
+        align-self: center!important;
+    }
+
+    .autoImgModal{
+        width: 300px;
+    }
+
+    .sitio-seguro{
+        width: 100px;
+    }
+
+    .filtro-home{
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    .negritasModalLic{
+        font-size: 10px;
+        margin: 0;
+        color: #656d78;
+    }
+
+}
+
+@media screen and (max-width: 767px){
+
+.row-negro{
+    display: none;
+}
+
+.container-movil{
+    display: initial;
+}
+
+.container-movil-1{
+    display:flex;
+}
+
+.container-movil-2{
+    display:flex;
+}
+
+.div-banner-flotillas{
+    background: url("assets/images/banners/empresarial-banner-movil.jpg");
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size  : 600px;
+}
+
+.movil-back-1{
+    display:initial;
+    background-image:url("assets/images/icons/back1.jpg");
+    background-color: #000;
+    background-position: 47%;
+    background-repeat: no-repeat;
+    background-size:cover;
+    min-height: 800px;
+    padding-top: 55px;
+    width: 560px;
+}
+
+.movil-back-2{
+    display:initial;
+    background-image:url("assets/images/icons/back2.jpg");
+    background-color: #000;
+    background-position: 53%;
+    background-repeat: no-repeat;
+    background-size:cover;
+    min-height: 400px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.cont-btns-filtro{
+    padding-left: 0!important;
+    padding-right: 0!important;
+}
+
+/* .rivero-escudo-empresarial{
+    width: 100px;
+    margin-left: 45%;
+} */
+
+.titulo-movil{
+    font-size: 2em;
+}
+
+.icono-titulo-movil{
+    width: 45px;
+}
+
+.btn-equis{
+    margin-left: 85%;
+}
+
+.boton-cotizaYa{
+width: 90%!important;
+}
+
+#logo{
+    margin-right: 0!important;
+}
+
+.plus-logo{
+    width: auto;
+}
+
+.img-brand{
+    width:5em;
+}
+
+.img-brand-primo{
+    width:2em;
+}
+
+.NavBotonUnidades{
+    display: none!important;
+}
+
+.NavlabelWhatsapp{
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.NavlabelLlamada{
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.NavlabelWhatsapp-movil{
+    display: grid!important;
+}
+
+.slogan-home1{
+    margin-top: 10px;
+    font-size: 2em;
+    margin-left: 10px;
+}
+
+.slogan-home2{
+    font-size: 2em;
+    margin-left: 10px;
+}
+
+.row-principal{
+    padding-left: 3.5rem!important;
+}
+
+.icon-text-view1 {
+    display: grid;
+    color: rgb(176 180 184 / 63%);
+    width: 100%;
+    height: 230px;
+    border-right: none;
+}
+
+.icon-text-view2 {
+    display: grid;
+    color: rgb(176 180 184 / 63%);
+    width: 100%;
+    height: 230px;
+    border-bottom: 2px solid  rgb(176 180 184 / 63%);
+    border-top: 2px solid  rgb(176 180 184 / 63%);
+    cursor: pointer;
+}
+
+.icon-text-view3 {
+    display: grid;
+    color: rgb(176 180 184 / 63%);
+    width: 100%;
+    height: 230px;
+    border-left: none;
+}
+
+}
+
+@media screen and (max-width: 575px){
+
+.titulo-movil{
+    font-size: 1.5em;
+}
+
+.icono-titulo-movil{
+    width: 35px;
+}
+
+.car-model{
+width: 50%!important;
+}
+
+.contenedor-secciones{
+    padding-left: 0!important;
+    padding-right: 0!important;
+}
+
+.p-mov{
+    font-size: 12px!important;
+}
+
+.row-reserva{
+    border-bottom: 1px solid #eeeeee!important;
+}
+
+.texto-cards-flotillas{
+    font-size: 10px;
+    color: #595959;
+    font-weight: 600;
+}
+
+.div-row-contacto{
+    margin-top: -500px;
+}
+
+.title-gris{
+    color:#5c5c5c;font-size:1em;font-weight: 600;font-family:sans-serif;
+}
+
+.title-gris-span{
+    color:#5c5c5c;font-size:1em;font-weight: 800;font-family: 'Arial Narrow Bold', sans-serif;
+}
+
+.title-azul{
+    margin-top:-25px;color:#2486fc;font-size:1em;font-weight: 600;font-family: 'Arial Narrow Bold', sans-serif;
+}
+
+.title-modal-autoName{
+    margin-left: 40px;
+    font-size: 1.2em;
+}
+
+.lic-title{
+    font-size: 1em;
+}
+
+.lic-sub-title{
+    font-size: .7em;
+}
+
+.div-lic-title{
+    height: 50px; background-color: #1b3357;border-radius: 10px;
+}
+
+.div-lic-title-f{
+    height: 50px; background-color: #2486fc;border-radius: 10px;
+}
+
+.negritasModalLic{
+    font-size: 8px;
+    margin: 0;
+    color: #656d78;
+}
+
+.autoImgModal{
+    width: 200px;
+}
+
+.div-eligeFechaModal{
+    text-align: center;
+    padding: 1em .5em !important;
+    margin-left: 40px;
+}
+
+.h4-modal{
+    font-size: 1em;
+}
+
+.modal-h-nu{
+    padding: 5px!important;
+}
+
+.activadoR{
+    color: #ffffff;
+    border: 1px solid #383838;
+    border-radius: 15px;
+    background-color: #083261;
+    cursor: pointer;
+    height: 85px;
+    width: 82px;
+    padding: 5px;
+}
+
+.desactivadoR{
+    color: #000;
+    border: 1px solid #383838;
+    border-radius: 15px;
+    background-color: #ffffff;
+    cursor: pointer;
+    height: 85px;
+    width: 82px;
+    padding: 5px;
+}
+
+.carCheck{
+    width: 70px;
+}
+
+.pCarMovil{
+    margin-left: 0px;
+}
+
+.banner-silverado{
+/*     background-image: url("assets/images/banners/home-banner-movil.jpg");
+    background: linear-gradient(to bottom, transparent, rgb(255, 255, 255)),
+    url("assets/images/banners/home-banner-movil.jpg");
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: 500px; */
+    background-color: #083261;
+}
+
+.col-img-beneficios{
+    background: url('assets/images/banners/pick-ups-rivero-renta.jpg');
+    background-position: center;
+    background-size  : cover;
+    min-height: 200px;
+}
+
+.titulo-nuestrasUnidades{
+    font-size: 1.2em!important;
+}
+
+.titulo-traslado{
+    font-size: 1.5em!important;
+    margin-top: 20px!important;
+}
+
+.logoPlataformas{
+    width: 100px;
+    padding: 5px;
+}
+
+.logoPlataformasR{
+    width: 80px;
+    padding: 5px;
+}
+
+.filtro-home{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.slogan-home1{
+    margin-top: 10px;
+    color: white; 
+    text-align: left;
+    animation: EntrarDesdeIzq .5s;
+    font-weight: 600;
+    font-size: 1.3em;
+    margin-left: 10px;
+}
+
+.slogan-home2{
+    color: white; 
+    text-align: left;
+    animation: EntrarDesdeIzq .5s;
+    font-weight: 600;
+    font-size: 1.3em;
+    margin-left: 10px;
+}
+
+.cont-btns-filtro{
+    padding-left: 10px!important;
+    padding-right: 10px!important;
+    min-width: 300px;
+}
+
+@keyframes EntrarDesdeIzq {
+    from{
+        transform: translateX(-90%)
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes EntrarDesdeDer {
+    from{
+        transform: translateX(90%)
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+.row-principal{
+    padding-left: 2rem!important;
+    padding-right: 1rem!important;
+}
+
+.xModal{
+    width: 70px;
+    color: #FFF;
+    border: #FFF solid 1px;
+    border-radius: 10px;
+    padding: 7px;
+}
+
+/* .btn-equis{
+    border: 1px solid #383838;border-radius:5px;color:#383838;padding: 5px;cursor: pointer;z-index: 100;margin-left: 96%;
+    margin-bottom: -20px;margin-right: 10px;
+    position:sticky;
+} */
+
+}
+
+@media screen and (max-width: 370px){
+
+    .plus-logo{
+        padding: 5px;
+        width: 90px;
+    }
+
+    .img-brand{
+        width:3.5em;
+    }
+
+    .img-brand-primo{
+        width:1.5em;
+    }
+
+    .negritasModalLic{
+        font-size: 6px;
+        margin: 0;
+        color: #656d78;
+    }
+
+}

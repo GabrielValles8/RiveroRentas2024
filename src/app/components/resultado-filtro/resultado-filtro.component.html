@@ -1,0 +1,182 @@
+<div class="row m-0 p-0">
+    <span style="margin-left:5%;font-family: Arial, Helvetica, sans-serif;cursor: pointer;" [routerLink]="['/home']">Inicio / <strong>Volver</strong></span>
+    <div class="col-md-12 text-center p-4">
+        <div class="row m-0 p-0">
+                                
+            <div style="display: flex; justify-content: center;" class="col-xl-12 col-sm-12">
+                <div>
+                    <h3 style="font-family: Arial, Helvetica, sans-serif;">Renta de unidades a mediano y largo plazo</h3>
+                    <div class="row text-center justify-content-center align-self-center">
+                    
+                        <div *ngFor="let car of sltCarList; let i = index;" [class]="car.id !== 30 &&
+                            car.id !== 6 &&
+                            car.id !== 10 &&
+                            car.id !== 13 &&
+                            car.id !== 12 &&
+                            car.id !== 16 && car.id != 0 ? 'filtroActivo justify-content-center align-self-center p-1 col-3 col-sm-3 col-md-3 col-xl-3' : 'd-none'">
+                                            
+                            <div (click)="onAddingCar(i)" [class]="car.checked == true ? 'activadoR ': 'desactivadoR '">
+
+                                <div *ngIf="car.checked == false" style="display: flex;">
+                                    <mat-icon style="font-size: 15px;height: 0;">panorama_fish_eye</mat-icon><p *ngIf="car.checked == false" class="pCarMovil" color="black">{{car.type}}</p>
+                                </div>
+
+                                <div *ngIf="car.checked == true" style="display: flex;">
+                                    <mat-icon style="font-size: 15px;height: 0;">lens</mat-icon><p *ngIf="car.checked == true" class="pCarMovil" color="white">{{car.type}}</p>
+                                </div>
+                        
+                                <img *ngIf="car.checked == true" class="m-0 carCheck" style="cursor: pointer;" [src]="car.select" [alt]="car.type"/>
+                                <img *ngIf="car.checked == false" class="m-0 carCheck" style="cursor: pointer;" [src]="car.img" [alt]="car.type"/>
+
+                            </div>                                                                                                                                                                                    
+                        </div>                                     
+                    </div>
+
+                    <hr/>
+
+                    <div class="row text-center justify-content-center align-self-center">
+
+                        <div class="d-flex">
+                            <div>
+                        
+                                <mat-form-field color="accent" appearance="fill" style="background-color: none!important;"><h6>Entrega:</h6>
+                                    <div style="display: flex;border-radius: 10px;background-color: #515151;box-shadow: 1px 1px 2px rgb(97, 97, 97);">
+                                        <mat-datepicker-toggle matIconPreffix [for]="picker1"> <mat-icon matDatepickerToggleIcon style="margin-top: -10px;cursor: pointer;"><img src="assets/images/icons/icono_calendar.png" width="20px" style="filter: brightness(10);"></mat-icon></mat-datepicker-toggle>
+            <!--                        <input style="color:#383838" #fechaInit id="manualFecha1" [min]="minDate" matInput [matDatepicker]="picker1" placeholder="Fecha" (click)="manualDate()" (dateChange)="dateStartChange(fechaInit)" maxlength="10"> -->
+                                        <input style="color:#ffffff;cursor: pointer;" #fechaInit id="manualFecha1R" [min]="minDate" matInput [matDatepicker]="picker1" placeholder="{{fechaOffHour(initialFromDate)}}" (click)="picker1.open()" (dateChange)="dateStartChange(fechaInit)" maxlength="10" readonly>
+                                        <mat-datepicker #picker1></mat-datepicker> 
+                                    </div>
+                                  </mat-form-field>
+                            </div>
+
+                            <div>
+                                <mat-form-field color="accent" appearance="fill" style="background-color: none!important;"><h6>Devolución:</h6>
+                                    <div style="display: flex;border-radius: 10px;background-color: #007bff;box-shadow: 1px 1px 2px rgb(97, 97, 97);">
+                                        <mat-datepicker-toggle matIconPreffix id="pickDate2" [for]="picker2"><mat-icon matDatepickerToggleIcon style="margin-top: -10px;cursor: pointer;"><img src="assets/images/icons/icono_calendar.png" width="20px" style="filter: brightness(10);"></mat-icon></mat-datepicker-toggle>
+            <!--                            <input style="color:#383838" #fechaEnt id="manualFecha2" [min]="minDate2" matInput [matDatepicker]="picker2" placeholder="Fecha" (click)="manualDate2()" (dateChange)="dateEndChange(fechaEnt)" maxlength="10" [disabled]="minDate2 == null ? 'true' : 'false' "> -->
+                                            <input style="color:#ffffff;cursor: pointer;" #fechaEnt id="manualFecha2R" [min]="minDate2" matInput [matDatepicker]="picker2" placeholder="{{fechaOffHour(initialToDate)}}" (click)="picker2.open()" (dateChange)="dateEndChange(fechaEnt)" maxlength="10" readonly>
+                                        <mat-datepicker #picker2></mat-datepicker>
+                                    </div>
+                                </mat-form-field>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="d-flex text-center justify-content-center align-self-center"> <div id="btnBusqFecha" class="btn btn-primary btn-reserva-rf m-0 btnBusqFecha" style="color:#FFF;border-radius: 5px;background-color: #007bff;box-shadow: 1px 1px 2px rgb(97, 97, 97);width: 150px;" (click)="onFilterCategory()">BUSCAR</div></div>
+                </div>    
+            </div>
+</div>
+
+
+<div *ngIf="isLoaded" class="container d-flex w-100 h-100 justify-content-center align-self-center mt-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Cargando datos...</span>
+    </div>
+  </div>
+  <div *ngIf="!error" class="row m-3">
+    <div class="col-12" [style.display]="sltCarList[1]['checked']== 0 &&sltCarList[2]['checked']== 0 &&sltCarList[10]['checked']== 0 ? 'none': 'block'">
+        <div id="NoEco" *ngIf="!isLoaded" [style.display]="itemsTipos.indexOf('Carros')>= 0 ? 'none': 'block'">No se encontraron <span style="font-weight: 600;">Carros</span> disponibles para la fecha seleccionada.</div>
+    </div>
+    <div class="col-12" [style.display]="sltCarList[3]['checked']== 0 ? 'none': 'block'">
+        <div id="NoSed" *ngIf="!isLoaded" [style.display]="itemsTipos.indexOf('Suvs')>= 0 ? 'none': 'block'">No se encontraron <span style="font-weight: 600;">Suvs</span> disponibles para la fecha seleccionada.</div>
+    </div>
+    <div class="col-12" [style.display]="sltCarList[4]['checked']== 0&&sltCarList[5]['checked']== 0&&sltCarList[7]['checked']== 0 ? 'none': 'block'">
+        <div id="NoPas" *ngIf="!isLoaded" [style.display]="itemsTipos.indexOf('Pasajeros')>= 0 ? 'none': 'block'">No se encontraron unidades <span style="font-weight: 600;">Pasajeros</span> disponibles para la fecha seleccionada.</div>
+    </div>
+    <div class="col-12" [style.display]="sltCarList[6]['checked']== 0&&sltCarList[8]['checked']== 0&&sltCarList[9]['checked']== 0 ? 'none': 'block'">
+        <div id="NoCarga" *ngIf="!isLoaded" [style.display]="itemsTipos.indexOf('Carga')>= 0 ? 'none': 'block'">No se encontraron unidades de <span style="font-weight: 600;">Carga</span> disponibles para la fecha seleccionada.</div>
+    </div>
+  </div>
+<div *ngIf="!isLoaded" class="row m-3">
+    
+    <div *ngFor="let auto of items" class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12 col-12 mb-3" [style.display]="auto.activo === true ? 'block': 'none'">
+        <div class="card p-0 h-100 card-carro-result">
+            <div class="card-body p-2">
+                <div class="row">
+                    <div class="col-12" style="text-align: left!important;">
+                        <b >{{auto.detail.car ? auto.detail.car.model.name : null}}</b>
+                    </div>
+                    <div class="col-xl-6 col-lg-12 col-md-12 col-6 align-self-center">
+<!--                         <p class="m-1 px-2">
+                            <small><b>{{auto.detail.car ? auto.detail.category.name : null}}</b></small>
+                        </p> -->
+                        <div class="align-self-center text-center">
+                            <img class="m-auto img-fluid" [src]="auto.detail.car ? auto.detail.car.model.imagePath : null" [alt]="auto.detail.car ? auto.detail.car.model.description : null"/>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-12 col-md-12 col-6">
+                        <div class="row" style="text-align: left;">      
+                            <div class="col-12 col-xl-12" style="display: flex;justify-content: center;text-align: center;"><p class="m-0 mb-2">Desde <b><span class="text-primary" style="font-size: 1.5rem">${{auto.detail.car ? auto.detail.priceItems[0].unitPrice : null}}.00</span></b> MXN por día.</p></div>        
+                            <div class="col-7 m-0 pt-1 pb-1">
+                                <img height="20px" src="assets/images/icons/icons-catalogo/ico_pasajeros.svg" alt="pasajeros"/>
+                                <span> {{auto.detail.car ? auto.detail.car.model.passengers : null}} {{" "}}pasajeros</span>
+                            </div >
+                            <div class="col-5 m-0 pt-1 pb-1">
+                                <img height="20px" src="assets/images/icons/icons-catalogo/ico_clima.svg" alt="clima"/>
+                                <span> {{auto.detail.car ? auto.detail.car.model.airConditioner : null}}</span>
+                            </div>
+                            <div class="col-7 m-0 pt-1 pb-1">
+                                <img height="20px" src="assets/images/icons/icons-catalogo/ico_maletas.svg" alt="maletas"/>
+                                <span> {{auto.detail.car ? auto.detail.car.model.bigLuggage : null}} {{" "}}maletas</span>
+                            </div>
+                            <div class="col-5 m-0 pt-1 pb-1">
+                                <img height="20px" src="assets/images/icons/icons-catalogo/ico_bolsas_aire.svg" alt="bolsas-aire"/>
+                                <span>{{" "}}{{" "}}Si</span>
+                            </div>
+                            <div class="col-7 m-0 pt-1 pb-1">
+                                <img height="20px" src="assets/images/icons/icons-catalogo/ico_transmision.svg" alt="transmision"/>
+                                <span class="m-3">{{"  "}}{{auto.detail.car ? auto.detail.car.model.gearbox : null}} {{" "}}</span>
+                            </div>
+                            <div class="col-5 m-0 pt-1 pb-1" hidden>
+                                <img height="20px" src="assets/images/icons/icons-catalogo/ico_rendimiento.svg" alt="rendimiento"/>
+                                <span class="mt-3"> 100LT</span>
+                            </div>                                                 
+                        </div>
+                        <a style="font-weight: 600;" class="btn btn-primary btn-reserva-rf m-0" (click)="validarReserva(this.fechaInicio , this.fechaEntrega, auto.detail.car.model.id, this.license)"  >Reserva ya</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="modal" tabindex="-1" [style.display]="modalLicencia ? 'block': 'none'" aria-labelledby="exampleModalLabel" aria-hidden="true" style="background: rgba(0, 0, 0, 0.5);">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+            <div class="modal-header modal-h-nu" style="background-color: #949494;color:rgb(0, 0, 0);padding: 2rem 1rem;">
+                <div class="row justify-content-center" style="width: 100%;align-items: center;">
+                    <h3 class="modal-title text-align-center">Licencia de Conducir</h3>
+                </div>
+
+                <button type="button" style="width: 90px;" class="close" data-dismiss="modal" aria-label="Close" (click)="hideModal()">
+                    <span class="xModal" aria-hidden="true" style="color: #000;">X</span>
+                </button>
+            </div>
+            <div class="modal-body row m-2">
+                <div style="border-right: 1px solid #515151;cursor: pointer;" class="col-6 selectLic" (click)="onLicenciaClick('local')">
+                    <div class="div-lic-title align-items-center justify-content-center mb-2"><h3 class="lic-title" style="color: yellow;">Local</h3><h4 class="lic-sub-title text-white mb-0">Monterrey y Área Metropolitana</h4></div>
+                    <img src="assets/images/icons/icono_licencia_nl.png" width="60%" alt="licencia" /><br/>
+                    <b class="negritasModalLic">Precio del depósito de garantia menor.</b><br/><b class="negritasModalLic">Pago en efectivo o tarjeta.</b>
+                </div>
+
+                <div style="border-left: 1px solid #515151;cursor: pointer;" class="col-6 selectLic" (click)="onLicenciaClick('foraneo')">
+                    <div class="div-lic-title-f d-flex align-items-center justify-content-center mb-2"><h3 class="lic-title text-white">Foráneo</h3></div>
+                    <img src="assets/images/icons/icono_licencia_foraneo.png" width="60%" alt="licencia" /><br/>
+                    <b class="negritasModalLic">Precio del depósito de garantia mayor.</b><br/><b class="negritasModalLic">Solo pago con tarjeta de crédito.</b>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="hideModal()">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="error" class="row m-3">
+    <h1>{{error}}</h1>
+</div>

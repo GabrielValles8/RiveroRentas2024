@@ -1,0 +1,103 @@
+
+<!--     <div [style.height]="'300px'" [style.display]="filter == 0 ? 'block' : 'none'">
+        <h1 style="position:absolute;left:10%;top:20px;font-size:2em" hidden>Tu renta fácil y rápido</h1>
+        <div class="row" style="position:absolute;width:100%;bottom:0px">
+            <div class="align-self-center col-md-2 mb-2">
+                
+            </div>
+            <div class="align-self-center col-md-4 mb-2">
+                <div style="display: flex; justify-content: center;align-items: center;" class="boton btn-renta boton-home p-2" (click)="showFiltroHome()">
+                    <img width="70%" src="assets/images/botones/boton_renta_ya.png" alt="icon-sedan">
+                </div>
+            </div>
+
+            <div class="align-self-center col-md-4 mb-2">
+                <a style="text-decoration: none;" [routerLink]="['/empresarial']">
+                    <div class="boton btn-renta p-2 boton-flotillas text-white" style="display: flex; justify-content: center;align-items: center;">
+                        <img style="width: 70%;" src="assets/images/botones/boton_cotiza_flotillas.png" alt="icon-sedan"><br>
+                    </div>
+                </a>
+            </div>
+            <div class="align-self-center col-md-2 mb-2">
+                
+            </div>
+        </div>
+    </div> -->
+<div class="div-banner-home">
+    <h1 class="slogan-home1">Renta para Apps de Movilidad,</h1>
+    <h1 class="slogan-home2">flotillas y venta de seminuevos.</h1>
+    <div id="cuadro-home" class="filtro-home">
+<!--         <div class="btn-equis" (click)="close()"> X </div> -->
+        <!--PRIMER ROW PRINCIPAL CONTIENE TODO-->
+        <div class="row px-4 row-principal pt-2">
+            <!--PRIMER COLUMNA CONTIENE LAS FECHAS -->
+            <div class="col-xl-3 col-md-3 col-sm-12">
+                <div class="row d-md-block">
+
+                    <div style="font-family:sans-serif;color:#383838;text-align: start;margin-left: 20px;">Entrega&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                        <mat-form-field color="accent" appearance="fill" style="background-color: none!important;">
+                            <div style="display: flex;border: 1px solid #383838;border-radius: 10px;">
+                                <mat-datepicker-toggle matIconPreffix [for]="picker1"> <mat-icon matDatepickerToggleIcon style="margin-top: -10px;cursor: pointer;"><img src="assets/images/icons/icono_calendar.png" width="20px"></mat-icon></mat-datepicker-toggle>
+                        <!--    <input style="color:#383838" #fechaInit id="manualFecha1" [min]="minDate" matInput [matDatepicker]="picker1" placeholder="Fecha" (click)="manualDate()" (dateChange)="dateStartChange(fechaInit)" maxlength="10"> -->
+                                <input style="color:#383838;cursor: pointer;" #fechaInit id="manualFecha1" [min]="minDate" matInput [matDatepicker]="picker1" placeholder="Fecha" (click)="picker1.open()" (dateChange)="dateStartChange(fechaInit)" maxlength="10" readonly>
+                                <mat-datepicker #picker1></mat-datepicker>
+                            </div>
+                        </mat-form-field>       
+
+                </div>
+
+                <div class="row d-md-block">
+                    <div style="font-family:sans-serif;color:#383838;text-align: start;margin-left: 20px;">Devolución</div>
+                        <mat-form-field color="accent" appearance="fill" style="background-color: none!important;">
+                            <div style="display: flex;border: 1px solid #383838;border-radius: 10px;">
+                                <mat-datepicker-toggle matIconPreffix id="pickDate2" [for]="picker2" [disabled]="minDate2 == null ? 'true' : 'false' "><mat-icon matDatepickerToggleIcon style="margin-top: -10px;cursor: pointer;"><img src="assets/images/icons/icono_calendar.png" width="20px"></mat-icon></mat-datepicker-toggle>
+                        <!--  <input style="color:#383838" #fechaEnt id="manualFecha2" [min]="minDate2" matInput [matDatepicker]="picker2" placeholder="Fecha" (click)="manualDate2()" (dateChange)="dateEndChange(fechaEnt)" maxlength="10" [disabled]="minDate2 == null ? 'true' : 'false' "> -->
+                                    <input style="color:#383838;cursor: pointer;" #fechaEnt id="manualFecha2" [min]="minDate2" matInput [matDatepicker]="picker2" placeholder="Fecha" (click)="picker2.open()" (dateChange)="dateEndChange(fechaEnt)" maxlength="10" [disabled]="minDate2 == null ? 'true' : 'false' " readonly>
+                                <mat-datepicker #picker2></mat-datepicker>
+                            </div>
+                        </mat-form-field>
+                </div>
+
+            </div>
+
+            <div class="col-xl-7 col-md-9 col-sm-12">
+                <div class="row justify-content-center">
+                    <div class="cont-btns-filtro col-xl-12 col-sm-12"><span style="font-family:sans-serif;color:#383838;">Tipo de auto</span>
+                        <div class="pl-4 pr-5 mt-3">
+                            <div class="text-center row">
+                                <div *ngFor="let car of sltCarList; let i = index;" class="d-flex justify-content-center align-self-center col col-xl-3 col-lg-3 col-md-3 col-sm-6 col-6 pl-0 pr-0">
+                                    <div (click)="onAddingCar(i)" [class]="car.isChecked == true ? 'activado p-2': 'desactivado p-2'">
+                                        <div *ngIf="car.isChecked == true" style="display: flex;">
+                                            <mat-icon style="font-size: 15px;height: 0;">lens</mat-icon><p *ngIf="car.isChecked == true" style="margin-left: 10px;" color="black">{{car.type}}</p>
+                                        </div>
+    
+                                        <img *ngIf="car.isChecked == true" class="m-0" width="100px" [src]="car.select" [alt]="car.type">
+    
+                                        <div *ngIf="car.isChecked == false" style="display: flex;">
+                                            <mat-icon style="font-size: 15px;height: 0;">panorama_fish_eye</mat-icon><p *ngIf="car.isChecked == false" style="margin-left: 10px;" color="black">{{car.type}}</p>
+                                        </div>
+    
+                                        <img *ngIf="car.isChecked == false" class="m-0" width="100px" [src]="car.img" [alt]="car.type"><br>
+                                    </div>
+                                </div>                           
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-2 col-md-12 d-flex justify-content-center align-items-center">
+                <div class="btn btn-cotiza-ya text-white" (click)="onAddingLicenseNl( fechaInicio, fechaEntrega, sltCarList[0]['isChecked'], sltCarList[1]['isChecked'], sltCarList[2]['isChecked'], sltCarList[3]['isChecked'])">Cotiza ya</div>
+<!--                 <label style="color: black;font-size: 10px;"><input type="checkbox" value="0">Licencia en Nuevo León</label>  -->
+            </div>
+
+    </div>
+</div>
+
+        <!--PRIMER ROW PRINCIPAL CONTIENE TODO-->
+
+
+
+
+
+
