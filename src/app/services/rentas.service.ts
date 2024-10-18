@@ -46,7 +46,6 @@ export class RentasService {
    getInitialSearch(from:any, to:any){
      const headers = this.createAuthorizationHeader(); 
      const body={from: from, to: to, fromPlace: 6}
-     console.log(body)
     return this.http.get<any>(this.urlApi+'/initialSearch',{headers:headers,params:body});
    }
 
@@ -54,6 +53,7 @@ export class RentasService {
      const data = {q: 'enviaReservacion', from: from, to: to, modelid: parseInt(modelid)};
      const dato = {data:data};
      //return this.postQuery(data);
+     console.log(dato);
      return this.http.post(this.url, dato);
    }
 
@@ -61,7 +61,6 @@ export class RentasService {
     const headers = this.createAuthorizationHeader(); 
     const body={from: from, to: to, modelId: parseInt(modelid),category:16}
     console.log(body, "bodyyy");
-    console.log(headers, "hhy");
     return this.http.get<any>(this.urlApi+'/additional',{headers:headers,params:body});
    } 
 
@@ -70,7 +69,6 @@ export class RentasService {
      //const body={from: from+' 10:00', to: to+' 10:00', fromPlace: 6}
      //console.log(body);
      //return this.http.get<any>(this.urlApi+'/initialSearch',{headers:headers,params:body});
-     console.log(headers, "Esto es");
     return this.http.get<any>(this.urlApi+'/categories',{headers:headers});
    }
 
@@ -150,7 +148,7 @@ export class RentasService {
 
    subirVideo(archivo:FormData){
     const data = archivo;
-    return this.http.post<FormData>('https://riverorenta.mx/seminuevos/images/vista-360/upload_video_rentas.php', data);
+    return this.http.post<FormData>('https://www.riverorenta.mx/seminuevos/images/vista-360/upload_video_rentas.php', data);
    }
 
 }

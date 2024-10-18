@@ -23,7 +23,7 @@ export const ROUTES: Routes = [
     { path: 'promociones-para-rentar-autos', component: PromocionesParaRentarAutosComponent},
     { path: 'nuestras-unidades', component: NuestrasUnidadesComponent},
     { path: 'empresarial', component: EmpresarialComponent},
-    { path: 'condiciones', component: CondicionesComponent},
+    { path: 'requisitos', component: CondicionesComponent},
     { path: 'aviso-privacidad', component: AvisoPrivacidadComponent},
     { path: 'contacto', component: ContactoComponent},
     { path: 'renta-apps', component: RentaAppsComponent},

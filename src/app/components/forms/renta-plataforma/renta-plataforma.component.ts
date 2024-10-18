@@ -90,10 +90,11 @@ import { ActivatedRoute, Router } from "@angular/router";
         console.log(nombreArchivo);
 
         this.rently.subirVideo(this.formi).subscribe(
-            (res) => console.log(res),
+            (res) => console.log(res,"REss"),
             (err) => {this.status = err.status
 
             if (this.status != "200"){
+                console.log(this.status, "Status");
                 alert('El archivo es demasiado grande para subir.')
             } else {
                 alert('Hemos recibido tus datos.');
