@@ -65,7 +65,7 @@ import { ActivatedRoute, Router } from "@angular/router";
       this.subject = this.nombre+" SE HA CONTACTADO CON NOSOTROS PARA UN TRASLADO CON CHOFER.";
       this.nombre = ", "+this.nombre+" se ha contactado con nosotros por el motivo de traslado con chofer.";
       this.bcc = "ccandelaria@gruporivero.com";
-      this.correoRentas = "jvalles@gruporivero.com";//CAMBIAR A inforenta@gruporivero.com
+      this.correoRentas = "inforenta@gruporivero.com";//CAMBIAR A inforenta@gruporivero.com
   
       if (this.nombre != "" && this.correoRentas != "" && this.telefono != "" && correoCliente != "" ) {
         this.rently.enviarContactoNuevo(this.correoRentas, this.nombre,  this.subject, this.body, this.footer , this.bcc).subscribe(resp =>{

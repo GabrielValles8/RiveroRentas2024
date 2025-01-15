@@ -1,5 +1,5 @@
 <div class="container-fluid p-0">
-    <div class="row bg-home banner-silverado justify-content-center" >
+    <div class="row bg-home banner-silverado justify-content-center">
 
         <app-home-renta id="div-filter" class="col-12 text-white text-center p-0 col justify-content-center"></app-home-renta>
 
@@ -7,17 +7,81 @@
 
     <div class="row justify-content-center m-0" style="background-color: #e9e9e9;">
 
-        <div class="col-12  p-5" style="background-color: #ffffff;">
+        <div class="col-12 p-1" style="background-color: #ffffff;">
             <div class="container">
                 <div class="row" style="justify-content: center;min-height: 250px;">
                     <ng-container *ngIf="carga">
-                        <div class="col-12 col-lg-6 col-md-6 icon-text-view1 text-center align-content-center justify-content-center mx-0 my-4"> <h1 style="font-weight: 600;color: #2880e6;">Flotillas</h1><div class="btn btn-flotillas text-white px-5" (click)="goFlotillas()">Cotiza Flotillas</div></div>
+                        <div class="col-12 col-lg-3 col-md-6 text-center align-content-center justify-content-center mx-0 my-4"><div class="btn btn-flotillas text-white px-5" (click)="goFlotillas()">Cotizar Flotillas</div></div>
                         <!-- <div class="col-12 col-lg-3 col-md-3 icon-text-view2 text-center align-content-center mx-3 my-4" (click)="goRentaApps()"> <h2 style="font-weight: 600;color: #1b3357;" >Renta para Apps de Movilidad</h2><div><img style="width: 150px;" src="assets/images/icons/icon_plataformas.png" ></div> </div> -->
-                        <div class="col-12 col-lg-6 col-md-6 icon-text-view3 text-center align-content-center justify-content-center mx-0 my-4"> <h1 style="font-weight: 600;color: #1b3357;">Eventos</h1><div class="btn btn-flotillas text-white px-2 mb-2" (click)="goTraslados()">Traslado con chofer</div><div class="btn btn-flotillas text-white px-2" (click)="goEventos()">Bodas y XV</div></div>
+                        <div class="col-12 col-lg-3 col-md-6 text-center align-content-center justify-content-center mx-0 my-4"><div class="btn btn-flotillas text-white px-5" (click)="goRentaApps()">Renta para plataforma</div></div>
+                        <div class="col-12 col-lg-3 col-md-6 text-center align-content-center justify-content-center mx-0 my-4"><div class="btn btn-flotillas text-white px-5" (click)="goTraslados()">Renta de traslado con chofer</div></div>
+                        <div class="col-12 col-lg-3 col-md-6 text-center align-content-center justify-content-center mx-0 my-4"><div class="btn btn-flotillas text-white px-5" (click)="goEventos()">Unidades para bodas y XV</div></div>
                     </ng-container>          
                 </div>
             </div>
         </div>
+
+        <div class="container-fluid">
+            <div class="row">
+
+                <div style="position: relative;" class="col col-12 col-xl-6 col-lg-6 col-md-12 col-sm-12 p-0 img-sobrenosotros">
+                    <!-- <img class="img-fluid" src="assets/images/img-quienes-somos.png"/> -->
+                </div>
+
+                <div style="position: absolute;" class="d-lg-none d-md-flex align-items-center justify-content-center">
+                    <div class="p-4">
+                        <h1 class="sobreNosotros pt-1">SOBRE NOSOTROS</h1>
+                        <br/>
+                        <h4 class="misionvision">Nuestra misión:</h4>
+                        <p class="textSobre">Facilitamos tu movilidad para que todos vivamos mejor.</p>
+                        
+                        <h4 class="misionvision">Visión:</h4>
+                        <p class="textSobre">Seremos el grupo automotriz líder en movilidad gracias a un equipo de gente buena que brinda la mejor experiencia a cada cliente.</p>
+                    </div>
+                </div>
+
+                <div class="col col-12 col-xl-6 col-lg-6 col-md-12 col-sm-12 p-4 d-lg-flex d-md-none d-sm-none d-none align-items-center">
+                    <div>
+                        <h1 style="font-family: Owners;color:#1b3357">SOBRE NOSOTROS</h1>
+                        <br/>
+                        <h4 style="font-weight: 600; color:#0084dd">Nuestra misión:</h4>
+                        <p style="font-size: 1.3em;">Facilitamos tu movilidad para que todos vivamos mejor.</p>
+                        
+                        <h4 style="font-weight: 600; color:#0084dd">Visión:</h4>
+                        <p style="font-size: 1.3em;">Seremos el grupo automotriz líder en movilidad gracias a un equipo de gente buena que brinda la mejor experiencia a cada cliente.</p>
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>
+
+        <div class="container-fluid p-4" style="background-color: white;">
+            <div class="row justify-content-center">
+                <h1 class="conoce">CONOCE <span class="conoce" style="color:#0084dd; font-size: 1em;">LOS BENEFICIOS </span>DE RENTAR CON RIVERO:</h1>
+            </div>
+
+            <div class="row justify-content-center">
+                <div *ngFor="let beneficio of beneficios" class="col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12 d-flex justify-content-center align-items-center my-4">
+                    <img class="img-fluid img-beneficios" [src]=beneficio.icono width="20%" />
+                    <div class="divtextoBeneficios"><p class="m-0 texto-beneficios">{{beneficio.texto}}</p></div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="container-fluid d-flex justify-content-center align-items-center renta-ahora p-4">
+            <div class="row d-flex justify-content-center align-items-center" style="height: 100px">
+                <div class="col-12 d-flex justify-content-center align-items-center">
+                    <h1 class="desde1ano mr-2" style="color:#0084dd;">RENTA </h1> <h1 class="desde1ano text-white"> DESDE 1 DÍA HASTA AÑOS</h1>
+                </div>
+
+                <div class="col-12 d-flex justify-content-center align-items-center">
+                    <div class="btn btn-flotillas text-white px-5" style="background-color:#0084dd;" (click)="goRequisitos()">Conoce los requisitos</div>
+                </div>
+            </div>
+        </div>
+
         <div class="container">
             <h3 class="my-3 text-center" style="font-weight: 600;color:#656d78">Promociones</h3>
             <app-promociones [title]="false" [description]="false"></app-promociones>

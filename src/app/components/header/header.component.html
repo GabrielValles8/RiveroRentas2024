@@ -1,29 +1,65 @@
 <nav id="barraMenu" class="bg-white align-items-center header-shadow navbar navbar-expand-lg navbar-light">
     <div class="container">
-        <a href="/home" style="user-select: none;text-decoration:none"><span style="display: flex;align-items: center;" id="logo" class="navbar-brand">
-            <img class="img-brand-primo mx-2" src="assets/images/primorivero.png" alt="Grupo Rivero">    
-            <img class="img-brand mx-2" src="assets/images/logo-rentas-2024.png" alt="Grupo Rivero">
-                <div class="plus-logo" >Fácil y rápido</div>
-            <!-- <div class="plus-logo" style="user-select: none;">DE CARROS<br/> HASTA <br/> FLOTILLAS</div> -->
-        </span></a>
-        <div class="m-0">
+        <nav class="navbar navbar-expand-lg justify-content-between" style="width: 100vw;">
+            <a class="navbar-brand" href="/home" style="user-select: none;text-decoration:none"><span style="display: flex;align-items: center;" id="logo">
+                <img class="img-brand-primo mx-2" src="assets/images/primorivero.png" alt="Grupo Rivero">    
+                <img class="img-brand mx-2" src="assets/images/logo-rentas-2024.png" alt="Grupo Rivero">
+            </span></a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            <div class="collapse navbar-collapse" style="justify-content: end;" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="d-flex nav-item active p-2 mx-4 align-items-center">
+                    <a  class="btn nav-item-header nav-link p-0" style="float:left;justify-content: center;" href="nuestras-unidades">Nuestras unidades
+                    </a>
+                  </li>
+
+                  <li class="d-flex nav-item active p-2 mx-4 align-items-center">
+                    <a  class="btn nav-item-header nav-link p-0" style="float:left;justify-content: center;" href="requisitos">Requisitos
+                    </a>
+                  </li>
+
+                  <li class="d-flex nav-item active p-2 mx-4 align-items-center">
+                    <a  class="btn nav-item-header nav-link p-0" style="float:left;justify-content: center;" href="blog">Blog
+                    </a>
+                  </li>
+
+                  <li class="nav-item active p-2 mx-4 align-items-center" style="width: 135px;">
+                    <a class="my-1" target="_blank" href="tel:8111608666" data-rb-event-key="tel:8111608666">
+                        <img class="contact-icon-header" src="assets/images/llamar.png" alt="Grupo Rivero">
+                    </a>
+                    <a *ngIf="home == true" class="my-1" target="_blank" href="https://wa.me/+528110441044" data-rb-event-key="https://wa.me/+528110441044"> 
+                        <img class="contact-icon-header my-1" src="assets/images/whatsapp.png" alt="Grupo Rivero">
+                    </a>
+                    <a *ngIf="home == false" class="my-1" target="_blank" href="https://wa.me/+528182523748" data-rb-event-key="https://wa.me/+528182523748"> 
+                        <img class="contact-icon-header my-1" src="assets/images/whatsapp.png" alt="Grupo Rivero">
+                    </a>
+                  </li>
+                </ul>
+            </div>
+
+        </nav>
+
+<!--         <div class="m-0">
                            
-                <div class="my-1 my-lg-0 small-menu-text">
-                    <a target="_blank" href="tel:8111608666" data-rb-event-key="tel:8111608666" class="mt-2 NavlabelLlamada btn nav-link " style="float:left">
-                        <img width="40px" src="assets/images/icons/telefono.svg" alt="telefono">
-                    </a>
-                    <a target="_blank" href="https://wa.me/+528110441044" data-rb-event-key="https://wa.me/+528110441044" class="btn NavlabelWhatsapp nav-link " style="float:left">
-                        <img width="50px" src="assets/images/icons/whatsapp.jpg" alt="whatsapp"> <br> 
-                        <label class="labelWhatsapp mt-2">Whatsapp</label>
-                    </a>
-                    <a *ngIf="home == true" class="btn nav-link NavBotonUnidades" style="float:left;justify-content: center;margin-top: 20px;" href="nuestras-unidades">
-                        <div style="display: flex; justify-content: center;min-width: 180px;color: white;box-shadow:none;font-weight: 600;" class="boton-border boton-home p-1">Nuestras unidades</div>
-                    </a>
-                </div>
-                <a *ngIf="home == true" class="btn NavlabelWhatsapp-movil nav-link p-0" style="float:left;justify-content: center;" href="nuestras-unidades">
-                    <div style="display: flex; justify-content: center;min-width: 140px;color: white;box-shadow:none;font-weight: 600;" class="boton-border boton-home p-1">Nuestras unidades</div>
+            <div class="my-1 my-lg-0 small-menu-text">
+                <a target="_blank" href="tel:8111608666" data-rb-event-key="tel:8111608666" class="mt-2 NavlabelLlamada btn nav-link " style="float:left">
+                    <img width="40px" src="assets/images/icons/telefono.svg" alt="telefono">
                 </a>
+                <a target="_blank" href="https://wa.me/+528110441044" data-rb-event-key="https://wa.me/+528110441044" class="btn NavlabelWhatsapp nav-link " style="float:left">
+                    <img width="50px" src="assets/images/icons/whatsapp.jpg" alt="whatsapp"> <br> 
+                    <label class="labelWhatsapp mt-2">Whatsapp</label>
+                </a>
+                <a *ngIf="home == true" class="btn nav-link NavBotonUnidades" style="float:left;justify-content: center;margin-top: 20px;" href="nuestras-unidades">
+                    <div style="display: flex; justify-content: center;min-width: 180px;color: white;box-shadow:none;font-weight: 600;" class="boton-border boton-home p-1">Nuestras unidades</div>
+                </a>
+            </div>
+            <a *ngIf="home == true" class="btn NavlabelWhatsapp-movil nav-link p-0" style="float:left;justify-content: center;" href="nuestras-unidades">
+                <div style="display: flex; justify-content: center;min-width: 140px;color: white;box-shadow:none;font-weight: 600;" class="boton-border boton-home p-1">Nuestras unidades</div>
+            </a>
                 
-        </div>
+        </div> -->
     </div>
 </nav>

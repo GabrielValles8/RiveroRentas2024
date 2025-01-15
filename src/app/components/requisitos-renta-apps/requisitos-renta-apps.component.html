@@ -5,9 +5,9 @@
 <div class="container p-4">
 
     <div class="my-2" style="background-color: #083261;padding: .5em;">
-        <div class="d-flex row m-0" style="background-color: #0185e8;border-radius: 5px; padding: 10px;">
+        <div class="d-flex row m-0" style="background-color: #083261;border-radius: 5px; padding: 10px;">
             <div class="col-12">
-                <h1 class="text-center text-white titulo-nuestrasUnidades" style="font-weight: 600;">¿Qué necesito?</h1>
+                <h1 class="text-center text-white titulo-nuestrasUnidades" style="font-weight: 600;font-family: Owners;">¿Qué necesito?</h1>
             </div>
         </div>
     </div>
@@ -42,7 +42,7 @@
                     <img class="iconoRequisitos" src="assets/images/requisitos/icono_constacia.png">
                 </div>
                 <div class="text-center p-3 py-4">
-                    <p style="font-size: 1.7em;">Contar con <br>Constancia de <br>Situación Fiscal <br>actualizada al 2023</p>
+                    <p style="font-size: 1.7em;">Contar con <br>Constancia de <br>Situación Fiscal <br>actualizada</p>
                 </div>
             </div>
         </div>
@@ -75,7 +75,7 @@
                     <img class="iconoRequisitos" src="assets/images/requisitos/icono_monterrey.png">
                 </div>
                 <div class="text-center p-4">
-                    <p style="font-size: 1.7em;">Vivir en<br>Monterrey</p>
+                    <p style="font-size: 1.7em;">Vivir en<br>el área metropolitana de Monterrey</p>
                 </div>
             </div>
         </div>
@@ -86,7 +86,7 @@
                     <img class="iconoRequisitos" src="assets/images/requisitos/icono_ine_licencia.png">
                 </div>
                 <div class="text-center p-4">
-                    <p style="font-size: 1.7em;">Tener INE y licencia vigentes</p>
+                    <p style="font-size: 1.4em;">Tener INE y licencia vigentes (Tipo C, T y EU)</p>
                 </div>
             </div>
         </div>
@@ -105,12 +105,65 @@
     </div>
 
     <div class="d-flex justify-content-center">
-        <div class="bg-primary text-white py-2 px-5" style="font-size: 2em;border-radius: 10px;cursor: pointer;" data-toggle="modal" data-target="#exampleModal">¡Lo quiero!</div>
+        <div class="bg-primary text-white py-2 px-5" style="font-size: 2em;border-radius: 10px;cursor: pointer;font-family: Owners;" data-toggle="modal" data-target="#exampleModal">¡Lo quiero!</div>
+    </div>
+
+    <div class="modal fade" style="margin-top: 125px;" id="exampleModal" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    ¡RENTA AHORA!
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group col-12">
+                                <input #nombreI class="form-control" type="text" placeholder="Nombre y apellidos" (change)="nombre = nombreI.value" onkeydown="return /[a-z, ]/i.test(event.key)"/>
+                            </div>
+                            <div class="form-group col-12">
+                                <select #plataformaI class="form-control" type="text" placeholder="Plataforma" (change)="plataforma = plataformaI.value" onkeydown="return /[a-z, ]/i.test(event.key)">
+                                    <option value="Didi">Didi</option>
+                                    <option value="Uber">Uber</option>
+                                    <option value="InDrive">InDrive</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-6">
+                                <label>Tiempo Activo en Plataforma:</label>
+                                <select #tiempoI class="form-control" type="text" placeholder="Tiempo" (change)="tiempo = tiempoI.value" onkeydown="return /[a-z, ]/i.test(event.key)">
+                                    <option value="Menos2Meses">Menos de 60 días</option>
+                                    <option value="Entre_2_y_6_meses">Entre 2 y 6 meses</option>
+                                    <option value="Mas_de_6_meses">Más de 6 meses</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-12">
+                                <input #correoI class="form-control" type="email" placeholder="Correo" (change)="correo = correoI.value" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
+                            </div>
+                            <div class="form-group col-12">
+                                <input #telefonoI class="form-control" type="text" placeholder="Teléfono" (change)="telefono = telefonoI.value" maxlength="10" onkeypress="return /[0-9]/i.test(event.key)"/>
+                            </div>
+    
+                            <div class="form-group col-12">
+                                <textarea #mensajeI class="form-control" placeholder="Deja tu mensaje (opcional)" rows="5" (change)="mensaje = mensajeI.value"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                    <hr/>
+                    <div class="row justify-content-center">
+                        <div class="col-5"> 
+                            <div class="boton boton-primario text-center" (click)="correoCliente()" data-dismiss="modal">Enviar</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- MODAL -->
 
-    <div class="modal fade" style="margin-top: 125px;" id="exampleModal" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!--     <div class="modal fade" style="margin-top: 125px;" id="exampleModal" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -124,6 +177,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 </div>

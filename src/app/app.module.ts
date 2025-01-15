@@ -44,6 +44,7 @@ import { RequisitosRentaAppsComponent } from './components/requisitos-renta-apps
 import { TrasladosChoferComponent } from './components/traslados-chofer/traslados-chofer.component';
 import { FormTrasladosChoferComponent } from './components/forms/traslado-chofer/traslado-chofer-form.component';
 import { EventosComponent } from './components/eventos/eventos.component';
+import { BlogComponent } from './components/blog/blog.component';
 
 
 @NgModule({
@@ -73,7 +74,8 @@ import { EventosComponent } from './components/eventos/eventos.component';
     RequisitosRentaAppsComponent,
     TrasladosChoferComponent,
     FormTrasladosChoferComponent,
-    EventosComponent
+    EventosComponent,
+    BlogComponent
     
   ],
   imports: [

@@ -23,13 +23,21 @@ export class HeaderComponent implements OnInit {
       // los eventos de navegación son varios así que se filtra solo uno
       setTimeout(() => {
       if(e instanceof NavigationEnd){
+        console.log(this.router);
          this.registrar(this.router.url);
+
+         const urlPosition = e.urlAfterRedirects;
+
+         const urlParts = e.urlAfterRedirects.split("/");
+         console.log(urlParts)
+
          if (e.urlAfterRedirects == '/home'){
             this.home = true;
-         } else {
+         } else if (urlParts[1] == 'renta-apps' || urlParts[1] == 'requisitos-renta-apps'){
           this.home = false;
+          console.log("No soy home");
          }
-         console.log(e.url);
+         
       }
      
       }, 10);

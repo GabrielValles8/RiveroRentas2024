@@ -13,6 +13,7 @@ import { RentaAppsComponent } from "./components/renta-apps/renta-apps.component
 import { RequisitosRentaAppsComponent } from "./components/requisitos-renta-apps/requisitos-renta-apps.component";
 import { TrasladosChoferComponent } from './components/traslados-chofer/traslados-chofer.component';
 import { EventosComponent } from './components/eventos/eventos.component';
+import { BlogComponent } from './components/blog/blog.component';
 
 import { IconTextViewComponent } from './components/layouts/icon-text-view/icon-text-view.component';
 
@@ -27,9 +28,10 @@ export const ROUTES: Routes = [
     { path: 'aviso-privacidad', component: AvisoPrivacidadComponent},
     { path: 'contacto', component: ContactoComponent},
     { path: 'renta-apps', component: RentaAppsComponent},
-    { path: 'requisitos-renta-apps/:modelid', component: RequisitosRentaAppsComponent},
+    { path: 'requisitos-renta-apps/:modelCode', component: RequisitosRentaAppsComponent},
     { path: 'traslados-chofer', component: TrasladosChoferComponent},
     { path: 'evento', component: EventosComponent},
+    { path: 'blog', component: BlogComponent},
     { path: 'mil-gracias-por-tu-tiempo/:sensor', component: MilGraciasPorTuTiempoComponent},
     { path: '', pathMatch: 'full', redirectTo: 'home'},
     { path: '**', pathMatch: 'full', redirectTo: 'home'}

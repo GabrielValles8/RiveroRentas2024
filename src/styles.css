@@ -2,6 +2,11 @@
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;900&display=swap");
 
+@font-face{
+    font-family: Owners;
+    src: url('../src/assets/fonts/owners-narrow-black.ttf');
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -99,6 +104,42 @@ body {
     background-color: rgba(0,0,0,0.6);;
 }
 
+.img-sobrenosotros{
+    background-image: url("../src/assets/images/img-quienes-somos.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 10% 30%;
+    height: 400px;
+}
+
+.banner-plataformas{
+    background-image: url("../src/assets/images/rivero_renta_plataformas.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 10% 30%;
+    height: 450px;
+}
+
+.banner-blog{
+    background-image: url("../src/assets/images/banner_blog.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 100% 50%;
+    height: 480px;
+}
+
+.renta-ahora{
+    background-image: url("../src/assets/images/renta-desde-1-ano.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 30% 50%;
+    height: 400px;
+}
+
+.desde1ano{
+    font-family: Owners;
+    font-size: 4em;
+}
 
 
 /* @keyframes slidein-p {
@@ -466,7 +507,7 @@ color: rgb(255, 255, 255);
 }
 
 .banner-auto-interior, .banner-silverado {
-    background-position: center;
+    background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;
     height: 100%;
@@ -479,11 +520,8 @@ color: rgb(255, 255, 255);
 /*     background: linear-gradient(to bottom, transparent, rgb(255, 255, 255)),
     url("assets/images/banners/banner-princip.jpg"); */
     background-color: #083261;
-    padding: 1em;
-    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-
 }
 
 .banner-silverado-active{
@@ -494,12 +532,10 @@ color: rgb(255, 255, 255);
 
 .div-banner-home{
     padding: 1em;
-    border-radius: 10px;
-    background-image: url("assets/images/fondo_home_1.png");
-    background-position:50% 70%;
+    background-image: url("assets/images/banner_rivero_renta.png");
     background-repeat: no-repeat;
     background-size: cover;
-
+    background-position: 50% 0%;
 }
 
 .row{
@@ -664,11 +700,12 @@ color: rgb(255, 255, 255);
     height: auto;
     margin-left: 210px;
     margin-right: 210px;
+    margin-bottom: 20px;
     animation: EntrarDesdeAbajo .5s;
 }
 
 .slogan-home1{
-    margin-top: 190px;
+    margin-top: 80px;
     margin-left: 210px;
     color: white; 
     text-align: left;
@@ -758,6 +795,12 @@ color: rgb(255, 255, 255);
     justify-content: center;
     padding-top: 0;
     margin-top: -90px;
+}
+
+.row-banner-plataformas{
+    justify-content: center;
+    padding-top: 0;
+    margin-top: -50px;
 }
 
 .row-contacto{
@@ -867,6 +910,12 @@ width: 100%;
     animation: EntrarDesdeArriba 1s;
 }
 
+.titulo-plataformas{
+    font-size: 4em!important;
+    animation: EntrarDesdeArriba 1s;
+    margin-top: -35px!important;
+}
+
 .titulo-traslado{
     font-size: 3em!important;
     animation: EntrarDesdeArriba 1s;
@@ -874,8 +923,7 @@ width: 100%;
 }
 
 .logoPlataformas{
-    width: 150px;
-    padding: 5px;
+    width: 550px;
 }
 
 .logoPlataformasR{
@@ -928,6 +976,62 @@ width: 100%;
     color: #656d78;
 }
 
+.nav-item-header{
+    font-weight: 600;
+    font-size: 1.5em;
+    color: #083261!important;
+}
+
+.contact-icon-header{
+    width: 130px;
+}
+
+.contact-icon-header-movil{
+    display: none;
+}
+
+.sobreNosotros{
+    font-family: Owners;
+    color:#083261;
+    font-size: 1.3em;
+    background-color: rgba(207, 207, 207, 0.548);
+    border-radius: 5px;
+    text-align: center;
+}
+
+.misionvision{
+    font-weight: 600;
+    color:#0084dd;
+    font-size: 1em;
+}
+
+.textSobre{
+    font-size: .8em;
+    color: white;
+    text-shadow: 2px 1px black;
+}
+
+.conoce{
+    font-family: Owners;
+    color:#083261;
+    font-size: 3.5em;
+    text-align: center;
+}
+
+.divtextoBeneficios{
+    width: 350px;
+    margin: 15px;
+}
+
+.texto-beneficios{
+    font-size: 1.5em;
+    color: rgb(110, 110, 110);
+}
+
+.img-beneficios{
+    width: 15%;
+}
+
 @media screen and (max-width: 2800px){
 
     .filtro-home{
@@ -936,11 +1040,12 @@ width: 100%;
         height: auto;
         margin-left: 300px;
         margin-right: 300px;
+        margin-bottom: 20px;
         animation: EntrarDesdeAbajo .5s;
     }
 
     .slogan-home1{
-        margin-top: 190px;
+        margin-top: 80px;
         margin-left: 300px;
         color: white; 
         text-align: left;
@@ -970,6 +1075,14 @@ width: 100%;
         background-color: #083261;
         border-radius: 10px;
         margin-top: 10px;
+    }
+
+    .img-sobrenosotros{
+        background-image: url("../src/assets/images/img-quienes-somos.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 10% 30%;
+        height: 400px;
     }
 }
 
@@ -981,11 +1094,12 @@ width: 100%;
         height: auto;
         margin-left: 170px;
         margin-right: 170px;
+        margin-bottom: 20px;
         animation: EntrarDesdeAbajo .5s;
     }
 
     .slogan-home1{
-        margin-top: 190px;
+        margin-top: 80px;
         margin-left: 170px;
         color: white; 
         text-align: left;
@@ -1016,6 +1130,14 @@ width: 100%;
         border-radius: 10px;
         margin-top: 10px;
     }
+
+    .img-sobrenosotros{
+        background-image: url("../src/assets/images/img-quienes-somos.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 10% 30%;
+        height: 400px;
+    }
 }
 
 @media screen and (max-width: 1500px){
@@ -1026,11 +1148,12 @@ width: 100%;
         height: auto;
         margin-left: 150px;
         margin-right: 150px;
+        margin-bottom: 20px;
         animation: EntrarDesdeAbajo .5s;
     }
 
     .slogan-home1{
-        margin-top: 190px;
+        margin-top: 100px;
         margin-left: 150px;
         color: white; 
         text-align: left;
@@ -1061,28 +1184,16 @@ width: 100%;
         border-radius: 10px;
         margin-top: 10px;
     }
+
+    .img-sobrenosotros{
+        background-image: url("../src/assets/images/img-quienes-somos.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 10% 30%;
+        height: 400px;
+    }
 }
 @media screen and (max-width: 1199px){
-.icon-text-view1 {
-    margin: 20px;
-    font-size: 14px;
-    text-align: center;
-    border-right: 2px solid  rgb(176 180 184 / 63%);
-}
-
-.icon-text-view2 {
-    margin: 20px;
-    font-size: 14px;
-    text-align: center;
-    cursor: pointer;
-}
-
-.icon-text-view3 {
-    margin: 20px;
-    font-size: 14px;
-    text-align: center;
-    border-left: 2px solid  rgb(176 180 184 / 63%);
-}
 
 .div-filter-Active{
     display: contents;
@@ -1094,34 +1205,10 @@ width: 100%;
 
 }
 
-.icon-text-view1 {
-    display: grid;
-    color: rgb(176 180 184 / 63%);
-    width: 100%;
-    height: 230px;
-    border-right: 2px solid  rgb(176 180 184 / 63%);
-}
-
-.icon-text-view2 {
-    display: grid;
-    color: rgb(176 180 184 / 63%);
-    width: 100%;
-    height: 230px;
-    cursor: pointer;
-}
-
-.icon-text-view3 {
-    display: grid;
-    color: rgb(176 180 184 / 63%);
-    width: 100%;
-    height: 230px;
-    border-left: 2px solid  rgb(176 180 184 / 63%);
-}
-
 .btn-flotillas{
     width: auto;
     height: auto;
-    background-color: #2880e6;
+    background-color: #1b3357;
     font-size: 1.5em;
     font-weight: 600;
     border-radius: 10px;
@@ -1154,6 +1241,14 @@ width: 100%;
     font-weight: 600;
     background-color: #1b3357;
     margin-bottom: 10px;
+}
+
+.img-sobrenosotros{
+    background-image: url("../src/assets/images/img-quienes-somos.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 10% 30%;
+    height: 400px;
 }
 
 @media screen and (max-width: 991px){
@@ -1204,6 +1299,91 @@ width: 100%;
         font-size: 10px;
         margin: 0;
         color: #656d78;
+    }
+
+    .contact-icon-header-movil{
+        height: 40px;
+        display: block;
+    }
+
+    .contact-icon-header{
+        display: none;
+    }
+
+    .sobreNosotros{
+        font-size: 2em;
+    }
+    
+    .misionvision{
+        font-size: 1.6em;
+    }
+    
+    .textSobre{
+        font-size: 1.2em;
+    }
+
+    .conoce{
+        font-weight: 600;
+        color:#083261;
+        font-size: 1.8em;
+        text-align: center;
+    }
+    
+    .divtextoBeneficios{
+        width: 250px;
+        margin: 12px;
+    }
+    
+    .texto-beneficios{
+        font-size: 1em;
+        color: rgb(110, 110, 110);
+    }
+    
+    .img-beneficios{
+        width: 12%;
+    }
+
+    .div-banner-home{
+        background-position: 50%;
+    }
+
+    .slogan-home1{
+        margin-left: 10px;
+    }
+
+    .slogan-home2{
+        margin-left: 10px;
+    }
+
+    .slogan-home3{
+        margin-left: 10px;
+    }
+
+    .img-sobrenosotros{
+        filter: brightness(30%)!important;
+        height: 255px;
+    }
+
+    .desde1ano{
+        font-family: Owners;
+        font-size: 2em;
+    }
+
+    .banner-plataformas{
+        background-position: 10% 30%;
+        height: 300px;
+    }
+
+    .titulo-plataformas{
+        font-size: 3em!important;
+        animation: EntrarDesdeArriba 1s;
+        margin-top: -20px!important;
+    }
+
+    .banner-blog{
+        background-size: cover;
+        background-position: 0% 50%;
+        height: 300px;
     }
 
 }
@@ -1332,30 +1512,23 @@ width: 90%!important;
     padding-left: 3.5rem!important;
 }
 
-.icon-text-view1 {
-    display: grid;
-    color: rgb(176 180 184 / 63%);
-    width: 100%;
-    height: 230px;
-    border-right: none;
+.renta-ahora{
+    background-position: 30% 50%;
+    height: 200px;
 }
 
-.icon-text-view2 {
-    display: grid;
-    color: rgb(176 180 184 / 63%);
-    width: 100%;
-    height: 230px;
-    border-bottom: 2px solid  rgb(176 180 184 / 63%);
-    border-top: 2px solid  rgb(176 180 184 / 63%);
-    cursor: pointer;
+.banner-plataformas{
+ display: none;
 }
 
-.icon-text-view3 {
-    display: grid;
-    color: rgb(176 180 184 / 63%);
-    width: 100%;
-    height: 230px;
-    border-left: none;
+.titulo-plataformas{
+    font-size: 2em!important;
+    animation: EntrarDesdeArriba 1s;
+    margin-top: -10px!important;
+}
+
+.div-row-plataformas{
+    margin-top: 50px;
 }
 
 }
@@ -1395,6 +1568,10 @@ width: 50%!important;
 
 .div-row-contacto{
     margin-top: -500px;
+}
+
+.div-row-plataformas{
+    margin-top: 50px;
 }
 
 .title-gris{
@@ -1505,6 +1682,12 @@ width: 50%!important;
     font-size: 1.2em!important;
 }
 
+.titulo-plataformas{
+    font-size: 1.5em!important;
+    animation: EntrarDesdeArriba 1s;
+    margin-top: 2px!important;
+}
+
 .titulo-traslado{
     font-size: 1.5em!important;
     margin-top: 20px!important;
@@ -1579,6 +1762,32 @@ width: 50%!important;
     border: #FFF solid 1px;
     border-radius: 10px;
     padding: 7px;
+}
+
+.sobreNosotros{
+    font-size: 1.6em;
+}
+
+.misionvision{
+    font-size: 1.2em;
+}
+
+.textSobre{
+    font-size: .8em;
+}
+
+.div-banner-home{
+    background-position: 55%;
+}
+
+.img-sobrenosotros{
+    height: 225px;
+}
+
+.banner-blog{
+    background-size: cover;
+    background-position: 10% 50%;
+    height: 200px;
 }
 
 /* .btn-equis{

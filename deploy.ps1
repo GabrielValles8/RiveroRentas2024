@@ -1,0 +1,7 @@
+#!pwsh
+$bucket = "riverorenta.com"
+$cloudfront_id = "E3AXIRJJ9WXKI"
+$profile = "rivero"
+
+aws --profile="$profile" s3 sync ./dist/riverorentas "s3://$bucket"
+aws --profile="$profile" cloudfront create-invalidation --distribution-id "$cloudfront_id" --paths "/*"
