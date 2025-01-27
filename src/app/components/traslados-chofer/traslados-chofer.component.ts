@@ -81,12 +81,13 @@ export class TrasladosChoferComponent {
   correoCliente(){
     this.loadedSpiner = true;
     let correoCliente = this.correo;
+    let nombreCliente = this.nombre;
 
     this.bodyCliente+= "<div style='justify-content:center;background-color:white;border-radius:10px;padding:5px;'><center><img style='width:4em;margin-right:10px;' src='https://riverorenta.com/assets/images/primorivero.png' alt='Rivero'/><img style='width:7em;' src='https://riverorenta.com/assets/images/logo-rentas-2024.png' alt='Rivero'/></center>"+
     "<h3 style='text-align:center;margin:0px;color:black;'>¡Tu asesor de Confianza!</h3>"+
     "<h2 style='text-align:center;color:black;'>¡GENIAL! YA TIENES TU COTIZACIÓN LISTA</h2>"+
     "<h3 style='text-align:center;color:black;'>Te contactaremos lo más pronto posible para finalizar tu reservación</h3>"+
-    "<center><h3 style='text-align:center;color:black;'>"+this.nombre+"</h3><img style='width:20em;' src='"+this.imgUrl+"' alt='Rivero'/></center>"+
+    "<center><h3 style='text-align:center;color:black;'>"+nombreCliente+"</h3><img style='width:20em;' src='"+this.imgUrl+"' alt='Rivero'/></center>"+
 
     "<center><table  width='450px;' BORDER CELLPADDING=10 CELLSPACING=0>"+
 
@@ -100,10 +101,10 @@ export class TrasladosChoferComponent {
     "<center><a style='text-align:center;margin:0px;color:black;' href='https://riverorenta.com/aviso-privacidad'>https://riverorenta.com/aviso-privacidad</a></center>"+
     "</div>";
 
-    this.subject = " ¡COTIZACIÓN LISTA! "+ this.nombre+" haz realizado una cotización con éxito, encontrarás en este correo la información completa para tu reserva.";
+    this.subject = " ¡COTIZACIÓN LISTA! "+ nombreCliente+" haz realizado una cotización con éxito, encontrarás en este correo la información completa para tu reserva.";
     this.bcc = "inforenta@gruporivero.com";
 
-    if (this.nombre != "" && /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(correoCliente) && this.telefono != "" && this.dia != "" && this.hora != "" && this.municipio != "") {
+    if (this.nombre != "" && /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(correoCliente)== true && this.telefono != "" && this.dia != "" && this.hora != "" && this.municipio != "") {
       this.rently.enviarContactoNuevo(correoCliente, this.nombre,  this.subject, this.bodyCliente, this.footer , this.bcc).subscribe(resp =>{
         this.isLoaded = true;
         this.reservarCorreo();
@@ -117,7 +118,7 @@ export class TrasladosChoferComponent {
     }  else {
       this.loadedSpiner = false;
       this.isLoaded = false;
-        if (!/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(this.correo)){
+        if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(correoCliente) == false){
           alert("Correo Inválido. Verifique que esté bien escrito.")
         } else {
           alert("Complete todos los campos.")
@@ -129,6 +130,7 @@ export class TrasladosChoferComponent {
   reservarCorreo(){
 
     let correoCliente = this.correo;
+    let nombreCliente = this.nombre;
 
     console.log(this.nombre, this.correo , this.telefono , correoCliente, this.hora);
 
@@ -138,7 +140,7 @@ export class TrasladosChoferComponent {
     "<table width='600px;' BORDER CELLPADDING=10 CELLSPACING=0>"+
 
     "<tr><th colspan=2>CLIENTE</th></tr>"+
-    "<tr><th>Nombre:</th><td>"+this.nombre+"</td></tr>"+
+    "<tr><th>Nombre:</th><td>"+nombreCliente+"</td></tr>"+
     "<tr><th>Correo:</th><td>"+correoCliente+"</td></tr>"+
     "<tr><th>Telefono:</th><td>"+this.telefono+"</td></tr>"+
     "<tr><th>Día:</th><td>"+this.dia+"</td></tr>"+
@@ -154,14 +156,14 @@ export class TrasladosChoferComponent {
     this.body+="</td></tr>"+
     "</table>";
 
-    this.subject = this.nombre+" SE HA CONTACTADO CON NOSOTROS PARA UN TRASLADO CON CHOFER.";
-    this.nombre = ", "+this.nombre+" se ha contactado con nosotros por el motivo de traslado con chofer.";
+    this.subject = nombreCliente+" SE HA CONTACTADO CON NOSOTROS PARA UN TRASLADO CON CHOFER.";
+    this.nombre = ", "+nombreCliente+" se ha contactado con nosotros por el motivo de traslado con chofer.";
     this.bcc = "inforenta@gruporivero.com";
     this.correoRentas = "inforenta@gruporivero.com";//CAMBIAR A inforenta@gruporivero.com
 
     console.log(this.body);
 
-    if (this.nombre != "" && /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(this.correo) && this.correoRentas != "" && this.telefono != "" && correoCliente != "" && this.dia != "" && this.hora != "" && this.municipio != "" ) {
+    if (nombreCliente != "" && /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(correoCliente) == true && this.correoRentas != "" && this.telefono != "" && correoCliente != "" && this.dia != "" && this.hora != "" && this.municipio != "" ) {
       this.rently.enviarContactoNuevo(this.correoRentas, this.nombre,  this.subject, this.body, this.footer , this.bcc).subscribe(resp =>{
 
         this.router.navigate(['mil-gracias-por-tu-tiempo',this.sensor]);
@@ -174,7 +176,7 @@ export class TrasladosChoferComponent {
     }  else {
       this.loadedSpiner = false;
       this.isLoaded = false;
-        if (!/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(this.correo)){
+        if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(correoCliente) == false){
           alert("Correo Inválido. Verifique que esté bien escrito.")
         } else {
           alert("Complete todos los campos.")

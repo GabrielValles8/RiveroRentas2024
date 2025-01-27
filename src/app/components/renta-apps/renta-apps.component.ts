@@ -113,7 +113,7 @@ export class RentaAppsComponent {
     }  else {
       this.loadedSpiner = false;
       this.isLoaded = false;
-        if (!/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(this.correo)){
+        if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(this.correo)){
           alert("Correo Inválido. Verifique que esté bien escrito.")
         } else {
           alert("Complete todos los campos1.")
@@ -169,7 +169,7 @@ export class RentaAppsComponent {
     }  else {
       this.loadedSpiner = false;
       this.isLoaded = false;
-        if (!/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(this.correo)){
+        if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(this.correo)){
           alert("Correo Inválido. Verifique que esté bien escrito.")
         } else {
           alert("Complete todos los campos2.")

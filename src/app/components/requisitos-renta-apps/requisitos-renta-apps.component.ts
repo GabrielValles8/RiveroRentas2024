@@ -87,7 +87,7 @@ export class RequisitosRentaAppsComponent {
         this.isLoaded = true;
         this.reservarCorreo();
     }  else {
-        if (!/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(this.correo)){
+        if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(this.correo)){
           alert("Correo Inválido. Verifique que esté bien escrito.")
         } else {
           alert("Complete todos los campos.")
@@ -99,6 +99,7 @@ export class RequisitosRentaAppsComponent {
   reservarCorreo(){
 
     let correoCliente = this.correo;
+    let nombreCliente = this.nombre;
 
     console.log(this.nombre, this.correo , this.telefono , correoCliente, this.hora);
 
@@ -108,7 +109,7 @@ export class RequisitosRentaAppsComponent {
     "<table width='600px;' BORDER CELLPADDING=10 CELLSPACING=0>"+
 
     "<tr><th colspan=2>CLIENTE</th></tr>"+
-    "<tr><th>Nombre:</th><td>"+this.nombre+"</td></tr>"+
+    "<tr><th>Nombre:</th><td>"+nombreCliente+"</td></tr>"+
     "<tr><th>Plataforma:</th><td>"+this.plataforma+"</td></tr>"+
     "<tr><th>Tiempo en Activo:</th><td>"+this.tiempo+"</td></tr>"+
     "<tr><th>Correo:</th><td>"+correoCliente+"</td></tr>"+
@@ -123,14 +124,14 @@ export class RequisitosRentaAppsComponent {
     this.body+="</td></tr>"+
     "</table>";
 
-    this.subject = this.nombre+" HA REALIZADO UNA SOLICITUD DE RENTA PARA PLATAFORMA.";
-    this.nombre = ", "+this.nombre+" se ha contactado con nosotros para solicitar un vehículo para plataforma.";
+    this.subject = nombreCliente+" HA REALIZADO UNA SOLICITUD DE RENTA PARA PLATAFORMA.";
+    this.nombre = ", "+nombreCliente+" se ha contactado con nosotros para solicitar un vehículo para plataforma.";
     this.bcc = "jvalles@gruporivero.com";
     this.correoRentas = "ccandelaria@gruporivero.com,rentas@gruporivero.com";//CAMBIAR A inforenta@gruporivero.com
 
     console.log(this.body);
 
-    if (this.nombre != "" && /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(this.correo) && this.correoRentas != "" && this.telefono != "" && correoCliente != "") {
+    if (nombreCliente != "" && /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(correoCliente)== true && this.correoRentas != "" && this.telefono != "" && correoCliente != "") {
       this.rently.enviarContactoNuevo(this.correoRentas, this.nombre,  this.subject, this.body, this.footer , this.bcc).subscribe(resp =>{
 
         this.router.navigate(['mil-gracias-por-tu-tiempo',this.sensor]);
@@ -143,7 +144,7 @@ export class RequisitosRentaAppsComponent {
     }  else {
       this.loadedSpiner = false;
       this.isLoaded = false;
-        if (!/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(this.correo)){
+        if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(correoCliente)== false){
           alert("Correo Inválido. Verifique que esté bien escrito.")
         } else {
           alert("Complete todos los campos2.")

@@ -11,7 +11,7 @@ import {NavigationEnd, NavigationStart,Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  home:boolean=true;
+  home:number=1;
 
   constructor(private router: Router) { 
 
@@ -32,10 +32,11 @@ export class HeaderComponent implements OnInit {
          console.log(urlParts)
 
          if (e.urlAfterRedirects == '/home'){
-            this.home = true;
+            this.home = 1;
          } else if (urlParts[1] == 'renta-apps' || urlParts[1] == 'requisitos-renta-apps'){
-          this.home = false;
-          console.log("No soy home");
+          this.home = 2;
+         } else if (urlParts[1] == 'traslados-chofer' || urlParts[1] == 'evento'){
+          this.home = 3;
          }
          
       }

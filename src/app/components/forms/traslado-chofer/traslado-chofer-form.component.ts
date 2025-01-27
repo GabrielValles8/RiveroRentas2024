@@ -40,7 +40,8 @@ import { ActivatedRoute, Router } from "@angular/router";
     reservarCorreo(){
 
       let correoCliente = this.correo;
-  
+      let nombreCliente = this.nombre;
+
       this.loadedSpiner = true;
   
       console.log(this.nombre, this.correo , this.telefono , correoCliente, this.hora);
@@ -51,7 +52,7 @@ import { ActivatedRoute, Router } from "@angular/router";
       "<table width='600px;' BORDER CELLPADDING=10 CELLSPACING=0>"+
   
       "<tr><th colspan=2>CLIENTE</th></tr>"+
-      "<tr><th>Nombre:</th><td>"+this.nombre+"</td></tr>"+
+      "<tr><th>Nombre:</th><td>"+nombreCliente+"</td></tr>"+
       "<tr><th>Correo:</th><td>"+correoCliente+"</td></tr>"+
       "<tr><th>Telefono:</th><td>"+this.telefono+"</td></tr>"+
       "<tr><th>Día:</th><td>"+this.dia+"</td></tr>"+
@@ -62,12 +63,12 @@ import { ActivatedRoute, Router } from "@angular/router";
       this.body+="</td></tr>"+
       "</table>";
   
-      this.subject = this.nombre+" SE HA CONTACTADO CON NOSOTROS PARA UN TRASLADO CON CHOFER.";
-      this.nombre = ", "+this.nombre+" se ha contactado con nosotros por el motivo de traslado con chofer.";
+      this.subject = nombreCliente+" SE HA CONTACTADO CON NOSOTROS PARA UN TRASLADO CON CHOFER.";
+      this.nombre = ", "+nombreCliente+" se ha contactado con nosotros por el motivo de traslado con chofer.";
       this.bcc = "ccandelaria@gruporivero.com";
       this.correoRentas = "inforenta@gruporivero.com";//CAMBIAR A inforenta@gruporivero.com
   
-      if (this.nombre != "" && this.correoRentas != "" && this.telefono != "" && correoCliente != "" ) {
+      if (nombreCliente != "" && /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(correoCliente) == true && this.telefono != "" && correoCliente != "" ) {
         this.rently.enviarContactoNuevo(this.correoRentas, this.nombre,  this.subject, this.body, this.footer , this.bcc).subscribe(resp =>{
   
           this.router.navigate(['mil-gracias-por-tu-tiempo',this.sensor]);

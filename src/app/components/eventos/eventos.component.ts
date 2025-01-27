@@ -92,8 +92,8 @@ export class EventosComponent {
 
     this.subject = " ¡COTIZACIÓN LISTA! "+ this.nombre+" haz realizado una cotización con éxito, encontrarás en este correo la información completa para tu reserva.";
     this.bcc = "inforenta@gruporivero.com";
-
-    if (this.nombre != "" && /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(correoCliente) && this.telefono != "" && this.dia != "" && this.hora != "" && this.municipio != "") {
+    console.log(/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(correoCliente), correoCliente , "status");
+    if (this.nombre != "" && /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(correoCliente) == true && this.telefono != "" && this.dia != "" && this.hora != "" && this.municipio != "") {
       this.rently.enviarContactoNuevo(correoCliente, this.nombre,  this.subject, this.bodyCliente, this.footer , this.bcc).subscribe(resp =>{
         this.isLoaded = true;
         this.reservarCorreo();
@@ -107,7 +107,7 @@ export class EventosComponent {
     }  else {
       this.loadedSpiner = false;
       this.isLoaded = false;
-      if (!/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(this.correo)){
+      if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(correoCliente) == false){
         alert("Correo Inválido. Verifique que esté bien escrito.")
       } else {
         alert("Complete todos los campos.")
@@ -119,6 +119,7 @@ export class EventosComponent {
   reservarCorreo(){
 
     let correoCliente = this.correo;
+    let nombreCliente = this.nombre;
 
     console.log(this.nombre, this.correo , this.telefono , correoCliente, this.hora);
 
@@ -128,7 +129,7 @@ export class EventosComponent {
     "<table width='600px;' BORDER CELLPADDING=10 CELLSPACING=0>"+
 
     "<tr><th colspan=2>CLIENTE</th></tr>"+
-    "<tr><th>Nombre:</th><td>"+this.nombre+"</td></tr>"+
+    "<tr><th>Nombre:</th><td>"+nombreCliente+"</td></tr>"+
     "<tr><th>Correo:</th><td>"+correoCliente+"</td></tr>"+
     "<tr><th>Telefono:</th><td>"+this.telefono+"</td></tr>"+
     "<tr><th>Día:</th><td>"+this.dia+"</td></tr>"+
@@ -143,14 +144,14 @@ export class EventosComponent {
     this.body+="</td></tr>"+
     "</table>";
 
-    this.subject = this.nombre+" SE HA CONTACTADO CON NOSOTROS PARA UN EVENTO.";
-    this.nombre = ", "+this.nombre+" se ha contactado con nosotros por el motivo de evento.";
+    this.subject = nombreCliente+" SE HA CONTACTADO CON NOSOTROS PARA UN EVENTO.";
+    this.nombre = ", "+nombreCliente+" se ha contactado con nosotros por el motivo de evento.";
     this.bcc = "inforenta@gruporivero.com";
     this.correoRentas = "inforenta@gruporivero.com";//CAMBIAR A inforenta@gruporivero.com
 
-    console.log(this.body);
+    console.log(correoCliente);
 
-    if (this.nombre != "" && /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(this.correo) && this.correoRentas != "" && this.telefono != "" && correoCliente != "" && this.dia != "" && this.hora != "" && this.municipio != "") {
+    if (nombreCliente != "" && /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(correoCliente) == true && this.correoRentas != "" && this.telefono != "" && correoCliente != "" && this.dia != "" && this.hora != "" && this.municipio != "") {
       this.rently.enviarContactoNuevo(this.correoRentas, this.nombre,  this.subject, this.body, this.footer , this.bcc).subscribe(resp =>{
 
         this.router.navigate(['mil-gracias-por-tu-tiempo',this.sensor]);
@@ -161,7 +162,7 @@ export class EventosComponent {
         this.isLoaded = false;
       })
     }  else {
-        if (!/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(this.correo)){
+        if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(correoCliente) == false){
           alert("Correo Inválido. Verifique que esté bien escrito.")
         } else {
           alert("Complete todos los campos.")

@@ -229,7 +229,8 @@ export class EnviaTuReservaComponent implements OnInit {
    }
 
    reservar(total:any){
-    if (this.nombre != "" && /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(this.correo)  && this.telefono != "" /* && this.tipoPago != "" && this.condiciones != false */) {
+    
+    if (this.nombre != "" && /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(this.correo) == true && this.telefono != "" /* && this.tipoPago != "" && this.condiciones != false */) {
       this.loadedSpiner = true;
       this.rently.reservar(this.arrTotalAdicionales, this.from, this.to, this.modelId, this.nombre, this.correo,this.telefono).subscribe((response:any) =>{
         if (!response.message) {
@@ -251,7 +252,7 @@ export class EnviaTuReservaComponent implements OnInit {
         }
       });
     } else {
-      if (!/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(this.correo)){
+      if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(this.correo)== false){
         alert("Correo Inválido. Verifique que esté bien escrito.")
       } else {
         alert("Complete todos los campos.")
@@ -265,6 +266,7 @@ export class EnviaTuReservaComponent implements OnInit {
     var sensorSeguro:number = 0;
     var sensorAdicional:number = 0;
     let correoCliente = this.correo;
+    let nombreCliente = this.nombre;
 
     this.loadedSpiner = true;
 
@@ -276,8 +278,8 @@ export class EnviaTuReservaComponent implements OnInit {
     "<table width='600px;' BORDER CELLPADDING=10 CELLSPACING=0>"+
 
     "<tr><th colspan=2>CLIENTE</th></tr>"+
-    "<tr><th>Nombre:</th><td>"+this.nombre+"</td></tr>"+
-    "<tr><th>Correo:</th><td>"+this.correo+"</td></tr>"+
+    "<tr><th>Nombre:</th><td>"+nombreCliente+"</td></tr>"+
+    "<tr><th>Correo:</th><td>"+correoCliente+"</td></tr>"+
     "<tr><th>Telefono:</th><td>"+this.telefono+"</td></tr>"+
     "<tr><th>Recolección:</th><td>"+this.from+"</td></tr>"+
     "<tr><th>Devolución:</th><td>"+this.to+"</td></tr>"+
@@ -312,12 +314,12 @@ export class EnviaTuReservaComponent implements OnInit {
     this.body+="</td></tr>"+
     "</table>";
 
-    this.subject = this.nombre+" SE HA CONTACTADO CON NOSOTROS PARA UNA RESERVACION.";
-    this.nombre = ", "+this.nombre+" se ha contactado con nosotros por el motivo de reservacion.";
-    this.bcc = "inforenta@gruporivero.com";
+    this.subject = nombreCliente+" SE HA CONTACTADO CON NOSOTROS PARA UNA RESERVACION.";
+    this.nombre = ", "+nombreCliente+" se ha contactado con nosotros por el motivo de reservacion.";
+    this.bcc = "jvalles@gruporivero.com";
     this.correo = "inforenta@gruporivero.com";
 
-    if (this.nombre != "" && this.correo != "" && this.telefono != "" && correoCliente != "" ) {
+    if (nombreCliente != "" && /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(correoCliente)== true && this.telefono != "" && correoCliente != "" ) {
       this.rently.enviarContactoNuevo(this.correo, this.nombre,  this.subject, this.body, this.footer , this.bcc).subscribe(resp =>{
 
         this.statusPago = true;

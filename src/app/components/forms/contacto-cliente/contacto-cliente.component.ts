@@ -12,7 +12,9 @@ export class ContactoClienteComponent implements OnInit {
   urlToken:string = "https://multimarca.gruporivero.com/oauth/token";
   urlApi:string = "https://multimarca.gruporivero.com/api/v1/rently";
 
+  nombre:string="";
   correo:string="";
+  correoCliente:string="";
   cliente:string="";
   telefono:string="";
   body:string="";
@@ -55,28 +57,26 @@ export class ContactoClienteComponent implements OnInit {
 
   sendContactNuevo(){
 
-    let correoCliente = this.correo;
-
     this.body = "<h1>RIVERO RENTAS CONTACTO</h1>"+
     "<h4>INFORMACION DE CONTACTO</h4>"+
 
     "<table width='600px;' BORDER CELLPADDING=10 CELLSPACING=0>"+
 
     "<tr><th colspan=2 bgcolor='#BDBDBD'>CLIENTE</th></tr>"+
-    "<tr><th>Nombre:</th><td>"+this.cliente+"</td></tr>"+
-    "<tr><th>Correo:</th><td>"+this.correo+"</td></tr>"+
+    "<tr><th>Nombre:</th><td>"+this.nombre+"</td></tr>"+
+    "<tr><th>Correo:</th><td>"+this.correoCliente+"</td></tr>"+
     "<tr><th>Telefono:</th><td>"+this.telefono+"</td></tr>"+
 
     "<tr><th colspan=2 bgcolor='#BDBDBD'>INFORMACIÓN</th></tr>"+
     "<tr><th>Comentarios:</th><td>"+this.comentarios+"</td></tr>"+
     "</table>";
 
-    this.subject = this.cliente+" SE HA CONTACTADO CON NOSOTROS.";
-    this.cliente = ", "+this.cliente+" se ha contactado con nosotros.";
+    this.subject = this.nombre+" SE HA CONTACTADO CON NOSOTROS.";
+    this.cliente = ", "+this.nombre+" se ha contactado con nosotros.";
     this.bcc = "inforenta@gruporivero.com";
     this.correo = "inforenta@gruporivero.com";
 
-    if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(this.correo) && this.cliente != "" && correoCliente != "" ) {
+    if (this.cliente != "" && /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(this.correoCliente)== true && this.correoCliente != "" && this.telefono != "" ) {
       this.loadedSpiner =true;
       this.rently.enviarContactoNuevo(this.correo, this.cliente, this.subject, this.body, this.footer,this.bcc).subscribe((response:any) => {
         this.loadedSpiner =false;
@@ -88,7 +88,12 @@ export class ContactoClienteComponent implements OnInit {
         }
       });
     } else {
-      alert("Campos vacíos")
+      if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(this.correoCliente) == false){
+        alert("Correo inválido, asegurate de ingresarlo correctamente");
+      } else {
+        alert("Campos vacíos. Completa todos los campos del formulario para continuar.")
+      }
+      
     }
 
     
