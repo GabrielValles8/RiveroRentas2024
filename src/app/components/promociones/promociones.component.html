@@ -7,7 +7,7 @@
     </div>
   </div>
   
-    <div class="col-12 col-lg-6 col-md-6 col-sm-12 mb-4" *ngFor="let promocion of promociones; let i=index" (click)="showModal({titulo:promocion.Name, descripcion:promocion.Description, imagen:promocion.ImagePath})">
+    <div class="col-12 col-lg-6 col-md-6 col-sm-12 mb-4" *ngFor="let promocion of promociones; let i=index" (click)="showModal({titulo:promocion.Name, descripcion:promocion.Description, imagen:promocion.ImagePath, id:promocion.Id})">
         <img [src]="promocion.ImagePath" [alt]="promocion.Name" class="img-fluid promo-img" style="cursor: pointer;"/>
         <h4 class="px-2 pt-3" *ngIf="title == true">{{promocion.Name}}</h4>
         <p class="px-2" *ngIf="description == true">{{promocion.Description}}</p>

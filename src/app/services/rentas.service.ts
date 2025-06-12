@@ -151,4 +151,16 @@ export class RentasService {
     return this.http.post<FormData>('https://www.riverorenta.mx/seminuevos/images/vista-360/upload_video_rentas.php', data);
    }
 
+    getPromocion(){
+    const data = {
+      q: "getPromociones"
+    }
+     const headers = this.createAuthorizationHeader(); 
+     const param = {
+      data: data
+     }
+    // return this.http.get<any>(this.urlApi+'/promociones',{headers:headers, });
+    return this.http.post<any>(this.url, param);
+   }
+
 }

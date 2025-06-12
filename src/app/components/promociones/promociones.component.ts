@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { RentasService } from 'src/app/services/rentas.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-promociones',
@@ -18,7 +19,7 @@ export class PromocionesComponent implements OnInit {
   imagenPop:string="";
   isLoaded:boolean=false;
 
-  constructor(private rently:RentasService) { 
+  constructor(private rently:RentasService,  private router: Router) { 
     this.isLoaded = true;
     this.getPromociones();
   }
@@ -34,10 +35,17 @@ export class PromocionesComponent implements OnInit {
   }
 
   showModal(e:any){
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+    this.router.navigate(['/detalle-promocion',e.id]);
     this.showForm = true;
     this.tituloPop = e.titulo,
     this.descripionPop = e.descripcion;
     this.imagenPop = e.imagen;
+
   }
 
   hideModal(){

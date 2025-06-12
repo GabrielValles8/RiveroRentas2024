@@ -45,6 +45,7 @@ import { TrasladosChoferComponent } from './components/traslados-chofer/traslado
 import { FormTrasladosChoferComponent } from './components/forms/traslado-chofer/traslado-chofer-form.component';
 import { EventosComponent } from './components/eventos/eventos.component';
 import { BlogComponent } from './components/blog/blog.component';
+import { DetallePromocionComponent } from './components/detalle-promocion/detalle-promocion.component';
 
 
 @NgModule({
@@ -75,7 +76,8 @@ import { BlogComponent } from './components/blog/blog.component';
     TrasladosChoferComponent,
     FormTrasladosChoferComponent,
     EventosComponent,
-    BlogComponent
+    BlogComponent,
+    DetallePromocionComponent
     
   ],
   imports: [

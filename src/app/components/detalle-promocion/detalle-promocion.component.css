@@ -1,0 +1,36 @@
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;900&display=swap");
+
+
+.contactanos-promo{
+    font-size: 2em;
+    text-shadow: 2px 1px 2px black;
+}
+
+@media screen and (max-width: 991px){
+    .contactanos-promo{
+        font-size: 1.5em;
+    }
+    .col-izq-promo{
+        min-height: 260px;
+    }
+}
+
+@media screen and (max-width: 575px){
+
+    .div-banner-promo{
+        height: 285px;
+        /* width: 1367px; */
+        background-position: top left;
+        background-repeat: no-repeat;
+        background-size  : cover;
+    }
+    .col-izq-promo{
+        min-height: 285px;
+    }
+
+    .contactanos-promo{
+        background-color: #083261;
+    }
+}
+

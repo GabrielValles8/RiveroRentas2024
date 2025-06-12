@@ -1,0 +1,41 @@
+
+    <div class="div-banner-promo" [ngStyle]="{ 'background-image': 'url(' + banner + ')' }">
+    <!-- <img class="div-banner-promo" [src]="banner" width="100%" height="100%" />     -->
+
+        <div class="row m-0">
+            <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7 col-12 col-izq-promo p-0">
+
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 ">
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-12 p-0 text-white">
+                            <h1 class="contactanos-promo text-center m-0">Contáctanos </h1>
+                        </div>
+                        <div class="form-group col-12 p-0">
+                            <input #nombreI class="form-control" type="text" placeholder="Nombre y apellidos" (change)="nombre = nombreI.value" />
+                        </div>
+                        <div  class="form-group col-12 p-0">
+                            <select #modeloInteresI class="form-control" type="text" placeholder="Auto de interés" (change)="auto = modeloInteresI.value">
+                                <option *ngFor="let modelo of modelos" [value]="modelo.modelo">{{modelo.modelo}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-12 p-0">
+                            <input #correoClienteI class="form-control" type="email" placeholder="Correo" (change)="correoCliente = correoClienteI.value" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required/>
+                        </div>
+                        <div class="form-group col-12 p-0">
+                            <input #telefonoI class="form-control" type="textr" placeholder="Teléfono" (change)="telefono = telefonoI.value" maxlength="10" onkeypress="return /[0-9]/i.test(event.key)"/>
+                        </div>
+                        <div class="form-group col-12 p-0" hidden>
+                            <textarea #comentariosI class="form-control" placeholder="Deja tu mensaje (opcional)" rows="3" (change)="comentarios = comentariosI.value"></textarea>
+                        </div>
+                    </div>
+                </form>
+                <div class="row justify-content-center">
+                    <div class="col-5">
+                        <div class="boton boton-primario text-center" style="padding: 0!important;border-color: #083261;" (click)="sendContactNuevo()">Enviar</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

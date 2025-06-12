@@ -16,12 +16,14 @@ import { EventosComponent } from './components/eventos/eventos.component';
 import { BlogComponent } from './components/blog/blog.component';
 
 import { IconTextViewComponent } from './components/layouts/icon-text-view/icon-text-view.component';
+import { DetallePromocionComponent } from "./components/detalle-promocion/detalle-promocion.component";
 
 export const ROUTES: Routes = [ 
     { path: 'home', component: HomeComponent},
     { path: 'resultado-filtro/:from/:to/:carros/:suvs/:pasajeros/:carga/:licencia', component: ResultadoFiltroComponent},
     { path: 'envia-tu-reserva/:from/:to/:modelid/:licencia', component: EnviaTuReservaComponent},
     { path: 'promociones-para-rentar-autos', component: PromocionesParaRentarAutosComponent},
+    { path: 'detalle-promocion/:code', component: DetallePromocionComponent},
     { path: 'nuestras-unidades', component: NuestrasUnidadesComponent},
     { path: 'empresarial', component: EmpresarialComponent},
     { path: 'requisitos', component: CondicionesComponent},

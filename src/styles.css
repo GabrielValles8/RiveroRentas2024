@@ -226,6 +226,7 @@ button.example-custom-date-class {
     border: 1px solid #2486fc;
     border-radius: 12px;
     padding: 5px 20px;
+    min-width: 70px;
 }
 
 .boton-home{
@@ -789,6 +790,14 @@ color: rgb(255, 255, 255);
     background: url("assets/images/banners/banner-renta-empresarial.jpg");
     background-position: center;
     background-size  : cover;
+}
+
+.div-banner-promo{
+    height: 500px;
+    /* width: 1367px; */
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size  : contain;
 }
 
 .row-banner-flotillas{
