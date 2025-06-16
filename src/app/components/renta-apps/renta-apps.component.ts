@@ -42,7 +42,7 @@ export class RentaAppsComponent {
   public unidades: Array<any> = [
     { marca: "Chevrolet", color: "Gris" , transmision: "Automático" , status: 1, modelo: "Chevrolet Aveo", promocion: "Desde $7,500 mxn por 5 horas" , img: "assets/images/autos-png/chevrolet-aveo.png", precio:"$7,500 mxn", modelCode: "Chevrolet-Aveo", imgUrl: "https://beta-rentas.gruporivero.com/assets/images/autos-png/chevrolet-aveo.png"},
     { marca: "Nissan", color: "Plata" , transmision: "Automático" , status: 1, modelo: "Nissan March", promocion: "Desde $8,000 mxn por 5 horas" , img: "assets/images/autos-png/nissan-march.png", precio:"$8,000 mxn",  modelCode: "Nissan-March", imgUrl: "https://beta-rentas.gruporivero.com/assets/images/autos-png/nissan-march.png"},
-    { marca: "Nissan", color: "Plata" , transmision: "Automático" , status: 1, modelo: "Nissan V-Drive", promocion: "Desde $8,000 mxn por 5 horas" , img: "assets/images/autos-png/nissan-vdrive.png", precio:"$8,000 mxn",  modelCode: "Chevrolet-VDRIVE", imgUrl: "https://beta-rentas.gruporivero.com/assets/images/autos-png/nissan-vdrive.png"}
+    { marca: "Nissan", color: "Plata" , transmision: "Automático" , status: 1, modelo: "Nissan V-Drive", promocion: "Desde $8,000 mxn por 5 horas" , img: "assets/images/autos-png/nissan-vdrive.png", precio:"$8,000 mxn",  modelCode: "Nissan-VDRIVE", imgUrl: "https://beta-rentas.gruporivero.com/assets/images/autos-png/nissan-vdrive.png"}
   ];
 
   constructor(private rently:RentasService, private router: Router) {
