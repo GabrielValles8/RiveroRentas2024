@@ -83,11 +83,11 @@ export class RequisitosRentaAppsComponent {
     this.subject = " ¡COTIZACIÓN LISTA! "+ this.nombre+" haz realizado una cotización con éxito, encontrarás en este correo la información completa para tu reserva.";
     this.bcc = "jvalles@gruporivero.com";//CAMBIAR A inforenta@gruporivero.com */
 
-    if (this.nombre != "" && /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(correoCliente) && this.telefono != "") {
+    if (this.nombre != "" && /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(correoCliente) && this.telefono != "") {
         this.isLoaded = true;
         this.reservarCorreo();
     }  else {
-        if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(this.correo)){
+        if (/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(this.correo)){
           alert("Correo Inválido. Verifique que esté bien escrito.")
         } else {
           alert("Complete todos los campos.")
@@ -131,7 +131,7 @@ export class RequisitosRentaAppsComponent {
 
     console.log(this.body);
 
-    if (nombreCliente != "" && /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(correoCliente)== true && this.correoRentas != "" && this.telefono != "" && correoCliente != "") {
+    if (nombreCliente != "" && /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(correoCliente)== true && this.correoRentas != "" && this.telefono != "" && correoCliente != "") {
       this.rently.enviarContactoNuevo(this.correoRentas, this.nombre,  this.subject, this.body, this.footer , this.bcc).subscribe(resp =>{
 
         this.router.navigate(['mil-gracias-por-tu-tiempo',this.sensor]);
@@ -144,7 +144,7 @@ export class RequisitosRentaAppsComponent {
     }  else {
       this.loadedSpiner = false;
       this.isLoaded = false;
-        if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(correoCliente)== false){
+        if (/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(correoCliente)== false){
           alert("Correo Inválido. Verifique que esté bien escrito.")
         } else {
           alert("Complete todos los campos2.")

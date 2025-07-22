@@ -76,7 +76,7 @@ export class ContactoClienteComponent implements OnInit {
     this.bcc = "inforenta@gruporivero.com";
     this.correo = "inforenta@gruporivero.com";
 
-    if (this.cliente != "" && /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(this.correoCliente)== true && this.correoCliente != "" && this.telefono != "" ) {
+    if (this.cliente != "" && /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(this.correoCliente)== true && this.correoCliente != "" && this.telefono != "" ) {
       this.loadedSpiner =true;
       this.rently.enviarContactoNuevo(this.correo, this.cliente, this.subject, this.body, this.footer,this.bcc).subscribe((response:any) => {
         this.loadedSpiner =false;
@@ -88,7 +88,7 @@ export class ContactoClienteComponent implements OnInit {
         }
       });
     } else {
-      if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(this.correoCliente) == false){
+      if (/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(this.correoCliente) == false){
         alert("Correo inválido, asegurate de ingresarlo correctamente");
       } else {
         alert("Campos vacíos. Completa todos los campos del formulario para continuar.")

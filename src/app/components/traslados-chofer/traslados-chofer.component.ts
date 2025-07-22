@@ -104,7 +104,7 @@ export class TrasladosChoferComponent {
     this.subject = " ¡COTIZACIÓN LISTA! "+ nombreCliente+" haz realizado una cotización con éxito, encontrarás en este correo la información completa para tu reserva.";
     this.bcc = "inforenta@gruporivero.com";
 
-    if (this.nombre != "" && /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(correoCliente)== true && this.telefono != "" && this.dia != "" && this.hora != "" && this.municipio != "") {
+    if (this.nombre != "" && /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(correoCliente)== true && this.telefono != "" && this.dia != "" && this.hora != "" && this.municipio != "") {
       this.rently.enviarContactoNuevo(correoCliente, this.nombre,  this.subject, this.bodyCliente, this.footer , this.bcc).subscribe(resp =>{
         this.isLoaded = true;
         this.reservarCorreo();
@@ -118,7 +118,7 @@ export class TrasladosChoferComponent {
     }  else {
       this.loadedSpiner = false;
       this.isLoaded = false;
-        if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(correoCliente) == false){
+        if (/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(correoCliente) == false){
           alert("Correo Inválido. Verifique que esté bien escrito.")
         } else {
           alert("Complete todos los campos.")
@@ -163,7 +163,7 @@ export class TrasladosChoferComponent {
 
     console.log(this.body);
 
-    if (nombreCliente != "" && /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(correoCliente) == true && this.correoRentas != "" && this.telefono != "" && correoCliente != "" && this.dia != "" && this.hora != "" && this.municipio != "" ) {
+    if (nombreCliente != "" && /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(correoCliente) == true && this.correoRentas != "" && this.telefono != "" && correoCliente != "" && this.dia != "" && this.hora != "" && this.municipio != "" ) {
       this.rently.enviarContactoNuevo(this.correoRentas, this.nombre,  this.subject, this.body, this.footer , this.bcc).subscribe(resp =>{
 
         this.router.navigate(['mil-gracias-por-tu-tiempo',this.sensor]);
@@ -176,7 +176,7 @@ export class TrasladosChoferComponent {
     }  else {
       this.loadedSpiner = false;
       this.isLoaded = false;
-        if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(correoCliente) == false){
+        if (/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(correoCliente) == false){
           alert("Correo Inválido. Verifique que esté bien escrito.")
         } else {
           alert("Complete todos los campos.")

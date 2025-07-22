@@ -48,7 +48,7 @@ export class RentaClienteComponent implements OnInit {
     this.bcc = "inforenta@gruporivero.com";
     this.email = "rentasflotillas@gruporivero.com";
 
-    if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(this.email) && this.nombre != "" && this.empresa != "" && this.telefono != '' && correoCliente != '') {
+    if (/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(this.email) && this.nombre != "" && this.empresa != "" && this.telefono != '' && correoCliente != '') {
       this.loadedSpiner =true;
       this.rently.enviarContactoNuevo(this.email, this.nombre, this.subject, this.body, this.footer , this.bcc).subscribe((response:any) => {
         this.loadedSpiner =false;

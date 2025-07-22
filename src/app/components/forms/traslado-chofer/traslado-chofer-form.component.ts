@@ -68,7 +68,7 @@ import { ActivatedRoute, Router } from "@angular/router";
       this.bcc = "ccandelaria@gruporivero.com";
       this.correoRentas = "inforenta@gruporivero.com";//CAMBIAR A inforenta@gruporivero.com
   
-      if (nombreCliente != "" && /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(correoCliente) == true && this.telefono != "" && correoCliente != "" ) {
+      if (nombreCliente != "" && /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(correoCliente) == true && this.telefono != "" && correoCliente != "" ) {
         this.rently.enviarContactoNuevo(this.correoRentas, this.nombre,  this.subject, this.body, this.footer , this.bcc).subscribe(resp =>{
   
           this.router.navigate(['mil-gracias-por-tu-tiempo',this.sensor]);

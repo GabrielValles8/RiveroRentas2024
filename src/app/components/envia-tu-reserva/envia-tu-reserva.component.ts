@@ -230,7 +230,7 @@ export class EnviaTuReservaComponent implements OnInit {
 
    reservar(total:any){
     
-    if (this.nombre != "" && /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(this.correo) == true && this.telefono != "" /* && this.tipoPago != "" && this.condiciones != false */) {
+    if (this.nombre != "" && /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(this.correo) == true && this.telefono != "" /* && this.tipoPago != "" && this.condiciones != false */) {
       this.loadedSpiner = true;
       this.rently.reservar(this.arrTotalAdicionales, this.from, this.to, this.modelId, this.nombre, this.correo,this.telefono).subscribe((response:any) =>{
         if (!response.message) {
@@ -252,7 +252,7 @@ export class EnviaTuReservaComponent implements OnInit {
         }
       });
     } else {
-      if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(this.correo)== false){
+      if (/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(this.correo)== false){
         alert("Correo Inválido. Verifique que esté bien escrito.")
       } else {
         alert("Complete todos los campos.")
@@ -319,7 +319,7 @@ export class EnviaTuReservaComponent implements OnInit {
     this.bcc = "jvalles@gruporivero.com";
     this.correo = "inforenta@gruporivero.com";
 
-    if (nombreCliente != "" && /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(correoCliente)== true && this.telefono != "" && correoCliente != "" ) {
+    if (nombreCliente != "" && /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(correoCliente)== true && this.telefono != "" && correoCliente != "" ) {
       this.rently.enviarContactoNuevo(this.correo, this.nombre,  this.subject, this.body, this.footer , this.bcc).subscribe(resp =>{
 
         this.statusPago = true;
