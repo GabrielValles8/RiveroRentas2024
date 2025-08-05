@@ -1,0 +1,198 @@
+<div style="width: 99vw;">
+
+    <div class="row m-0 p-0 d-flex justify-content-center">
+        <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12">
+            <div  class="cardTipo my-2 p-4" (click)="changeCategoria(1)">
+                <i style="font-size: 3em;background-color: #f0fdf4;border-radius: 10px;color: #16a34a;" class="bi bi-car-front-fill p-2"></i>
+                <h1 class="tituloTipo m-0">Autos</h1>
+                <p>March, Aveo, Versa, Sentra, Altima...</p>
+            </div>
+        </div>
+        <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12">
+            <div  class="cardTipo my-2 p-4" (click)="changeCategoria(0)">
+                <i style="font-size: 3em;background-color: #f0fdf4;border-radius: 10px;color: #16a34a;" class="bi bi-truck-front-fill p-2"></i>
+                <h1 class="tituloTipo m-0">Suvs</h1>
+                <p>Tracker, XTrail, Kicks...</p>
+            </div>
+        </div>
+        <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12">
+            <div class="cardTipo my-2 p-4" (click)="changeCategoria(4)">
+                <i style="font-size: 3em;background-color: #f0fdf4;border-radius: 10px;color: #16a34a;" class="bi bi-truck p-2"></i>
+                <h1 class="tituloTipo m-0">Carga</h1>
+                <p>Estaca, Caja Seca, Panel, Camiones...</p>
+                <!-- <img style="position: absolute;margin-left: 85px!important;" width="110px" class="m-0 ng-star-inserted" src="assets/images/botones/btn_unidad_carga.png" alt="Carros"> -->
+            </div>
+        </div>
+        <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12">
+            <div class="cardTipo my-2 p-4" (click)="changeCategoria(3)">
+                <i style="font-size: 3em;background-color: #f0fdf4;border-radius: 10px;color: #16a34a;" class="bi bi-truck-flatbed p-2"></i>
+                <h1 class="tituloTipo m-0">Pickups</h1>
+                <p>Doble Cabina 4x2, 4x4...</p>
+            </div>
+        </div>
+        <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12">
+            <div class="cardTipo my-2 p-4" (click)="changeCategoria(2)">
+                <i style="font-size: 3em;background-color: #f0fdf4;border-radius: 10px;color: #16a34a;" class="bi bi-truck-front p-2"></i>
+                <h1 class="tituloTipo m-0">Pasajeros</h1>
+                <p>Avanza, Xpander, Xtrail, Hiace...</p>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row m-0 p-0">
+        <div *ngFor="let unidad of unidades; let i=index" class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+
+            <div class="cardUnidad my-2 p-4" [id]="unidad.Id" [ngStyle]="{height: estaExpandido(unidad.Id) ? 'auto' : '230px',overflow: 'hidden',transition: 'height 0.5s ease'}">
+                <div class="row imgCard" [style.backgroundImage]="'url(' + unidad.ImagePath + ')'">
+                    <!-- <img [src]="unidad.ImagePath" style="height: 50%; width: 50%;margin: auto!important;" /> -->
+                </div>
+                <h1 style="font-weight: 600;font-size: 1.5em;">{{unidad.Name}}</h1>
+
+                <h3 [id]="'despliegue1' +unidad.Id" style="text-align:center;cursor: pointer;" (click)="expandirInfo(unidad.Id, unidad.Category.Id)"><i class="bi bi-chevron-compact-down"></i></h3>
+                <h3 [id]="'despliegue2' +unidad.Id" style="text-align:center;cursor: pointer;display: none;" (click)="expandirInfoDos(unidad.Id)"><i class="bi bi-chevron-compact-down"></i></h3>
+                <h3 [id]="'contraer' +unidad.Id" style="text-align:center;cursor: pointer;" (click)="contraerInfo(unidad.Id)"><i class="bi bi-chevron-compact-up"></i></h3><HR/>
+                
+                <div [id]="'loader' +unidad.Id" class="spinner-grow text-primary text-align-center" style="display: none;" role="status">
+                    <span class="sr-only ">Loading...</span>
+                </div>
+                
+                <div [id]="'content' +unidad.Id" style="display: none;">
+                    <h2 style="font-size: 1em;">DETALLES:</h2>
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+                            <div class="p-1" style="background-color: rgba(12, 137, 240, 0.247);border-radius: 10px;">
+                                <h2 style="font-size: 1em;color: rgb(55, 103, 192);">Por dia:</h2>
+                                <h2 [id]="'diario' +unidad.Id" style="font-size: 1em;color: rgb(55, 103, 192);font-weight: 600;">$ </h2>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+                            <div class="p-1" style="background-color: #f0fdf4;border-radius: 10px;">
+                                <h2 style="font-size: 1em;color: #16a34a;">Semanal:</h2>
+                                <h2 [id]="'semanal' +unidad.Id" style="font-size: 1em;color: #12813b;font-weight: 600;">$ </h2>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+                            <div class="p-1" style="background-color: #f3c6717a;border-radius: 10px;">
+                                <h2 style="font-size: 1em;color: #c58308;">Mensual:</h2>
+                                <h2 [id]="'precio_mensual' +unidad.Id" style="font-size: 1em;color: #c58308;font-weight: 600;">$ </h2>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <hr/>
+
+                    <div class="row d-flex shadow-row" style="justify-content: space-between;">
+                        <p class="font-weight-bold m-0">Motor:</p>
+                        <p [id]="'motor' +unidad.Id" class="font-medium m-0"></p>
+                    </div>
+                    <div class="row d-flex shadow-row" style="justify-content: space-between;">
+                        <p class="font-weight-bold m-0">Potencia:</p>
+                        <p [id]="'potencia' +unidad.Id" class="font-medium m-0"></p>
+                    </div>
+
+                    <div class="row d-flex shadow-row" style="justify-content: space-between;">
+                        <p class="font-weight-bold m-0">Transmisión:</p>
+                        <p [id]="'transmision' +unidad.Id" class="font-medium m-0"></p>
+                    </div>
+
+                    <div class="row d-flex shadow-row" style="justify-content: space-between;">
+                        <p class="font-weight-bold m-0">Combustible:</p>
+                        <p [id]="'combustible' +unidad.Id" class="font-medium m-0"></p>
+                    </div>
+
+                    <div class="row d-flex shadow-row" style="justify-content: space-between;">
+                        <p class="font-weight-bold m-0">Largo:</p>
+                        <p [id]="'largo' +unidad.Id" class="font-medium m-0"></p>
+                        <p class="font-weight-bold m-0">Ancho:</p>
+                        <p [id]="'ancho' +unidad.Id" class="font-medium m-0"></p>
+                    </div>
+
+                    <div class="row d-flex shadow-row" style="justify-content: space-between;">
+                        <p class="font-weight-bold m-0">Alto:</p>
+                        <p [id]="'alto' +unidad.Id" class="font-medium m-0"></p>
+                    </div>
+
+                    <div class="row d-flex shadow-row" style="justify-content: space-between;">
+                        <p class="font-weight-bold m-0">Capacidad:</p>
+                        <p [id]="'capacidad' +unidad.Id" class="font-medium m-0"></p>
+                    </div>
+                    <hr/>
+
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                            <div class="btnGaleria" data-toggle="modal" data-target="#exampleModal" (click)="verGaleria(unidad.Id)">
+                                <i class="bi bi-images" style="font-size: 20px;"></i><p class="m-0" style="font-size: 15px;">GALERIA</p>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                            <div class="btnGaleria" (click)="verObservaciones(unidad.Id)">
+                                <i class="bi bi-images" style="font-size: 20px;"></i><p class="m-0" style="font-size: 15px;">OBSERVACIONES</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div id="exampleModal" class="modal" tabindex="-1" [style.display]="modalGaleria ? 'block': 'none'" aria-labelledby="exampleModalLabel" aria-hidden="true" style="background: rgba(0, 0, 0, 0.5);">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header d-flex justify-content-center">
+                    <h5 class="modal-title">Galeria</h5><div class="btnVerImgs" (click)="descargarImagenes()">VISUALIZAR IMAGENES</div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row m-0">
+                        <div *ngFor="let foto of galeria; let i=index" [style.backgroundImage]="'url(' + foto + ')'" class="col-xl-4 col-lg-4 col-md-6 col-sm-12 fotoGaleria">
+                            
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="exampleModal" class="modal" tabindex="-1" [style.display]="modalObservaciones ? 'block': 'none'" aria-labelledby="exampleModalLabel" aria-hidden="true" style="background: rgba(0, 0, 0, 0.5);">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Observaciones</h5>
+                    <button type="button" class="close" (click)="cerrarModal('observaciones')" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex items-start space-x-2">
+                        <div class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                        <span> Cédula fiscal RFC. Constancia de situacion fiscal actualizada. Opinion positiva SAT. Acta constitutiva. Poderes del representante legal (poder de administración y poder cambiario). Comprobante de domicilio no mayor a 3 meses de antigüedad (agua, luz o gas únicamente). Identificación oficial vigente del apoderado legal (IFE/INE, pasaporte vigente, FM2 o FM3). Licencia de conductor vigente del usuario asignado. El trámite se realiza por el representante legal de manera personal para firma de contrato. Vigencia de la tarifa 1 año a partir de la contratación.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                        <div class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                        <span>Kilometraje libre. Seguro con 10% o 0% de deducible. Asistencia en el camino. Gps satelital para ubicación y monitoreo (cuenta exclusiva). Mantenimiento preventivos. Mantenimientos correctivos. Precio por unidad. Auto Sustituto.
+                        </span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                        <div class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                        <span>Depósito de garantía: desde $3,000 MXN por unidad. Pagos por transferencia. Tarjeta de crédito. Tarjeta de débito. Depósito bancario.
+                        </span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                        <div class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                        <span>Edad mínimia para rentar 23 años.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

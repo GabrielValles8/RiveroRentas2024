@@ -17,6 +17,7 @@ import { BlogComponent } from './components/blog/blog.component';
 
 import { IconTextViewComponent } from './components/layouts/icon-text-view/icon-text-view.component';
 import { DetallePromocionComponent } from "./components/detalle-promocion/detalle-promocion.component";
+import { FichaTecnicaComponent } from "./components/ficha-tecnica/ficha-tecnica.component";
 
 export const ROUTES: Routes = [ 
     { path: 'home', component: HomeComponent},
@@ -35,6 +36,7 @@ export const ROUTES: Routes = [
     { path: 'evento', component: EventosComponent},
     { path: 'blog', component: BlogComponent},
     { path: 'mil-gracias-por-tu-tiempo/:sensor', component: MilGraciasPorTuTiempoComponent},
+    { path: 'ficha-tecnica', component: FichaTecnicaComponent},
     { path: '', pathMatch: 'full', redirectTo: 'home'},
     { path: '**', pathMatch: 'full', redirectTo: 'home'}
 ]

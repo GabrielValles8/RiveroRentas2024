@@ -1,0 +1,71 @@
+.cardUnidad{
+    background-color: #ffffff;
+    box-shadow: 1px 1px 5px #666666;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.cardTipo{
+    background-color: #ffffff;
+    box-shadow: 1px 1px 5px #666666;
+    border-radius: 10px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.cardTipo:hover{
+    box-shadow: 1px 1px 10px #666666;
+}
+
+.tituloTipo{
+    font-size: 2em;
+    font-weight: 600;
+}
+
+.imgCard{
+    height: 150px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.shadow-row{
+    padding: 5px;
+}
+
+.shadow-row:hover{
+    background-color: #cccccc9a;
+}
+
+.btnGaleria{
+    text-align: center;
+    font-family: LatoBold;
+    width: auto;
+    background-color: #3275bb;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 9;
+    transition: opacity .2s ease;
+}
+
+.btnVerImgs{
+    text-align: center;
+    width: auto;
+    background-color: #32bb5b;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 9;
+    height: 30px;
+    transition: opacity .2s ease;
+    margin-left: 10px;
+}
+
+.fotoGaleria{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 200px;
+}

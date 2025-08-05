@@ -10,6 +10,8 @@ export class RentasService {
   url:string = "https://www.riverorenta.mx/api/rently/rently_api.php";
   urlToken:string = "https://multimarca.gruporivero.com/oauth/token";
   urlApi:string = "https://multimarca.gruporivero.com/api/v1/rently";
+  urlFicha:string = "https://multimarca.gruporivero.com/api/v1";
+  urlBeta:string = "http://127.0.0.1:8000/api/v1";
 
   constructor( private http: HttpClient) {
 
@@ -161,6 +163,21 @@ export class RentasService {
      }
     // return this.http.get<any>(this.urlApi+'/promociones',{headers:headers, });
     return this.http.post<any>(this.url, param);
+   }
+
+    getModelos(categoria:any){
+    const headers = this.createAuthorizationHeader();
+    return this.http.get<any>(this.urlFicha+'/unidades/rently/'+categoria,{headers:headers});
+   }
+
+    getFichaTecnica(id:any, categoria:any){
+    const headers = this.createAuthorizationHeader();
+    return this.http.get<any>(this.urlFicha+'/unidades/rently/ficha/2026-01-01%2011:00/2026-01-02%2011:00/2026-01-08%2011:00/'+id+'/'+categoria,{headers:headers});
+   }
+
+   getGaleria(id:any){
+    
+    return this.http.get<any>('https://api.gruporivero.com/v1/files/s3-media/unidadesRently/'+id);
    }
 
 }

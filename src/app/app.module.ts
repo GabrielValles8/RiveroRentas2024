@@ -46,6 +46,7 @@ import { FormTrasladosChoferComponent } from './components/forms/traslado-chofer
 import { EventosComponent } from './components/eventos/eventos.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { DetallePromocionComponent } from './components/detalle-promocion/detalle-promocion.component';
+import { FichaTecnicaComponent } from './components/ficha-tecnica/ficha-tecnica.component';
 
 
 @NgModule({
@@ -77,7 +78,8 @@ import { DetallePromocionComponent } from './components/detalle-promocion/detall
     FormTrasladosChoferComponent,
     EventosComponent,
     BlogComponent,
-    DetallePromocionComponent
+    DetallePromocionComponent,
+    FichaTecnicaComponent
     
   ],
   imports: [
