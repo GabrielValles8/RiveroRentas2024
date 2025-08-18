@@ -30,10 +30,14 @@ export class DetallePromocionComponent {
   loadedSpiner:boolean;
   promo:string="";
 
+  queryParams: any;
+
   constructor(private rently:RentasService, private activeroute:ActivatedRoute, private router: Router) {
 
     this.activeroute.params.subscribe(params => {     
       this.code = params["code"];
+      this.queryParams = this.activeroute.snapshot.queryParams;
+      console.log(this.queryParams);
     });
 
     this.rently.getPromocion().subscribe((response:any) =>{
@@ -89,6 +93,7 @@ export class DetallePromocionComponent {
         this.rently.enviarContactoNuevo(this.correo, this.cliente, this.subject, this.body, this.footer,this.bcc).subscribe((response:any) => {
           this.loadedSpiner =false;
           if (response != 'error') {
+            this.rently.leadPromo(this.nombre, this.correoCliente, this.telefono, this.auto, this.queryParams.utm_source, this.queryParams.utm_medium, this.queryParams.utm_campaign, this.queryParams.cnname, this.queryParams.utm_content, this.queryParams.utm_term).subscribe((response:any) => {});
             window.location.href = '';
 
           } else {
