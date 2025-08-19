@@ -195,6 +195,7 @@ export class RentasService {
       utm_content:utm_content,
       utm_term:utm_term
     }
+ 
     return this.http.post<any>(this.urlFicha+"/leads-rentas", data);
    
    }

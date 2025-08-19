@@ -37,11 +37,10 @@ export class DetallePromocionComponent {
     this.activeroute.params.subscribe(params => {     
       this.code = params["code"];
       this.queryParams = this.activeroute.snapshot.queryParams;
-      console.log(this.queryParams);
+
     });
 
     this.rently.getPromocion().subscribe((response:any) =>{
-      console.log(this.code);
 
       for (let i = 0; i < response.length; i++) {
         if(response[i].Id == this.code){
@@ -93,8 +92,10 @@ export class DetallePromocionComponent {
         this.rently.enviarContactoNuevo(this.correo, this.cliente, this.subject, this.body, this.footer,this.bcc).subscribe((response:any) => {
           this.loadedSpiner =false;
           if (response != 'error') {
-            this.rently.leadPromo(this.nombre, this.correoCliente, this.telefono, this.auto, this.queryParams.utm_source, this.queryParams.utm_medium, this.queryParams.utm_campaign, this.queryParams.cnname, this.queryParams.utm_content, this.queryParams.utm_term).subscribe((response:any) => {});
-            window.location.href = '';
+            this.rently.leadPromo(this.nombre, this.correoCliente, this.telefono, this.auto, this.queryParams.utm_source, this.queryParams.utm_medium, this.code, this.queryParams.cnname, this.queryParams.utm_content, this.queryParams.utm_term).subscribe((response:any) => {
+              window.location.href = '';
+            });
+            //window.location.href = '';
 
           } else {
             alert("Hubo un problema con el envío de tus datos, intenta más tarde.")
