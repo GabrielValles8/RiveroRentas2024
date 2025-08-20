@@ -29,6 +29,7 @@ export class DetallePromocionComponent {
   subject:string="";
   loadedSpiner:boolean;
   promo:string="";
+  nombrePromocion: string="";
 
   queryParams: any;
 
@@ -46,6 +47,7 @@ export class DetallePromocionComponent {
         if(response[i].Id == this.code){
           this.banner = 'https://d3s2hob8w3xwk8.cloudfront.net/promos/rentas/'+response[i].Id+'/img-promo.jpg';
           this.promo = 'ID Promoción: '+ response[i].Id + ' - ' + response[i].Name + ' - ' + response[i].Description;
+          this.nombrePromocion = response[i].Name;
           /* this.banner = response[i].ImagePath; */
 
           if(response[i].Models.length > 0){
@@ -92,7 +94,7 @@ export class DetallePromocionComponent {
         this.rently.enviarContactoNuevo(this.correo, this.cliente, this.subject, this.body, this.footer,this.bcc).subscribe((response:any) => {
           this.loadedSpiner =false;
           if (response != 'error') {
-            this.rently.leadPromo(this.nombre, this.correoCliente, this.telefono, this.auto, this.queryParams.utm_source, this.queryParams.utm_medium, this.code, this.queryParams.cnname, this.queryParams.utm_content, this.queryParams.utm_term).subscribe((response:any) => {
+            this.rently.leadPromo(this.nombre, this.correoCliente, this.telefono, this.auto, this.nombrePromocion, this.queryParams.utm_source, this.queryParams.utm_medium, this.code, this.queryParams.cnname, this.queryParams.utm_content, this.queryParams.utm_term).subscribe((response:any) => {
               window.location.href = '';
             });
             //window.location.href = '';

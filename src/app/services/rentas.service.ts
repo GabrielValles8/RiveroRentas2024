@@ -180,13 +180,14 @@ export class RentasService {
     return this.http.get<any>('https://api.gruporivero.com/v1/files/s3-media/unidadesRently/'+id);
    }
 
-   leadPromo(nombre:string, correo:string, telefono:string, auto:string, utm_source:string, utm_medium:string, utm_campaign:string, cnname:string, utm_content:string, utm_term:string){
+   leadPromo(nombre:string, correo:string, telefono:string, auto:string, nombrePromo:string, utm_source:string, utm_medium:string, utm_campaign:string, cnname:string, utm_content:string, utm_term:string){
 
     const data = {
       nombre_completo:nombre,
       unidad:auto,
       telefono:telefono,
       correo: correo,
+      promocion:nombrePromo,
       promocion_id:utm_campaign,
       utm_source:utm_source, 
       utm_medium:utm_medium,
@@ -195,7 +196,7 @@ export class RentasService {
       utm_content:utm_content,
       utm_term:utm_term
     }
- 
+    
     return this.http.post<any>(this.urlFicha+"/leads-rentas", data);
    
    }
