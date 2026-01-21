@@ -43,9 +43,12 @@ export class DetallePromocionComponent {
 
     this.rently.getPromocion().subscribe((response:any) =>{
 
+      console.log(response);
+
       for (let i = 0; i < response.length; i++) {
         if(response[i].Id == this.code){
-          this.banner = 'https://d3s2hob8w3xwk8.cloudfront.net/promos/rentas/'+response[i].Id+'/img-promo.jpg';
+          /* this.banner = 'https://d3s2hob8w3xwk8.cloudfront.net/promos/rentas/'+response[i].Id+'/img-promo.jpg'; */
+          this.banner = response[i].ImagePath;
           this.promo = 'ID Promoción: '+ response[i].Id + ' - ' + response[i].Name + ' - ' + response[i].Description;
           this.nombrePromocion = response[i].Name;
           /* this.banner = response[i].ImagePath; */

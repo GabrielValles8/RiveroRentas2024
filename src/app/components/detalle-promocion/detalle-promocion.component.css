@@ -7,6 +7,11 @@
     text-shadow: 2px 1px 2px black;
 }
 
+.formularioPromo{
+    backdrop-filter: blur(2px);
+    background-color: rgb(0 0 0 / 0.3);
+}
+
 @media screen and (max-width: 991px){
     .contactanos-promo{
         font-size: 1.5em;

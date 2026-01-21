@@ -229,6 +229,17 @@ button.example-custom-date-class {
     min-width: 70px;
 }
 
+.boton-promo-enviar{
+    background-color: #002765;
+    border: 1px solid #2486fc;
+    border-radius: 12px;
+    padding: 5px 20px;
+    min-width: 70px;
+    color: #fff;
+    font-size: 20px;
+    transition-duration: .2s;
+}
+
 .boton-home{
     bottom: 100px;
     font-size: 14px;
