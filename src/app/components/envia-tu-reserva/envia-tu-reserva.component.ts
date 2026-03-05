@@ -65,6 +65,8 @@ export class EnviaTuReservaComponent implements OnInit {
   //variables adicionales
   adicionales:any[] = [];
   adicionalesTotal:number = 0;
+  addAdicionales:string ="";
+  addSeguro:string ="";
 
   statusReserva:boolean = false;
   statusPago:boolean = false;
@@ -290,6 +292,7 @@ export class EnviaTuReservaComponent implements OnInit {
       if (this.seguros[i].checked === true){
         this.body+=this.seguros[i].detail.name +". ";
         sensorSeguro = sensorSeguro + 1;
+        this.addSeguro+=this.seguros[i].detail.name +". ";
       } 
     }
 
@@ -304,6 +307,7 @@ export class EnviaTuReservaComponent implements OnInit {
       if (this.adicionales[i].checked === true){
         this.body+=this.adicionales[i].detail.name +". ";
         sensorAdicional = sensorAdicional + 1;
+        this.addAdicionales+=this.adicionales[i].detail.name +". ";
       }
     }
 
@@ -323,7 +327,51 @@ export class EnviaTuReservaComponent implements OnInit {
       this.rently.enviarContactoNuevo(this.correo, this.nombre,  this.subject, this.body, this.footer , this.bcc).subscribe(resp =>{
 
         this.statusPago = true;
-        this.router.navigate(['mil-gracias-por-tu-tiempo',this.sensor]);
+
+      /* FORMULARIO A SALESFORCE */
+      let nombre = nombreCliente;
+      let correo = correoCliente;
+      let telefono = this.telefono;
+      let recoleccion = this.from;
+      let devolucion = this.to;
+      let modelo = this.modelo.Name;
+
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = 'https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8';
+
+      const fields: Record<any, any> = {
+        orgid: '00Df4000004ls8N',
+        subject: 'Reservacion Rentas',
+        description: 'Cliente web con reservacion',
+        '00NUl00000CC1ns': nombre,
+        email: correo,
+        phone: telefono,
+        recordType: '012Uh00000I3xdt',
+        ownerId: '005f4000003NyKBAA0',
+        '00NUh000002jGsH': recoleccion.slice(0, -6),
+        '00NUh000002jGx7': devolucion.slice(0, -6),
+        '00NUh000002jHgH': modelo,
+        '00NUh000002jH6n': this.addSeguro,
+        '00NUh000002jHOX': this.addAdicionales,
+        Priority: 'Alta',
+        retURL: 'https://riverorenta.com/mil-gracias-por-tu-tiempo/reserva-exitosa'
+      };
+
+      console.log(fields);
+
+
+      for (const key in fields) {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = fields[key];
+        form.appendChild(input);
+      }
+
+      document.body.appendChild(form);
+      form.submit();
+      /* FORMULARIO A SALESFORCE */
 
       }, error =>{
         alert("Ha ocurrido un error, intente más tarde")
