@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 })
 export class FichaTecnicaComponent {
 
-  categoria:any = 1;
+  categoria:any = 0;
   unidades:any = [];
   unidadesExpandibles: { [key: string]: boolean } = {};
   loaderActivo: boolean = false;
