@@ -18,8 +18,8 @@ export class RequisitosRentaAppsComponent {
   dia:string="";
   hora:string="";
   modelo:string="";
-  tiempo:string="";
-  plataforma:string="";
+  tiempo:string="Menos2Meses";
+  plataforma:string="Didi";
   mensaje:string="";
   body:string="";
   footer:string="";
