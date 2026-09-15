@@ -1,0 +1,89 @@
+<div class="containerAdword">
+    <div class="row m-0">
+        <div class="col-xl-6 col-lg-6 col-md-8 col-sm-12 m-0">
+            <img [src]="imagen" width="100%" />
+        </div>
+
+        <div class="formulario-adword col-xl-6 col-lg-6 col-md-4 col-sm-12 form-group m-0">
+            <div style="min-width: 98%;">
+                <div class="p-1">
+                    <div>
+                        <label class="label mb-1" for="nombre"><strong>Nombre Completo*</strong></label>
+                    </div>
+                    <div>
+                        <input #nombreI maxLength={50} name="first_name" placeholder="Ingresa tu nombre" class="form-control p-2" (change)="nombre = nombreI.value" required/>
+                    </div>
+                </div>
+
+                <div class="d-grid">
+                    <div class="p-1">
+                        <div>
+                            <label class="label mb-1" for="email"><strong>Email*</strong></label>
+                        </div>
+                        <div>
+                            <input #correoI type="email" name="email" maxlength="50" placeholder="Ingresa tu correo" class="form-control p-2" (change)="correo = correoI.value" required/>
+                        </div>
+                    </div>
+
+                    <div class="p-1">
+                        <div>
+                            <label class="label mb-1" for="telefono"><strong>Teléfono*</strong></label>
+                        </div>
+                        <div>
+                            <input #telefonoI type="tel" maxLength="10" onkeypress="return /[0-9]/i.test(event.key)" pattern="[0-9]{10}" placeholder="Ingresa tu teléfono" class="form-control p-2" (change)="telefono = telefonoI.value" required/>
+                        </div>
+                    </div>
+
+                    <div class="p-1">
+                        <div>
+                            <label class="label mb-1" for="comentario"><strong>Comentario</strong> (Opcional)</label>
+                        </div>
+                        <div>
+                            <textarea #comentarioI name="comentario" type="textarea" placeholder="Agrega tu comentario aquí..." class="form-control p-2" (change)="comentario = comentarioI.value"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="p-1">
+                        <div>
+                            <label class="label mb-1" for="nombre"><strong>Medio de contacto preferido*:</strong></label>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 align-items-center d-flex">
+                                <input class="mx-2" type="radio" name="radioDefault" id="radioDefault1" value="WhatsApp" #radio1I (change)="preferido = radio1I.value" />
+                                <label class="form-check-label" for="radioDefault1">
+                                    WhatsApp
+                                </label>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 align-items-center d-flex">
+                                <input class="mx-2" type="radio" name="radioDefault" id="radioDefault2" value="Telefono" #radio2I (change)="preferido = radio2I.value" />
+                                <label class="form-check-label" for="radioDefault2">
+                                    Telefono
+                                </label>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 align-items-center d-flex">
+                                <input class="mx-2" type="radio" name="radioDefault" id="radioDefault3" value="Email" #radio3I (change)="preferido = radio3I.value" />
+                                <label class="form-check-label" for="radioDefault3">
+                                    Email
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-1">
+                        <div >
+                            <input class="mx-2" type="checkbox" #privacidadI (change)="privacidad = privacidadI.checked" required/>
+                            <label class="form-check-label" for="checkDefault">
+                                He leído y acepto el <a href="/aviso-privacidad/"><strong>Aviso de Privacidad*</strong></a>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="p-1 mt-2 d-flex justify-content-center">
+                        <input type="submit" id="btn-contactarserv" class="btnInfoAzul" value="ENVIAR" (click)="enviarAdword()" />  
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

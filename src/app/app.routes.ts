@@ -14,6 +14,7 @@ import { RequisitosRentaAppsComponent } from "./components/requisitos-renta-apps
 import { TrasladosChoferComponent } from './components/traslados-chofer/traslados-chofer.component';
 import { EventosComponent } from './components/eventos/eventos.component';
 import { BlogComponent } from './components/blog/blog.component';
+import { AdwordsComponent } from './components/adwords/adwords.component';
 
 import { IconTextViewComponent } from './components/layouts/icon-text-view/icon-text-view.component';
 import { DetallePromocionComponent } from "./components/detalle-promocion/detalle-promocion.component";
@@ -37,6 +38,7 @@ export const ROUTES: Routes = [
     { path: 'blog', component: BlogComponent},
     { path: 'mil-gracias-por-tu-tiempo/:sensor', component: MilGraciasPorTuTiempoComponent},
     { path: 'ficha-tecnica', component: FichaTecnicaComponent},
+    { path: 'adwords/:slug', component: AdwordsComponent},
     { path: '', pathMatch: 'full', redirectTo: 'home'},
     { path: '**', pathMatch: 'full', redirectTo: 'home'}
 ]

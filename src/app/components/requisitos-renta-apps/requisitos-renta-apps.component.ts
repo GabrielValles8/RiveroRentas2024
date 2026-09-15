@@ -147,7 +147,7 @@ export class RequisitosRentaAppsComponent {
         if (/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(correoCliente)== false){
           alert("Correo Inválido. Verifique que esté bien escrito.")
         } else {
-          alert("Complete todos los campos2.")
+          alert("Complete todos los campos.")
         }
     }
   }

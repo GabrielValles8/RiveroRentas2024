@@ -200,4 +200,9 @@ export class RentasService {
     return this.http.post<any>(this.urlFicha+"/leads-rentas", data);
    
    }
+
+   adword(slug:string){
+    console.log(slug);
+    return this.http.get<any>(this.urlFicha+"/campaigns/RENTAS_CHEVROLET/"+slug);
+   }
 }

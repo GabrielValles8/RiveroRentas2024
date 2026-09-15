@@ -47,6 +47,7 @@ import { EventosComponent } from './components/eventos/eventos.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { DetallePromocionComponent } from './components/detalle-promocion/detalle-promocion.component';
 import { FichaTecnicaComponent } from './components/ficha-tecnica/ficha-tecnica.component';
+import { AdwordsComponent } from './components/adwords/adwords.component';
 
 
 @NgModule({
@@ -79,7 +80,8 @@ import { FichaTecnicaComponent } from './components/ficha-tecnica/ficha-tecnica.
     EventosComponent,
     BlogComponent,
     DetallePromocionComponent,
-    FichaTecnicaComponent
+    FichaTecnicaComponent,
+    AdwordsComponent
     
   ],
   imports: [

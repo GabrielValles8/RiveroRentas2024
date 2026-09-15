@@ -518,6 +518,25 @@ color: rgb(255, 255, 255);
     cursor: pointer;
 }
 
+.btnInfoAzul{
+    align-items: center;
+    background-color: #3275bb;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 14px;
+    gap: .5rem;
+    justify-content: center;
+    line-height: 1;
+    min-height: 48px;
+    padding: 2px 20px;
+    text-align: center;
+    transition: all .5s;
+    width: 100%;
+}
+
 .banner-auto-interior, .banner-silverado {
     background-position: bottom;
     background-repeat: no-repeat;
@@ -806,6 +825,14 @@ color: rgb(255, 255, 255);
 .div-banner-promo{
     height: 500px;
     /* width: 1367px; */
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size  : contain;
+}
+
+.div-banner-adword{
+    height: 500px;
+    width: 1367px;
     background-position: top;
     background-repeat: no-repeat;
     background-size  : contain;
