@@ -75,12 +75,7 @@ export class EnviaTuReservaComponent implements OnInit {
 
   //Parámetros web url
 
-  utm_source:string ="";
-  utm_medium:string ="";
-  utm_campaign:string ="";
-  cnname:string ="";
-  utm_content:string ="";
-  utm_term:string ="";
+  queryParams: any;
 
   horarios: Horario[] = [
     {value: '10:00', viewValue: '10:00'},
@@ -111,12 +106,7 @@ export class EnviaTuReservaComponent implements OnInit {
       this.modelId = params["modelid"];
       this.licencia = params["licencia"];
 
-      this.utm_source = params["utm_source"];
-      this.utm_medium = params["utm_medium"];
-      this.utm_campaign = params["utm_campaign"];
-      this.cnname = params["ccname"];
-      this.utm_content = params["utm_content"];
-      this.utm_term = params["utm_term"];
+      this.queryParams = this.activeroute.snapshot.queryParams;
 
 
       if (this.licencia === 'local'){
@@ -378,12 +368,12 @@ export class EnviaTuReservaComponent implements OnInit {
         '00Nf400000UBhZl': 'WhatsApp',
         '00NUl000000a7fh': 'Rentas Reservacion',
         '00Nf400000UBhZx': 'Ver Opciones',
-        'utm_source': this.utm_source,
-        'utm_medium': this.utm_medium,
-        'utm_campaign': this.utm_campaign,
-        'cnname': this.cnname,
-        'utm_content': this.utm_content,
-        'utm_term':this.utm_term,
+        '00NUl000001CRbl': this.queryParams.utm_source,
+        '00NUl000001CRdN': this.queryParams.utm_medium,
+        '00NUl00000HfC8L': this.queryParams.utm_campaign,
+        '00NUh000003gtsn': this.queryParams.cnname,
+        '00NUl000001CRez': this.queryParams.utm_content,
+        '00NUl000001CQfj':this.queryParams.utm_term,
         retURL: 'https://riverorenta.com/mil-gracias-por-tu-tiempo/reserva-exitosa'
       };
 
