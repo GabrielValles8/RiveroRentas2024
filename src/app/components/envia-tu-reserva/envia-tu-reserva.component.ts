@@ -73,6 +73,15 @@ export class EnviaTuReservaComponent implements OnInit {
 
   modalInfo:boolean = false;
 
+  //Parámetros web url
+
+  utm_source:string ="";
+  utm_medium:string ="";
+  utm_campaign:string ="";
+  cnname:string ="";
+  utm_content:string ="";
+  utm_term:string ="";
+
   horarios: Horario[] = [
     {value: '10:00', viewValue: '10:00'},
     {value: '10:30', viewValue: '10:30'},
@@ -101,6 +110,14 @@ export class EnviaTuReservaComponent implements OnInit {
       this.to = params["to"];
       this.modelId = params["modelid"];
       this.licencia = params["licencia"];
+
+      this.utm_source = params["utm_source"];
+      this.utm_medium = params["utm_medium"];
+      this.utm_campaign = params["utm_campaign"];
+      this.cnname = params["ccname"];
+      this.utm_content = params["utm_content"];
+      this.utm_term = params["utm_term"];
+
 
       if (this.licencia === 'local'){
         this.sltLicenseNl = true;
@@ -134,7 +151,7 @@ export class EnviaTuReservaComponent implements OnInit {
         const adicional = adicionales[i];
 
         //Filtramos si es un adicional o es parte del seguro
-        if (adicionales[i].type == "Adicional") {
+        if (adicionales[i].type == "Additional") {
           this.adicionales.push({ detail: adicional, checked: false })
         } else {
           this.seguros.push({ detail: adicional, checked: false })
@@ -338,28 +355,39 @@ export class EnviaTuReservaComponent implements OnInit {
 
       const form = document.createElement('form');
       form.method = 'POST';
-      form.action = 'https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8';
+      form.action = 'https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8';
 
       const fields: Record<any, any> = {
-        orgid: '00Df4000004ls8N',
-        subject: 'Reservacion Rentas',
-        description: 'Cliente web con reservacion',
-        '00NUl00000CC1ns': nombre,
-        email: correo,
-        phone: telefono,
-        recordType: '012Uh00000I3xdt',
+        oid: '00Df4000004ls8N',
+        'first_name': nombre,
+        'last_name': '-',
+        'email': correo,
+        '00Nf400000UBha3': telefono,
+        recordType: '012f4000000zmkaAAA',
         ownerId: '005f4000003NyKBAA0',
-        '00NUh000002jGsH': recoleccion.slice(0, -6),
-        '00NUh000002jGx7': devolucion.slice(0, -6),
-        '00NUh000002jHgH': modelo,
-        '00NUh000002jH6n': this.addSeguro,
-        '00NUh000002jHOX': this.addAdicionales,
-        Priority: 'Alta',
+        '00Nf400000UBhZw': 'Renta de Auto',
+        '00NUh0000030xUb': 'Menudeo',
+        '00Nf400000UBhZt': 'Seminuevos',
+        '00Nf400000UBhYt': '1043193',
+        '00N2S000007ThUK': 'www.riverorenta.com',
+        '00Nf400000UBhZN': recoleccion.slice(0, -6),
+        '00Nf400000UBhZM': devolucion.slice(0, -6),
+        '00NUh0000054r4T': modelo,
+        '00NUh0000054j8Y': this.addSeguro,
+        '00NUh0000054r65': this.addAdicionales,
+        '00Nf400000UBhZl': 'WhatsApp',
+        '00NUl000000a7fh': 'Rentas Reservacion',
+        '00Nf400000UBhZx': 'Ver Opciones',
+        'utm_source': this.utm_source,
+        'utm_medium': this.utm_medium,
+        'utm_campaign': this.utm_campaign,
+        'cnname': this.cnname,
+        'utm_content': this.utm_content,
+        'utm_term':this.utm_term,
         retURL: 'https://riverorenta.com/mil-gracias-por-tu-tiempo/reserva-exitosa'
       };
 
       console.log(fields);
-
 
       for (const key in fields) {
         const input = document.createElement('input');
