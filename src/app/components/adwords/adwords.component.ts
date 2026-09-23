@@ -26,7 +26,7 @@ export class AdwordsComponent {
 
   utm_source:string ="";
   utm_medium:string ="";
-  utm_campaign:string ="";
+  utm_campaignname:string ="";
   cnname:string ="";
   utm_content:string ="";
   utm_term:string ="";
@@ -80,7 +80,7 @@ export class AdwordsComponent {
         '00Nf400000UBhZw': 'Renta de Auto',
         '00NUh0000030xUb': 'Menudeo',
         '00N2S000007ThUK': 'www.riverorenta.com',
-        '00NUl000000a7fh': this.queryParams.cnname,
+        '00NUl000000a7fh': this.queryParams.utm_campaignname, //Este es MKT 
         '00NUh00000563Zp': this.slug,
         '00Nf400000UBhZx': 'Ver Opciones',
         '00Nf400000UBhZt': 'Seminuevos',
@@ -88,10 +88,11 @@ export class AdwordsComponent {
         '00Nf400000UBhZl': preferido,
         '00NUl000001CRbl': this.queryParams.utm_source,
         '00NUl000001CRdN': this.queryParams.utm_medium,
-        '00NUl00000HfC8L': this.queryParams.utm_campaign,
-        '00NUh000003gtsn': this.queryParams.cnname,
+        '00NUl00000HfC8L': this.queryParams.utm_campaignname,
+        '00NUh000003gtsn': this.queryParams.campaignname,
         '00NUl000001CRez': this.queryParams.utm_content,
         '00NUl000001CQfj':this.queryParams.utm_term,
+        'X01_Nombre_MKT__c': this.queryParams.utm_campaignname,
         recordType: '012f4000000zmkaAAA',
         ownerId: '005f4000003NyKBAA0',
         /* 'debug' : '1',

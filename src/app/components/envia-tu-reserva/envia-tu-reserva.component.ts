@@ -370,10 +370,11 @@ export class EnviaTuReservaComponent implements OnInit {
         '00Nf400000UBhZx': 'Ver Opciones',
         '00NUl000001CRbl': this.queryParams.utm_source,
         '00NUl000001CRdN': this.queryParams.utm_medium,
-        '00NUl00000HfC8L': this.queryParams.utm_campaign,
+        '00NUl00000HfC8L': this.queryParams.utm_campaignname,
         '00NUh000003gtsn': this.queryParams.cnname,
         '00NUl000001CRez': this.queryParams.utm_content,
         '00NUl000001CQfj':this.queryParams.utm_term,
+        'X01_Nombre_MKT__c': this.queryParams.utm_campaignname,
         retURL: 'https://riverorenta.com/mil-gracias-por-tu-tiempo/reserva-exitosa'
       };
 
