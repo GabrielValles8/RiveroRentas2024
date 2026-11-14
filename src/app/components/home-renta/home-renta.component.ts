@@ -25,7 +25,6 @@ const day = today.getDay();
   
 })
 
-
 export class HomeRentaComponent implements OnInit {
   minDate: Date;
   maxDate: Date;
@@ -173,7 +172,9 @@ export class HomeRentaComponent implements OnInit {
         left: 0,
         behavior: 'smooth',
       });
-    this.router.navigate(['/resultado-filtro', fechaInicio , fechaEntrega , carros , suvs , pasajeros, carga , "local"])
+    this.router.navigate(['/resultado-filtro', fechaInicio , fechaEntrega , carros , suvs , pasajeros, carga , "local"], {
+      queryParamsHandling: 'merge'
+    });
     }
 
 /*  //this.sltLicenseNl = !this.sltLicenseNl;
@@ -213,7 +214,9 @@ export class HomeRentaComponent implements OnInit {
         left: 0,
         behavior: 'smooth',
       });
-    this.router.navigate(['/resultado-filtro', fechaInicio , fechaEntrega , carros , suvs , pasajeros, carga , "foraneo"])
+    this.router.navigate(['/resultado-filtro', fechaInicio , fechaEntrega , carros , suvs , pasajeros, carga , "foraneo"], {
+      queryParamsHandling: 'merge'
+    });
     }
 /*     //this.sltLicenseFo = !this.sltLicenseFo;
     if (this.sltLicenseFo == true) {
@@ -229,7 +232,9 @@ export class HomeRentaComponent implements OnInit {
   }
 
   resultado(){
-    this.router.navigate(['/resultado-filtro', this.fechaInicio])
+    this.router.navigate(['/resultado-filtro', this.fechaInicio], {
+      queryParamsHandling: 'merge'
+    });
   }
   
 /*   dateRangeChange(dateRangeStart: HTMLInputElement, dateRangeEnd: HTMLInputElement,hora: HTMLInputElement) {

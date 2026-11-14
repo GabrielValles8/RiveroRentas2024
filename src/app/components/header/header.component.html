@@ -1,7 +1,7 @@
 <nav id="barraMenu" class="bg-white align-items-center header-shadow navbar navbar-expand-lg navbar-light">
     <div class="container">
         <nav class="navbar navbar-expand-lg justify-content-between" style="width: 100vw;">
-            <a class="navbar-brand" href="/home" style="user-select: none;text-decoration:none"><span style="display: flex;align-items: center;" id="logo">
+            <a class="navbar-brand" [routerLink]="['/home']" queryParamsHandling="merge" style="user-select: none;text-decoration:none"><span style="display: flex;align-items: center;" id="logo">
                 <img class="img-brand-primo mx-2" src="assets/images/primorivero.png" alt="Grupo Rivero">    
                 <img class="img-brand mx-2" src="assets/images/logo-rentas-2024.png" alt="Grupo Rivero">
             </span></a>
@@ -12,17 +12,17 @@
             <div class="collapse navbar-collapse" style="justify-content: end;" id="navbarNav">
                 <ul class="navbar-nav">
                   <li class="d-flex nav-item active p-2 mx-4 align-items-center">
-                    <a  class="btn nav-item-header nav-link p-0" style="float:left;justify-content: center;" href="nuestras-unidades">Nuestras unidades
+                    <a  class="btn nav-item-header nav-link p-0" style="float:left;justify-content: center;" [routerLink]="['nuestras-unidades']" queryParamsHandling="merge">Nuestras unidades
                     </a>
                   </li>
 
                   <li class="d-flex nav-item active p-2 mx-4 align-items-center">
-                    <a  class="btn nav-item-header nav-link p-0" style="float:left;justify-content: center;" href="requisitos">Requisitos
+                    <a  class="btn nav-item-header nav-link p-0" style="float:left;justify-content: center;" [routerLink]="['requisitos']" queryParamsHandling="merge">Requisitos
                     </a>
                   </li>
 
                   <li class="d-flex nav-item active p-2 mx-4 align-items-center">
-                    <a  class="btn nav-item-header nav-link p-0" style="float:left;justify-content: center;" href="blog">Blogs
+                    <a  class="btn nav-item-header nav-link p-0" style="float:left;justify-content: center;" [routerLink]="['blog']" queryParamsHandling="merge">Blogs
                     </a>
                   </li>
 

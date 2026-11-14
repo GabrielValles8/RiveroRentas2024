@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RentasService } from 'src/app/services/rentas.service';
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import * as moment from "moment";
 
 @Component({
@@ -44,7 +44,12 @@ export class TrasladosChoferComponent {
 
   isLoaded:boolean = false;
 
-  constructor(private rently:RentasService, private router: Router) {
+  constructor(private rently:RentasService, private router: Router, private route: ActivatedRoute) {
+
+    this.route.queryParams.subscribe(params => {
+      console.log('Parámetros actuales:', params);
+      console.log('URL actual:', this.router.url);
+    });
 
     let currentYear = new Date();
     currentYear.setDate(currentYear.getDate()+1);
@@ -67,7 +72,9 @@ export class TrasladosChoferComponent {
       left: 0,
       behavior: 'smooth',
     });
-    this.router.navigate(['/requisitos-renta-apps','14']);
+    this.router.navigate(['/requisitos-renta-apps','14'], {
+      queryParamsHandling: 'merge'
+    });
   }
 
   selectModelo(modelin:any,promo:any,imagen:any,horas:any,precio:any){
@@ -78,6 +85,12 @@ export class TrasladosChoferComponent {
     this.horas = horas;
   }
   
+  goHome() {
+    this.router.navigate(['/home'], {
+      queryParamsHandling: 'merge'
+    });
+  }
+
   correoCliente(){
     this.loadedSpiner = true;
     let correoCliente = this.correo;

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { RentasService } from 'src/app/services/rentas.service';
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-promociones',
@@ -19,9 +19,14 @@ export class PromocionesComponent implements OnInit {
   imagenPop:string="";
   isLoaded:boolean=false;
 
-  constructor(private rently:RentasService,  private router: Router) { 
+  constructor(private rently:RentasService,  private router: Router, private route: ActivatedRoute) { 
     this.isLoaded = true;
     this.getPromociones();
+
+    this.route.queryParams.subscribe(params => {
+      console.log('Parámetros actuales:', params);
+      console.log('URL actual:', this.router.url);
+    });
   }
 
   ngOnInit(): void {
@@ -40,7 +45,9 @@ export class PromocionesComponent implements OnInit {
       left: 0,
       behavior: 'smooth',
     });
-    this.router.navigate(['/detalle-promocion',e.id]);
+    this.router.navigate(['/detalle-promocion',e.id], {
+      queryParamsHandling: 'merge'
+    });
     this.showForm = true;
     this.tituloPop = e.titulo,
     this.descripionPop = e.descripcion;

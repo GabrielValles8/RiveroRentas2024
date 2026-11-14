@@ -108,6 +108,7 @@ export class EnviaTuReservaComponent implements OnInit {
 
       this.queryParams = this.activeroute.snapshot.queryParams;
 
+      console.log(this.queryParams);
 
       if (this.licencia === 'local'){
         this.sltLicenseNl = true;
@@ -366,7 +367,7 @@ export class EnviaTuReservaComponent implements OnInit {
         '00NUh0000054j8Y': this.addSeguro,
         '00NUh0000054r65': this.addAdicionales,
         '00Nf400000UBhZl': 'WhatsApp',
-        '00NUl000000a7fh': 'Rentas Reservacion',
+        '00NUl000000a7fh': this.queryParams.utm_campaignname ? this.queryParams.utm_campaignname : 'Rentas Reservacion',
         '00Nf400000UBhZx': 'Ver Opciones',
         '00NUl000001CRbl': this.queryParams.utm_source,
         '00NUl000001CRdN': this.queryParams.utm_medium,

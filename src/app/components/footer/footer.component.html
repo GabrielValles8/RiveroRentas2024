@@ -17,13 +17,13 @@
             </div>
             <div class="col-md-3 col-sm-6 text-white">
                 <p><strong>Sitio</strong></p>
-                <a class="btn btn-secondary mb-1" href="/">Inicio</a><br>
-                <a class="btn btn-secondary mb-1" href="nuestras-unidades">Nuestras unidades</a><br>
-                <a class="btn btn-secondary mb-1" href="empresarial">Empresarial</a><br>
-                <a class="btn btn-secondary mb-1" href="promociones-para-rentar-autos">Promociones</a><br>
-                <a class="btn btn-secondary mb-1" href="requisitos">Requisitos</a><br>
-                <a class="btn btn-secondary mb-1" href="contacto">Contacto</a><br>
-                <a class="btn btn-secondary mb-1" href="aviso-privacidad">Aviso de Privacidad</a>
+                <a class="btn btn-secondary mb-1" [routerLink]="['/home']" queryParamsHandling="merge">Inicio</a><br>
+                <a class="btn btn-secondary mb-1" [routerLink]="['nuestras-unidades']" queryParamsHandling="merge">Nuestras unidades</a><br>
+                <a class="btn btn-secondary mb-1" [routerLink]="['empresarial']" queryParamsHandling="merge">Empresarial</a><br>
+                <a class="btn btn-secondary mb-1" [routerLink]="['promociones-para-rentar-autos']" queryParamsHandling="merge">Promociones</a><br>
+                <a class="btn btn-secondary mb-1" [routerLink]="['requisitos']" queryParamsHandling="merge">Requisitos</a><br>
+                <a class="btn btn-secondary mb-1" [routerLink]="['contacto']" queryParamsHandling="merge">Contacto</a><br>
+                <a class="btn btn-secondary mb-1" [routerLink]="['aviso-privacidad']" queryParamsHandling="merge">Aviso de Privacidad</a>
             </div>
             <div class="col-md-3 col-sm-6 text-white">
                 <p><strong>¿Tienes dudas?</strong></p>

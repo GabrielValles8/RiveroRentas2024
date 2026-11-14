@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RentasService } from "src/app/services/rentas.service";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -27,9 +27,21 @@ export class HomeComponent implements OnInit {
     return day !== 0 && day !== 6 ;
 }
 
-  constructor(private rently:RentasService, private router: Router) { 
+  constructor(private rently:RentasService, private router: Router, private route: ActivatedRoute) { 
 
     this.getPromociones();
+
+      this.route.queryParams.subscribe(params => {
+        console.log(params);
+
+        const utm_source = params['utm_source'];
+        const utm_campaign = params['utm_campaign'];
+        const gclid = params['gclid'];
+
+        console.log('Source:', utm_source);
+        console.log('Campaign:', utm_campaign);
+        console.log('GCLID:', gclid);
+      });
   }
 
   ngOnInit(): void {
@@ -48,7 +60,10 @@ export class HomeComponent implements OnInit {
       left: 0,
       behavior: 'smooth',
     });
-    this.router.navigate(['/empresarial']);
+
+    this.router.navigate(['/empresarial'], {
+      queryParamsHandling: 'merge'
+    });
   }
 
   goRentaApps(){
@@ -57,7 +72,10 @@ export class HomeComponent implements OnInit {
       left: 0,
       behavior: 'smooth',
     });
-    this.router.navigate(['/renta-apps']);
+
+    this.router.navigate(['/renta-apps'], {
+      queryParamsHandling: 'merge'
+    });
   }
 
   goEventos(){
@@ -66,7 +84,10 @@ export class HomeComponent implements OnInit {
       left: 0,
       behavior: 'smooth',
     });
-    this.router.navigate(['/evento']);
+
+    this.router.navigate(['/evento'], {
+      queryParamsHandling: 'merge'
+    });
   }
 
   goTraslados(){
@@ -75,7 +96,10 @@ export class HomeComponent implements OnInit {
       left: 0,
       behavior: 'smooth',
     });
-    this.router.navigate(['/traslados-chofer']);
+
+    this.router.navigate(['/traslados-chofer'], {
+      queryParamsHandling: 'merge'
+    });
   }
 
   goRequisitos(){
@@ -84,7 +108,10 @@ export class HomeComponent implements OnInit {
       left: 0,
       behavior: 'smooth',
     });
-    this.router.navigate(['/requisitos']);
+    
+    this.router.navigate(['/requisitos'], {
+      queryParamsHandling: 'merge'
+    });
   }
 
 }

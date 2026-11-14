@@ -1,9 +1,8 @@
 import { Component, OnInit, Renderer2, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import { RentasService } from "src/app/services/rentas.service";
 import { FormControl, Validators,FormGroup } from "@angular/forms";
 import * as moment from "moment";
-import { Router } from "@angular/router";
 
 const today = new Date();
 today.setDate(today.getDate()+1);
@@ -127,7 +126,7 @@ export class ResultadoFiltroComponent implements OnInit {
 
   statusVal:boolean=false;
  
-  constructor(private router: ActivatedRoute, private rently: RentasService, private router2: Router, private renderer: Renderer2) {
+  constructor(private route: ActivatedRoute, private rently: RentasService, private router: Router, private renderer: Renderer2) {
    
     let currentYear = new Date();
     currentYear.setDate(currentYear.getDate()+1);
@@ -136,12 +135,16 @@ export class ResultadoFiltroComponent implements OnInit {
     this.minFechaInicio =new Date();
     this.minFechaEntrega =  moment().add(1, "days").format("DD-MM-YYYY HH:mm");
 
-    this.router.params.subscribe(params => {
+    this.route.params.subscribe(params => {
       console.log(params);
       this.campaignOne = new FormGroup({
         start:new FormControl(moment(params["from"], "YYYY-MM-DD HH:mm").format()),
         end:new FormControl(moment(params["to"], "YYYY-MM-DD HH:mm").format()),
       });
+
+      const utm_source = params['utm_source'];
+      const utm_campaign = params['utm_campaign'];
+      const gclid = params['gclid'];
 
       this.sltCarList[1]["checked"] = params["carros"] == "true" ? true:false;
       this.sltCarList[2]["checked"] = params["carros"] == "true" ? true:false;
@@ -267,7 +270,9 @@ export class ResultadoFiltroComponent implements OnInit {
   }
 
   onLicenciaClick(licencia:any){
-    window.location.href = "envia-tu-reserva/"+this.fechaInicio+"/"+ this.fechaEntrega +"/"+this.modelo+"/"+licencia;
+    this.router.navigate(['/envia-tu-reserva/', this.fechaInicio, this.fechaEntrega ,this.modelo,licencia],{
+      queryParamsHandling: 'merge'
+    });
   }
 
   hideModal(){
@@ -396,7 +401,7 @@ export class ResultadoFiltroComponent implements OnInit {
     this.onFilterChangeCategory()
   }
   onFilterChangeCategory(){
-    this.router.params.subscribe(params => {
+    this.route.params.subscribe(params => {
       const inicioUrl = params["from"];
       const entregaUrl = params["to"];
       const inicioDate = this.fechaInicio;
@@ -488,7 +493,7 @@ export class ResultadoFiltroComponent implements OnInit {
   }
   onFilterCategory(){
 
-    this.router.params.subscribe(params => {
+    this.route.params.subscribe(params => {
 
       const inicioUrl = params["from"];
       const entregaUrl = params["to"];
@@ -567,7 +572,9 @@ export class ResultadoFiltroComponent implements OnInit {
 
         } else {
 
-          window.location.href = "resultado-filtro/"+this.fechaInicio+"/"+ this.fechaEntrega +"/"+this.sltCarList[2]['checked']+"/"+this.sltCarList[3]['checked']+"/"+this.sltCarList[4]['checked']+"/"+this.sltCarList[8]['checked']+"/"+ this.license;
+          this.router.navigate(['/resultado-filtro',this.fechaInicio, this.fechaEntrega ,this.sltCarList[2]['checked'],this.sltCarList[3]['checked'],this.sltCarList[4]['checked'],this.sltCarList[8]['checked'],this.license], {
+            queryParamsHandling: 'merge'
+          });
         /*"resultado-filtro/" +
         this.fechaInicio +
         "/" +
@@ -654,7 +661,9 @@ export class ResultadoFiltroComponent implements OnInit {
     if (quad1 >= quik1 || quad == null || quik == null || quad == '' || quik == '' || ft1 === 'Invalid Date' || ft2 === 'Invalid Date' ) {
       alert('Fechas Inválidas, seleccione correctamente el plazo deseado.')
     } else {
-      this.router2.navigate(['/resultado-filtro', fechaInicio , fechaEntrega , carros , suvs , pasajeros, carga , licencia])
+      this.router.navigate(['/resultado-filtro', fechaInicio , fechaEntrega , carros , suvs , pasajeros, carga , licencia], {
+      queryParamsHandling: 'merge'
+    });
     }
 
 /*  //this.sltLicenseNl = !this.sltLicenseNl;

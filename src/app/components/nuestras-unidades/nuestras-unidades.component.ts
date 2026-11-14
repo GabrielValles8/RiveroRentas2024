@@ -1,6 +1,7 @@
 import { Component, OnInit , ViewEncapsulation , Renderer2} from '@angular/core';
 import { RentasService } from 'src/app/services/rentas.service';
 import { MatCardModule } from '@angular/material/card';
+import { Router, ActivatedRoute } from "@angular/router";
 import { FormControl, Validators,FormGroup, Form } from "@angular/forms";
 import {MatCalendarCellClassFunction} from '@angular/material/datepicker';
 import * as moment from "moment";
@@ -60,7 +61,7 @@ export class NuestrasUnidadesComponent implements OnInit {
 
   categoriaSelect:any;
 
-  constructor(private rently:RentasService, private renderer: Renderer2) { 
+  constructor(private rently:RentasService, private renderer: Renderer2, private router: Router, private route: ActivatedRoute) { 
 
     this.disableDays(this.classe);
     this.fechaInicio =  moment().add(1, "days").format("YYYY-MM-DD");
@@ -326,7 +327,9 @@ export class NuestrasUnidadesComponent implements OnInit {
   }
 
   goReserva(tipoLicencia:any){
-    window.location.href = "envia-tu-reserva/"+this.fromV+"/"+ this.toV +"/"+this.modeloV+"/"+tipoLicencia;
+    this.router.navigate(['envia-tu-reserva',this.fromV, this.toV ,this.modeloV,tipoLicencia], {
+    queryParamsHandling: 'merge'
+  });
   }
 
   goSimilares(fe1:any,fe2:any,categoria:any){
@@ -342,7 +345,9 @@ export class NuestrasUnidadesComponent implements OnInit {
     } else if (categoria == "PASAJEROS"){
       categoria = "false/false/true/false";
     }
-    window.location.href = "resultado-filtro/"+ fe1 +"/"+ fe2 +"/"+categoria+"/local";
+    this.router.navigate(['resultado-filtro',fe1, fe2,categoria + "/local"], {
+      queryParamsHandling: 'merge'
+    });
   }
 
   fechaFormat(x:any){
